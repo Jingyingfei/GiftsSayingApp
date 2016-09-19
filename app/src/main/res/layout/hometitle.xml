@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#ff384f"
+    android:orientation="horizontal"
+    >
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/logo_title" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/file_name"
+        android:drawableLeft="@mipmap/ic_menu_search"
+        android:drawablePadding="10dp"
+        android:hint="中秋佳节送好礼"
+        android:paddingLeft="10dp"
+        android:singleLine="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/btn_signin"
+        android:layout_marginRight="10dp"
+        android:alpha="0.5"
+        android:layout_marginTop="6dp"/>
+</LinearLayout>
