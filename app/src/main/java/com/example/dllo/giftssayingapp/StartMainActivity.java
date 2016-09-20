@@ -5,11 +5,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.RadioButton;
 
-import com.example.dllo.giftssayingapp.basePackage.BaseActivity;
-import com.example.dllo.giftssayingapp.homePackage.ClassifyFragment;
-import com.example.dllo.giftssayingapp.homePackage.HomeFragment;
-import com.example.dllo.giftssayingapp.hotSpotPackage.HotSpotFragment;
-import com.example.dllo.giftssayingapp.homePackage.MeFragment;
+import com.example.dllo.giftssayingapp.basepackage.BaseActivity;
+import com.example.dllo.giftssayingapp.classifypackage.ClassifyMainFragment;
+import com.example.dllo.giftssayingapp.homepackage.HomeMainFragment;
+import com.example.dllo.giftssayingapp.hotspotpackage.HotSpotMainFragment;
+import com.example.dllo.giftssayingapp.mepackage.MeMainFragment;
 
 public class StartMainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -42,7 +42,7 @@ public class StartMainActivity extends BaseActivity implements View.OnClickListe
     protected void initData() {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.frameLayout, new HomeFragment());
+        transaction.replace(R.id.frameLayout, new HomeMainFragment());
         home.setChecked(true);
         transaction.commit();
 
@@ -56,17 +56,17 @@ public class StartMainActivity extends BaseActivity implements View.OnClickListe
         FragmentTransaction transaction = manager.beginTransaction();
         switch (view.getId()){
             case R.id.rBtn_home:
-                transaction.replace(R.id.frameLayout, new HomeFragment());
+                transaction.replace(R.id.frameLayout, new HomeMainFragment());
 
                 break;
             case R.id.rBtn_hotspot:
-                transaction.replace(R.id.frameLayout, new HotSpotFragment());
+                transaction.replace(R.id.frameLayout, new HotSpotMainFragment());
                 break;
             case R.id.rBtn_classify:
-                transaction.replace(R.id.frameLayout, new ClassifyFragment());
+                transaction.replace(R.id.frameLayout, new ClassifyMainFragment());
                 break;
             case R.id.rBtn_me:
-                transaction.replace(R.id.frameLayout, new MeFragment());
+                transaction.replace(R.id.frameLayout, new MeMainFragment());
                 break;
         }
         transaction.commit();

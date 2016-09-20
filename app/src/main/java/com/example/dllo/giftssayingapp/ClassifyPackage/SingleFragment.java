@@ -1,15 +1,15 @@
-package com.example.dllo.giftssayingapp.hotspotpackage;
+package com.example.dllo.giftssayingapp.classifypackage;
 
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 
 /**
- * Created by dllo on 16/9/20.
+ * Cre by dllo on 16/9/20.
  */
-public class RecommendFragment extends BaseFragment {
+public class SingleFragment extends BaseFragment {
     @Override
     protected int setLayout() {
-        return R.layout.fragment_recommend;
+        return R.layout.fragment_single;
     }
 
     @Override

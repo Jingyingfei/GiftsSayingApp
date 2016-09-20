@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.basePackage;
+package com.example.dllo.giftssayingapp.basepackage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

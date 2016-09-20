@@ -1,7 +1,7 @@
-package com.example.dllo.giftssayingapp.hotSpotPackage;
+package com.example.dllo.giftssayingapp.hotspotpackage;
 
 import com.example.dllo.giftssayingapp.R;
-import com.example.dllo.giftssayingapp.basePackage.BaseFragment;
+import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 
 /**
  * Created by dllo on 16/9/20.

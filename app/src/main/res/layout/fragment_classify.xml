@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
-    android:text="分类"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tb_classify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff384f"
+        app:tabTextAppearance="@style/TabLayoutTextAppearance"></android.support.design.widget.TabLayout>
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/file_name"
+        android:drawableLeft="@mipmap/ic_menu_search"
+        android:drawablePadding="10dp"
+        android:hint="中秋佳节送好礼"
+        android:paddingLeft="10dp"
+        android:singleLine="true" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_classify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></android.support.v4.view.ViewPager>
 </LinearLayout>

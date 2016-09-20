@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.basePackage;
+package com.example.dllo.giftssayingapp.basepackage;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -42,10 +42,10 @@ public abstract class BaseFragment extends Fragment {
     }
     protected abstract void initData();
 
-//    protected <T extends View> T bindView(int id){
-//        return (T) getView().findViewById(id);
-//    }
-    protected <T extends View> T bindView(int id, View view){
-        return (T) view.findViewById(id);
+    protected <T extends View> T bindView(int id){
+        return (T) getView().findViewById(id);
     }
+//    protected <T extends View> T bindView(int id, View view){
+//        return (T) view.findViewById(id);
+//    }
 }

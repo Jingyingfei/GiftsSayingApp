@@ -1,15 +1,15 @@
-package com.example.dllo.giftssayingapp.homePackage;
+package com.example.dllo.giftssayingapp.mepackage;
 
 import com.example.dllo.giftssayingapp.R;
-import com.example.dllo.giftssayingapp.basePackage.BaseFragment;
+import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 
 /**
  * Created by dllo on 16/9/19.
  */
-public class ClassifyFragment extends BaseFragment {
+public class MeMainFragment extends BaseFragment {
     @Override
     protected int setLayout() {
-        return R.layout.fragment_classify;
+        return R.layout.fragment_me;
     }
 
     @Override
