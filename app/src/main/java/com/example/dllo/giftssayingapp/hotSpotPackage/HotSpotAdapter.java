@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.homePackage;
+package com.example.dllo.giftssayingapp.hotSpotPackage;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -11,10 +11,10 @@ import java.util.ArrayList;
  * Created by dllo on 16/9/19.
  */
 public class HotSpotAdapter extends FragmentPagerAdapter {
-    private ArrayList<HotSpotBean> arrayList;
+    private ArrayList<Fragment> arrayList;
     private Context context;
 
-    public HotSpotAdapter(FragmentManager fm, ArrayList<HotSpotBean> arrayList) {
+    public HotSpotAdapter(FragmentManager fm, ArrayList<Fragment> arrayList) {
         super(fm);
         this.arrayList = arrayList;
     }
@@ -25,11 +25,11 @@ public class HotSpotAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return null;
+        return arrayList.get(position);
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return arrayList == null ? 0 :arrayList.size();
     }
 }

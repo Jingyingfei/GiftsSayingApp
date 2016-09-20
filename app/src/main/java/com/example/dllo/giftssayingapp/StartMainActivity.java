@@ -8,7 +8,7 @@ import android.widget.RadioButton;
 import com.example.dllo.giftssayingapp.basePackage.BaseActivity;
 import com.example.dllo.giftssayingapp.homePackage.ClassifyFragment;
 import com.example.dllo.giftssayingapp.homePackage.HomeFragment;
-import com.example.dllo.giftssayingapp.homePackage.HotSpotFragment;
+import com.example.dllo.giftssayingapp.hotSpotPackage.HotSpotFragment;
 import com.example.dllo.giftssayingapp.homePackage.MeFragment;
 
 public class StartMainActivity extends BaseActivity implements View.OnClickListener {

@@ -1,18 +1,15 @@
-package com.example.dllo.giftssayingapp.homePackage;
+package com.example.dllo.giftssayingapp.hotSpotPackage;
 
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basePackage.BaseFragment;
 
 /**
- * Created by dllo on 16/9/19.
+ * Created by dllo on 16/9/20.
  */
-public class HomeFragment extends BaseFragment {
-
-
-
+public class TopFragment extends BaseFragment {
     @Override
     protected int setLayout() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_top;
     }
 
     @Override
