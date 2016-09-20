@@ -18,5 +18,5 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
         android:alpha="0.5"
-        android:src="@mipmap/ic_action_compact_share" />
+        android:src="@mipmap/attendance_share_icon" />
 </RelativeLayout>

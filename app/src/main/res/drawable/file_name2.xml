@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <solid
+        android:color="#ff384f"/>
+    <stroke
+        android:width="2dp"
+        android:color="#ffffff"/>
+    <size
+        android:width="200dp"
+        android:height="@dimen/activity_vertical_margin"/>
+    <corners
+        android:bottomRightRadius="80dip"
+        android:bottomLeftRadius="80dip"
+        android:topLeftRadius="80dip"
+        android:topRightRadius="80dip"/>
+
+
+</shape>

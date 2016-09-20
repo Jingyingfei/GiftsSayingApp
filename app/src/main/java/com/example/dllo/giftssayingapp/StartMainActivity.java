@@ -18,6 +18,7 @@ public class StartMainActivity extends BaseActivity implements View.OnClickListe
     private RadioButton classify;
     private RadioButton me;
 
+
     @Override
     protected int setLayout() {
 
@@ -32,10 +33,13 @@ public class StartMainActivity extends BaseActivity implements View.OnClickListe
         classify = bindView(R.id.rBtn_classify);
         me = bindView(R.id.rBtn_me);
 
+
+
         home.setOnClickListener(this);
         hotspot.setOnClickListener(this);
         classify.setOnClickListener(this);
         me.setOnClickListener(this);
+
     }
 
     @Override

@@ -11,6 +11,15 @@ import java.util.ArrayList;
  */
 public class HomeMainAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> fragments;
+    private ArrayList<String> strings;
+
+    public void setFragments(ArrayList<Fragment> fragments) {
+        this.fragments = fragments;
+    }
+
+    public void setStrings(ArrayList<String> strings) {
+        this.strings = strings;
+    }
 
     public HomeMainAdapter(FragmentManager fm, ArrayList<Fragment> fragments, ArrayList<String> strings) {
         super(fm);
@@ -29,5 +38,10 @@ public class HomeMainAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return fragments == null ? 0 : fragments.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return super.getPageTitle(position);
     }
 }
