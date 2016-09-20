@@ -23,9 +23,10 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(setLayout(), container, false);
+        return inflater.inflate(setLayout(),container,false);
     }
     protected abstract int setLayout();
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -41,9 +42,9 @@ public abstract class BaseFragment extends Fragment {
     }
     protected abstract void initData();
 
-    protected <T extends View> T bindView(int id){
-        return (T) getView().findViewById(id);
-    }
+//    protected <T extends View> T bindView(int id){
+//        return (T) getView().findViewById(id);
+//    }
     protected <T extends View> T bindView(int id, View view){
         return (T) view.findViewById(id);
     }

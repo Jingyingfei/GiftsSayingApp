@@ -30,6 +30,11 @@ public class HotSpotAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return arrayList == null ? 0 :arrayList.size();
+        return arrayList == null ? 0 : arrayList.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return super.getPageTitle(position);
     }
 }
