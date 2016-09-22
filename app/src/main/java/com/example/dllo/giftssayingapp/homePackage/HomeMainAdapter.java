@@ -24,6 +24,7 @@ public class HomeMainAdapter extends FragmentPagerAdapter {
     public HomeMainAdapter(FragmentManager fm, ArrayList<Fragment> fragments, ArrayList<String> strings) {
         super(fm);
         this.fragments = fragments;
+        this.strings = strings;
     }
 
     public HomeMainAdapter(FragmentManager fm) {
@@ -42,6 +43,6 @@ public class HomeMainAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return super.getPageTitle(position);
+        return strings.get(position);
     }
 }

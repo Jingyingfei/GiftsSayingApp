@@ -1,9 +1,10 @@
-package com.example.dllo.giftssayingapp;
+package com.example.dllo.giftssayingapp.mainpackage;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseActivity;
 
 public class LoginActivity extends BaseActivity {

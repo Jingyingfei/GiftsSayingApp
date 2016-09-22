@@ -1,10 +1,11 @@
-package com.example.dllo.giftssayingapp;
+package com.example.dllo.giftssayingapp.mainpackage;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.RadioButton;
 
+import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseActivity;
 import com.example.dllo.giftssayingapp.classifypackage.ClassifyMainFragment;
 import com.example.dllo.giftssayingapp.homepackage.HomeMainFragment;

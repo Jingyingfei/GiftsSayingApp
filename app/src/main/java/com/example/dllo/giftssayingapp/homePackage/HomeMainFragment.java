@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.dllo.giftssayingapp.LoginActivity;
+import com.example.dllo.giftssayingapp.mainpackage.LoginActivity;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
@@ -28,7 +28,7 @@ public class HomeMainFragment extends BaseFragment {
     private String strNet = "http://api.liwushuo.com/v2/channels/preset?gender=2&generation=1";
     private TabLayout tb_homeTab;
     private ViewPager vp_homeTab;
-    private ArrayList<String> strings;
+    private ArrayList<String> strings = new ArrayList<>();
     private EditText et_name;
     private ImageButton imageB_sigin;
     ArrayList<Fragment> fragments = new ArrayList<>();
@@ -67,16 +67,14 @@ public class HomeMainFragment extends BaseFragment {
             @Override
             public void onResponse(String response) {
                 //解析
-                strings = new ArrayList<>();
                 Gson gson = new Gson();
                 HomeTabBean bean = gson.fromJson(response, HomeTabBean.class);
                 for (int i = 0; i < bean.getData().getChannels().size(); i++) {
                     strings.add(bean.getData().getChannels().get(i).getName());
+                    Log.d("HomeMainFragment", bean.getData().getChannels().get(i).getName());
                 }
-//                for (int i = 0; i < strings.size(); i++) {
-//                    tb_homeTab.addTab(tb_homeTab.newTab().setText(strings.get(i)));
-//                }
                 for (int i = 0; i < strings.size(); i++) {
+//                    tb_homeTab.addTab(tb_homeTab.newTab().setText(strings.get(i)));
                     Log.d("HomeMainFragment", "strings.size():" + strings.size());
                     if (i == 0) {
                         fragments.add(new HomeSelectFragment());

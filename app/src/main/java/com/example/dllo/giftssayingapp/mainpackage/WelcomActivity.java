@@ -1,8 +1,9 @@
-package com.example.dllo.giftssayingapp;
+package com.example.dllo.giftssayingapp.mainpackage;
 
 import android.content.Intent;
 import android.os.Handler;
 
+import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseActivity;
 
 public class WelcomActivity extends BaseActivity {
