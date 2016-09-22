@@ -79,7 +79,7 @@ public class HomeMainFragment extends BaseFragment {
                     if (i == 0) {
                         fragments.add(new HomeSelectFragment());
                     } else {
-                        fragments.add(new KindFragment());
+                        fragments.add(new HomeKindFragment());
                     }
                 }
 

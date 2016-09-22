@@ -65,6 +65,7 @@ public class HomeImageBean {
 
         public void setBanners(List<BannersBean> banners) {
             this.banners = banners;
+
         }
 
         public static class BannersBean {

@@ -55,7 +55,11 @@ public class HomeSelectAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
         Picasso.with(context).load(arrayList.get(i).getData().getItems().get(i).getCover_image_url()).into(viewHolder.image);
+//        Picasso.with(context).load(arrayList.get(i).getData().getItems().get(i).getAuthor().getAvatar_url()).into(viewHolder.avatar);
         viewHolder.title.setText(arrayList.get(i).getData().getItems().get(i).getTitle());
+//        viewHolder.category.setText(arrayList.get(i).getData().getItems().get(i).getColumn().getCategory());
+//        viewHolder.title_little.setText(arrayList.get(i).getData().getItems().get(i).getColumn().getTitle());
+//        viewHolder.nickname.setText(arrayList.get(i).getData().getItems().get(i).getAuthor().getNickname());
         return view;
     }
 
@@ -63,10 +67,18 @@ public class HomeSelectAdapter extends BaseAdapter {
 
         private ImageView image;
         private TextView title;
+//        private TextView category;
+//        private TextView title_little;
+//        private TextView nickname;
+//        private ImageView avatar;
 
         public ViewHolder(View view) {
             image = (ImageView) view.findViewById(R.id.iv_image_home_select);
             title = (TextView) view.findViewById(R.id.tv_title_home_select);
+//            category = (TextView) view.findViewById(R.id.tv_category);
+//            title_little = (TextView) view.findViewById(R.id.tv_title);
+//            nickname = (TextView) view.findViewById(R.id.nickname);
+//            avatar = (ImageView) view.findViewById(R.id.avatar);
         }
 
     }

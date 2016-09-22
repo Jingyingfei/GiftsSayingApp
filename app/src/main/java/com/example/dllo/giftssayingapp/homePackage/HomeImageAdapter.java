@@ -19,6 +19,7 @@ public class HomeImageAdapter extends PagerAdapter {
 
     public void setBean(HomeImageBean bean) {
         this.bean = bean;
+        notifyDataSetChanged();
     }
 
     private Context context;
@@ -40,10 +41,16 @@ public class HomeImageAdapter extends PagerAdapter {
     }
 
     @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+
+    }
+
+    @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_home_image,null);
         ImageView image = (ImageView) view.findViewById(R.id.iv_home_image);
-        Picasso.with(context).load(bean.getData().getBanners().get(position).getImage_url()).into(image);
+        Picasso.with(context).load(bean.getData().getBanners().get
+                (position% bean.getData().getBanners().size()).getImage_url()).into(image);
         container.addView(view);
 
         return view;
