@@ -1,8 +1,8 @@
 package com.example.dllo.giftssayingapp.homepackage;
 
-import android.widget.ImageView;
+import android.util.Log;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,8 +21,6 @@ import java.util.ArrayList;
 public class HomeKindFragment extends BaseFragment {
     private String strNet = "http://api.liwushuo.com/v2/channels/9/items_v2?gender=2&limit=20&offset=0&generation=1";
 
-    private TextView title;
-    private ImageView image;
     private ListView listView;
 
     @Override
@@ -37,23 +35,34 @@ public class HomeKindFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        final ArrayList<HomeKindBean> arrayList = new ArrayList<>();
+        requestData();
+    }
+
+    public void requestData() {
+
         StringRequest request = new StringRequest(strNet, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("HomeKindFragment", "网络请求了?");
+                ArrayList<HomeKindBean> arrayList = new ArrayList<>();
                 Gson gson = new Gson();
                 HomeKindBean bean = gson.fromJson(response, HomeKindBean.class);
                 for (int i = 0; i < bean.getData().getItems().size(); i++) {
                     bean.getData().getItems().get(i).getCover_image_url();
                     bean.getData().getItems().get(i).getTitle();
+                    bean.getData().getItems().get(i).getAuthor().getNickname();
                     arrayList.add(bean);
                 }
+                HomeKindAdapter adapter = new HomeKindAdapter(context);
+                adapter.setArrayList(arrayList);
+                listView.setAdapter(adapter);
+
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(context, "网络获取失败", Toast.LENGTH_SHORT).show();
             }
         });
         VolleySingleton.getInstance().addRequest(request);

@@ -27,7 +27,7 @@ import it.sephiroth.android.library.picasso.Picasso;
  * http://api.liwushuo.com/v2/channels/103/items?limit=20&ad=2&gender=2&offset=0&generation=1
  */
 public class HomeSelectFragment extends BaseFragment {
-    private String strNet = "http://api.liwushuo.com/v2/channels/103/items?limit=20&ad=2&gender=2&offset=0&generation=1";
+    private String strNet = "http://api.liwushuo.com/v2/channels/103/items_v2?ad=2&gender=2&generation=1&limit=20&offset=0";
     private String strNetImage = "http://api.liwushuo.com/v2/banners";
     private String strNetSpe = "http://api.liwushuo.com/v2/secondary_banners?gender=2&generation=1";
     private ListView homeSelect;
@@ -124,8 +124,10 @@ public class HomeSelectFragment extends BaseFragment {
                 Gson gson = new Gson();
                 HomeSelectBean bean = gson.fromJson(response, HomeSelectBean.class);
                 for (int i = 0; i < bean.getData().getItems().size(); i++) {
-//                    bean.getData().getItems().get(i).getCover_image_url();
-//                    bean.getData().getItems().get(i).getTitle();
+                    bean.getData().getItems().get(i).getCover_image_url();
+                    bean.getData().getItems().get(i).getTitle();
+                    bean.getData().getItems().get(i).getAuthor().getNickname();
+                    bean.getData().getItems().get(i).getAuthor().getAvatar_url();
                     arrayList.add(bean);
                 }
                 HomeSelectAdapter adapter = new HomeSelectAdapter(getContext());

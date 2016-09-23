@@ -6,6 +6,10 @@ import android.support.v4.view.ViewPager;
 
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
+import com.example.dllo.giftssayingapp.hotspotpackage.newstar.NewStarFragment;
+import com.example.dllo.giftssayingapp.hotspotpackage.originality.OriginalityFragment;
+import com.example.dllo.giftssayingapp.hotspotpackage.recommend.RecommendFragment;
+import com.example.dllo.giftssayingapp.hotspotpackage.top.TopFragment;
 
 import java.util.ArrayList;
 

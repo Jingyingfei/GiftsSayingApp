@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.hotspotpackage;
+package com.example.dllo.giftssayingapp.hotspotpackage.newstar;
 
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
@@ -6,10 +6,10 @@ import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 /**
  * Created by dllo on 16/9/20.
  */
-public class OriginalityFragment extends BaseFragment {
+public class NewStarFragment extends BaseFragment {
     @Override
     protected int setLayout() {
-        return R.layout.fragment_originality;
+        return R.layout.fragment_new_star;
     }
 
     @Override
