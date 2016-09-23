@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.classifypackage;
+package com.example.dllo.giftssayingapp.classifypackage.Single;
 
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;

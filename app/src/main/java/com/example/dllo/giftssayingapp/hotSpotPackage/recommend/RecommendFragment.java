@@ -8,15 +8,12 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-
-import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by dllo on 16/9/20.
@@ -25,8 +22,9 @@ import it.sephiroth.android.library.picasso.Picasso;
 public class RecommendFragment extends BaseFragment {
     private String strNet = "http://api.liwushuo.com/v2/ranks_v2/ranks/1?limit=20&offset=0";
     private RecyclerView recommend;
-    private ImageView headImage;
-    private RecyclerViewHeader header;
+
+    private ImageView image;
+
 
     @Override
     protected int setLayout() {
@@ -36,8 +34,9 @@ public class RecommendFragment extends BaseFragment {
     @Override
     protected void initView() {
         recommend = bindView(R.id.rv_recommend);
-        headImage = bindView(R.id.iv_head);
-        header = bindView(R.id.rv_headView);
+
+//        image = bindView(R.id.iv_image);
+
     }
 
     @Override
@@ -60,7 +59,7 @@ public class RecommendFragment extends BaseFragment {
                     arrayList.add(bean);
                 }
 
-                Picasso.with(context).load(bean.getData().getCover_image()).into(headImage);
+//                Picasso.with(context).load(bean.getData().getCover_image()).into(image);
 
 
                 RecommendAdapter adapter = new RecommendAdapter(context);
@@ -69,8 +68,8 @@ public class RecommendFragment extends BaseFragment {
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 recommend.setLayoutManager(manager);
 
-                //将顶部视图与recyclerview相关联
-                header.attachTo(recommend, true);
+
+
             }
         }, new Response.ErrorListener() {
             @Override

@@ -9,10 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import it.sephiroth.android.library.picasso.Picasso;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by dllo on 16/9/21.
@@ -73,7 +74,8 @@ public class HomeSelectAdapter extends BaseAdapter {
         private TextView category;
         private TextView title_little;
         private TextView nickname;
-        private ImageView avatar;
+        private final CircleImageView avatar;
+
 
         public ViewHolder(View view) {
             image = (ImageView) view.findViewById(R.id.iv_image_home_select);
@@ -81,7 +83,7 @@ public class HomeSelectAdapter extends BaseAdapter {
             category = (TextView) view.findViewById(R.id.tv_category);
             title_little = (TextView) view.findViewById(R.id.tv_title);
             nickname = (TextView) view.findViewById(R.id.nickname);
-            avatar = (ImageView) view.findViewById(R.id.avatar);
+            avatar = (CircleImageView) view.findViewById(R.id.avatar);
         }
 
     }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.mainpackage.LoginActivity;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
  * Created by dllo on 16/9/19.
  */
 public class HomeMainFragment extends BaseFragment {
-    private String strNet = "http://api.liwushuo.com/v2/channels/preset?gender=2&generation=1";
+
     private TabLayout tb_homeTab;
     private ViewPager vp_homeTab;
     private ArrayList<String> strings = new ArrayList<>();
@@ -63,7 +64,7 @@ public class HomeMainFragment extends BaseFragment {
 
     public void request() {
         //创建网络请求
-        StringRequest request = new StringRequest(strNet, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(URLValues.HOME_TITLE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 //解析

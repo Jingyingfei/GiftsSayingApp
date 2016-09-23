@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
+import com.example.dllo.giftssayingapp.classifypackage.Single.SingleFragment;
+import com.example.dllo.giftssayingapp.classifypackage.Strategy.StrategyFragment;
 
 import java.util.ArrayList;
 
@@ -32,7 +34,7 @@ public class ClassifyMainFragment extends BaseFragment {
     @Override
     protected void initData() {
         ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(new RaidersFragment());
+        fragments.add(new StrategyFragment());
         fragments.add(new SingleFragment());
 
         ClassifyMainAdapter adapter = new ClassifyMainAdapter(getChildFragmentManager(), fragments);

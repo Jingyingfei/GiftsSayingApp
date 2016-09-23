@@ -15,19 +15,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
+import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by dllo on 16/9/20.
  * http://api.liwushuo.com/v2/channels/103/items?limit=20&ad=2&gender=2&offset=0&generation=1
  */
 public class HomeSelectFragment extends BaseFragment {
-    private String strNet = "http://api.liwushuo.com/v2/channels/103/items_v2?ad=2&gender=2&generation=1&limit=20&offset=0";
     private String strNetImage = "http://api.liwushuo.com/v2/banners";
     private String strNetSpe = "http://api.liwushuo.com/v2/secondary_banners?gender=2&generation=1";
     private ListView homeSelect;
@@ -116,7 +116,7 @@ public class HomeSelectFragment extends BaseFragment {
 
     public void requestData() {
         //创建网络请求
-        StringRequest request = new StringRequest(strNet, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(URLValues.HOME_CELL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 // 解析

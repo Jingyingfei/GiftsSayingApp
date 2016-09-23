@@ -9,10 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by dllo on 16/9/23.
@@ -20,6 +20,7 @@ import it.sephiroth.android.library.picasso.Picasso;
 public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.ViewHolder> {
     private ArrayList<RecommendBean> arrayList;
     private Context context;
+
     public void setArrayList(ArrayList<RecommendBean> arrayList) {
         this.arrayList = arrayList;
         notifyDataSetChanged();
@@ -32,6 +33,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
 
     @Override
     public RecommendAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(context).inflate(R.layout.item_recommend, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
@@ -43,7 +45,11 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
         holder.price.setText(arrayList.get(position).getData().getItems().get(position).getPrice());
 //        Picasso.with(context).load(arrayList.get(position).getData().getCover_image()).into(holder.top_image);
         Picasso.with(context).load(arrayList.get(position).getData().getItems().get(position).getCover_image_url()).into(holder.image);
+
+
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -65,4 +71,5 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
             price = (TextView) itemView.findViewById(R.id.tv_recommend_price);
         }
     }
+
 }
