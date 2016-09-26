@@ -2,8 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<TextView
-    android:text="新星榜"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_newstar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
+            android:id="@+id/newstar_header"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal|top"
+            android:background="#ffffff">
+
+            <ImageView
+                android:id="@+id/iv_newstar_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ImageView>
+        </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
+
+
+
+    </FrameLayout>
 </LinearLayout>

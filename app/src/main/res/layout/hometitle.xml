@@ -21,16 +21,15 @@
         android:background="@drawable/file_name"
         android:drawableLeft="@mipmap/nav_bar_icon_search_dark"
         android:drawablePadding="10dp"
-        android:hint="中秋佳节送好礼"
         android:paddingLeft="10dp"
         android:singleLine="true" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/imageB_signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="18dp"
         android:alpha="0.5"
         android:src="@mipmap/btn_signin" />
 </LinearLayout>

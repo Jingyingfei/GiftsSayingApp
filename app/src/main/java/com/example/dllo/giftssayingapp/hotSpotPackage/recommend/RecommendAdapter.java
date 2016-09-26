@@ -41,10 +41,10 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
 
     @Override
     public void onBindViewHolder(RecommendAdapter.ViewHolder holder, int position) {
-        holder.name.setText(arrayList.get(position).getData().getItems().get(position).getName());
-        holder.price.setText(arrayList.get(position).getData().getItems().get(position).getPrice());
-//        Picasso.with(context).load(arrayList.get(position).getData().getCover_image()).into(holder.top_image);
-        Picasso.with(context).load(arrayList.get(position).getData().getItems().get(position).getCover_image_url()).into(holder.image);
+
+            holder.name.setText(arrayList.get(position).getData().getItems().get(position).getName());
+            holder.price.setText(arrayList.get(position).getData().getItems().get(position).getPrice());
+            Picasso.with(context).load(arrayList.get(position).getData().getItems().get(position).getCover_image_url()).into(holder.image);
 
 
     }
@@ -56,16 +56,16 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
         return arrayList.size();
     }
 
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-//        private final ImageView top_image;
         private final ImageView image;
         private final TextView name;
         private final TextView price;
 
         public ViewHolder(View itemView) {
             super(itemView);
-//            top_image = (ImageView) itemView.findViewById(R.id.iv_recommend_top_image);
             image = (ImageView) itemView.findViewById(R.id.iv_recommend_image);
             name = (TextView) itemView.findViewById(R.id.tv_recommend_name);
             price = (TextView) itemView.findViewById(R.id.tv_recommend_price);

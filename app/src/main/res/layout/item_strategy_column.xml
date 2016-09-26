@@ -14,13 +14,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:text="查看全部" />
     </RelativeLayout>
     <FrameLayout
         android:layout_width="wrap_content"
@@ -33,7 +26,6 @@
         <ImageView
             android:id="@+id/iv_column_image"
             android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:background="#0f0"/>
+            android:layout_height="50dp" />
     </FrameLayout>
 </LinearLayout>

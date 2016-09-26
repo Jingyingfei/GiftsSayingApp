@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.hotspotpackage;
+package com.example.dllo.giftssayingapp.hotspotpackage.main;
 
 import java.util.List;
 

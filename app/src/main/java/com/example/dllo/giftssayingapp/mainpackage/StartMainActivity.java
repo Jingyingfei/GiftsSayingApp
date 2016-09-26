@@ -9,7 +9,7 @@ import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseActivity;
 import com.example.dllo.giftssayingapp.classifypackage.ClassifyMainFragment;
 import com.example.dllo.giftssayingapp.homepackage.HomeMainFragment;
-import com.example.dllo.giftssayingapp.hotspotpackage.HotSpotMainFragment;
+import com.example.dllo.giftssayingapp.hotspotpackage.main.HotSpotMainFragment;
 import com.example.dllo.giftssayingapp.mepackage.MeMainFragment;
 
 public class StartMainActivity extends BaseActivity implements View.OnClickListener {

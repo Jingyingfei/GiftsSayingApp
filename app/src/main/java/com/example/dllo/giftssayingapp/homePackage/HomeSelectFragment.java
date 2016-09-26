@@ -63,8 +63,6 @@ public class HomeSelectFragment extends BaseFragment {
     protected void initView() {
         homeSelect = bindView(R.id.ll_home_select);
         ll_dot = bindView(R.id.ll_dot);
-
-
     }
 
     @Override

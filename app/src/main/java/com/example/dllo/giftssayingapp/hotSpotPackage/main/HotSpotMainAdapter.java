@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.hotspotpackage;
+package com.example.dllo.giftssayingapp.hotspotpackage.main;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

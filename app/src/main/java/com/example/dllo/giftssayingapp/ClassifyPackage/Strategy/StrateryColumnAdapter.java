@@ -31,14 +31,14 @@ public class StrateryColumnAdapter extends RecyclerView.Adapter<StrateryColumnAd
 
     @Override
     public StrateryColumnAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_strategy_column,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_strategy_column, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(StrateryColumnAdapter.ViewHolder holder, int position) {
-holder.tv_column_name.setText(arrayList.get(position).getData().getChannel_groups().get(position).getName());
+        holder.tv_column_name.setText(arrayList.get(position).getData().getChannel_groups().get(position).getName());
 //        holder.tv_column_kind.setText(arrayList.get(position).getData().getChannel_groups().get(position).getChannels().get(position).getName());
         Picasso.with(context).load(arrayList.get(position).getData().getChannel_groups().get(position).getChannels().get(position).getCover_image_url()).into(holder.iv_column_image);
 

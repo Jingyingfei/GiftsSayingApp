@@ -7,31 +7,33 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.dllo.giftssayingapp.basepackage.URLValues;
-import com.example.dllo.giftssayingapp.mainpackage.LoginActivity;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
+import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.classifypackage.Strategy.EditBean;
+import com.example.dllo.giftssayingapp.mainpackage.LoginActivity;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
+
 /**
  * Created by dllo on 16/9/19.
  */
-public class HomeMainFragment extends BaseFragment {
+public class HomeMainFragment extends BaseFragment implements View.OnClickListener {
 
     private TabLayout tb_homeTab;
     private ViewPager vp_homeTab;
     private ArrayList<String> strings = new ArrayList<>();
     private EditText et_name;
-    private ImageButton imageB_sigin;
+    private ImageView imageB_sigin;
     ArrayList<Fragment> fragments = new ArrayList<>();
 
     @Override
@@ -45,7 +47,7 @@ public class HomeMainFragment extends BaseFragment {
         vp_homeTab = bindView(R.id.vp_home_top);
         et_name = bindView(R.id.et_name);
         imageB_sigin = bindView(R.id.imageB_signin);
-//        et_name.setOnClickListener(this);
+        et_name.setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +62,7 @@ public class HomeMainFragment extends BaseFragment {
             }
         });
         request();
+        requestDataEdit();
     }
 
     public void request() {
@@ -101,6 +104,28 @@ public class HomeMainFragment extends BaseFragment {
         //将请求放到请求队列中
         VolleySingleton.getInstance().addRequest(request);
 
+
+    }
+    public void requestDataEdit(){
+        StringRequest mStringRequests = new StringRequest(URLValues.EDIT_NAME, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson mGson = new Gson();
+                EditBean editBean = mGson.fromJson(response, EditBean.class);
+                et_name.setHint(editBean.getData().getPlaceholder());
+                et_name.setTextSize(10);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "网络获取失败", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        VolleySingleton.getInstance().addRequest(mStringRequests);
+    }
+    @Override
+    public void onClick(View view) {
 
     }
 }

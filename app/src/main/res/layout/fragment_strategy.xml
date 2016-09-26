@@ -18,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="30dp">
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,7 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="查看全部 >" />
-
     </RelativeLayout>
 
 <FrameLayout
@@ -41,6 +39,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="对象" />
+
+        <TextView
+            android:id="@+id/tv_find"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="查看全部 >" />
+
+    </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_strategy_kind"
         android:layout_marginTop="10dp"

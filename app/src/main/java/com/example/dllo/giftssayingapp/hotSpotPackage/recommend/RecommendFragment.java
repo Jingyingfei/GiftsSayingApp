@@ -8,10 +8,13 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
+import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -20,9 +23,9 @@ import java.util.ArrayList;
  * http://api.liwushuo.com/v2/ranks_v2/ranks/1?limit=20&offset=0
  */
 public class RecommendFragment extends BaseFragment {
-    private String strNet = "http://api.liwushuo.com/v2/ranks_v2/ranks/1?limit=20&offset=0";
     private RecyclerView recommend;
 
+    private RecyclerViewHeader mHeader;
     private ImageView image;
 
 
@@ -34,8 +37,8 @@ public class RecommendFragment extends BaseFragment {
     @Override
     protected void initView() {
         recommend = bindView(R.id.rv_recommend);
-
-//        image = bindView(R.id.iv_image);
+        image = bindView(R.id.iv_image);
+        mHeader = bindView(R.id.header);
 
     }
 
@@ -45,7 +48,7 @@ public class RecommendFragment extends BaseFragment {
     }
 
     public void requestData() {
-        StringRequest request = new StringRequest(strNet, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(URLValues.HOTSPOT_RECOMMEND, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 ArrayList<RecommendBean> arrayList = new ArrayList<>();
@@ -57,17 +60,17 @@ public class RecommendFragment extends BaseFragment {
                     bean.getData().getItems().get(i).getName();
                     bean.getData().getItems().get(i).getPrice();
                     arrayList.add(bean);
+
                 }
 
-//                Picasso.with(context).load(bean.getData().getCover_image()).into(image);
-
+                Picasso.with(context).load(bean.getData().getCover_image()).into(image);
 
                 RecommendAdapter adapter = new RecommendAdapter(context);
                 adapter.setArrayList(arrayList);
-                recommend.setAdapter(adapter);
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 recommend.setLayoutManager(manager);
-
+                recommend.setAdapter(adapter);
+                mHeader.attachTo(recommend);
 
 
             }

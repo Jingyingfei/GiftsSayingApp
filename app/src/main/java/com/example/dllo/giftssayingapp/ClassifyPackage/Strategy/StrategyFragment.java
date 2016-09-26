@@ -23,7 +23,6 @@ import java.util.ArrayList;
  */
 public class StrategyFragment extends BaseFragment implements View.OnClickListener {
     private String strNet = "http://api.liwushuo.com/v2/columns?limit=20&offset=0";
-    private String strNetEdit = "http://api.liwushuo.com/v2/search/hot_words_v2";
     private EditText mEditText;
     private RecyclerView raiders;
     private RecyclerView strategy_kind;
@@ -45,6 +44,7 @@ public class StrategyFragment extends BaseFragment implements View.OnClickListen
     protected void initData() {
         requestData();
         requestDataEdit();
+        requestDataKind();
 
     }
 
@@ -81,7 +81,7 @@ public class StrategyFragment extends BaseFragment implements View.OnClickListen
     }
     //editext中的获取文字数据
     public void requestDataEdit(){
-        StringRequest mStringRequests = new StringRequest(strNetEdit, new Response.Listener<String>() {
+        StringRequest mStringRequests = new StringRequest(URLValues.EDIT_NAME, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson mGson = new Gson();
@@ -126,6 +126,7 @@ public class StrategyFragment extends BaseFragment implements View.OnClickListen
                 Toast.makeText(context, "网络获取失败", Toast.LENGTH_SHORT).show();
             }
         });
+        VolleySingleton.getInstance().addRequest(request);
 
     }
 

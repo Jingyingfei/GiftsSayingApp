@@ -1,31 +1,85 @@
 package com.example.dllo.giftssayingapp.hotspotpackage.originality;
 
-import android.support.v7.widget.RecyclerView;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.dllo.giftssayingapp.R;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/9/23.
  */
-public class OriginalityAdapter extends RecyclerView.Adapter<OriginalityAdapter.ViewHolder> {
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+public class OriginalityAdapter extends BaseAdapter{
+    private ArrayList<OriginalityBean> arrayList;
+    private Context context;
+
+    public void setArrayList(ArrayList<OriginalityBean> arrayList) {
+        this.arrayList = arrayList;
+        notifyDataSetChanged();
+    }
+
+    public OriginalityAdapter(Context context) {
+
+        this.context = context;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-
+    public int getCount() {
+        return arrayList == null ? 0 : arrayList.size() / 2;
     }
 
     @Override
-    public int getItemCount() {
-        return 0;
+    public Object getItem(int i) {
+        return arrayList.get(i);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public ViewHolder(View itemView) {
-            super(itemView);
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder viewHolder = null;
+        if (view == null){
+            view = LayoutInflater.from(context).inflate(R.layout.item_originality,null);
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
+        }
+        Picasso.with(context).load(arrayList.get(0).getData().getItems().get(i).getCover_image_url()).into(viewHolder.image);
+        viewHolder.name.setText(arrayList.get(0).getData().getItems().get(i).getName());
+        viewHolder.price.setText(arrayList.get(0).getData().getItems().get(i).getPrice());
+        Picasso.with(context).load(arrayList.get(0).getData().getItems().get(i + 1).getCover_image_url()).into(viewHolder.image1);
+        viewHolder.name1.setText(arrayList.get(0).getData().getItems().get(i + 1).getName());
+        viewHolder.price1.setText(arrayList.get(0).getData().getItems().get(i + 1).getPrice());
+        return view;
+    }
+    class ViewHolder{
+
+        private final ImageView image;
+        private final ImageView image1;
+        private final TextView name;
+        private final TextView name1;
+        private final TextView price;
+        private final TextView price1;
+
+        public ViewHolder(View view) {
+            image = (ImageView) view.findViewById(R.id.iv_originality_image);
+            image1 = (ImageView) view.findViewById(R.id.iv_originality_image1);
+            name = (TextView) view.findViewById(R.id.tv_originality_name);
+            name1 = (TextView) view.findViewById(R.id.tv_originality_name1);
+            price = (TextView) view.findViewById(R.id.tv_originality_price);
+            price1 = (TextView) view.findViewById(R.id.tv_originality_price1);
+
         }
     }
 }
