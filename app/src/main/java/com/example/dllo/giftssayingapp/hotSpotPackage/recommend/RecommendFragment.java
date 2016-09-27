@@ -69,8 +69,9 @@ public class RecommendFragment extends BaseFragment {
                 adapter.setArrayList(arrayList);
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 recommend.setLayoutManager(manager);
-                recommend.setAdapter(adapter);
                 mHeader.attachTo(recommend);
+                recommend.setAdapter(adapter);
+
 
 
             }

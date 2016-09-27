@@ -49,5 +49,6 @@ public class HotSpotMainFragment extends BaseFragment {
         tb_hotspot.getTabAt(2).setText("独立原创榜");
         tb_hotspot.getTabAt(3).setText("新星榜");
 
+
     }
 }

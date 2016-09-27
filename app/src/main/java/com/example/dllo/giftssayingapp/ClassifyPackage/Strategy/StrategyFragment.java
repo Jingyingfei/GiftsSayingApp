@@ -1,10 +1,7 @@
 package com.example.dllo.giftssayingapp.classifypackage.Strategy;
 
-import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -17,15 +14,18 @@ import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dllo on 16/9/20.
  */
-public class StrategyFragment extends BaseFragment implements View.OnClickListener {
+public class StrategyFragment extends BaseFragment {
     private String strNet = "http://api.liwushuo.com/v2/columns?limit=20&offset=0";
-    private EditText mEditText;
+
     private RecyclerView raiders;
     private RecyclerView strategy_kind;
+    private RecyclerView rv_strategy_style;
+    private RecyclerView rv_strategy_target;
 
     @Override
     protected int setLayout() {
@@ -35,37 +35,33 @@ public class StrategyFragment extends BaseFragment implements View.OnClickListen
     @Override
     protected void initView() {
         raiders = bindView(R.id.recycler_strategy);
-        mEditText = bindView(R.id.edit_strategy);
         strategy_kind = bindView(R.id.rv_strategy_kind);
-        mEditText.setOnClickListener(this);
+        rv_strategy_style = bindView(R.id.rv_strategy_kind_style);
+        rv_strategy_target = bindView(R.id.rv_strategy_kind_target);
+
     }
 
     @Override
     protected void initData() {
         requestData();
-        requestDataEdit();
         requestDataKind();
 
     }
 
     //获取recyclerview横向的图片
-    public void requestData(){
+    public void requestData() {
         final ArrayList<StrategyBean> arrayList = new ArrayList<>();
         StringRequest request = new StringRequest(strNet, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                StrategyBean bean = gson.fromJson(response,StrategyBean.class);
-                for (int i = 0; i < 11; i++) {
-                    bean.getData().getColumns().get(i).getBanner_image_url();
-                    bean.getData().getColumns().get(i).getTitle();
-                    bean.getData().getColumns().get(i).getSubtitle();
-                    bean.getData().getColumns().get(i).getAuthor();
+                StrategyBean bean = gson.fromJson(response, StrategyBean.class);
+                for (int i = 0; i < 12; i++) {
                     arrayList.add(bean);
                 }
                 StrategyAdapter adapter = new StrategyAdapter(context);
                 adapter.setArrayList(arrayList);
-                GridLayoutManager manager = new GridLayoutManager(getContext(),3);
+                GridLayoutManager manager = new GridLayoutManager(getContext(), 3);
                 manager.setOrientation(GridLayoutManager.HORIZONTAL);
                 raiders.setLayoutManager(manager);
                 raiders.setAdapter(adapter);
@@ -79,44 +75,33 @@ public class StrategyFragment extends BaseFragment implements View.OnClickListen
         });
         VolleySingleton.getInstance().addRequest(request);
     }
-    //editext中的获取文字数据
-    public void requestDataEdit(){
-        StringRequest mStringRequests = new StringRequest(URLValues.EDIT_NAME, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Gson mGson = new Gson();
-                EditBean editBean = mGson.fromJson(response, EditBean.class);
-                mEditText.setHint(editBean.getData().getPlaceholder());
-                mEditText.setTextSize(10);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, "网络获取失败", Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        VolleySingleton.getInstance().addRequest(mStringRequests);
-    }
-    //获取品类,风格等数据
-    public void requestDataKind(){
-        final ArrayList<StrategyColumnBean> arrayList = new ArrayList<>();
+    //获取品类数据
+    public void requestDataKind() {
+
         StringRequest request = new StringRequest(URLValues.STRATEGY_COLUMN, new Response.Listener<String>() {
+
+            private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> categoryList;
+
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                StrategyColumnBean bean = gson.fromJson(response, StrategyColumnBean.class);
-                for (int i = 0; i < bean.getData().getChannel_groups().size(); i++) {
-                    bean.getData().getChannel_groups().get(i).getName();
-                    bean.getData().getChannel_groups().get(i).getChannels().get(i).getName();
-                    bean.getData().getChannel_groups().get(i).getChannels().get(i).getCover_image_url();
-                    arrayList.add(bean);
+                StrategyColumnBean bean = gson.
+                        fromJson(response, StrategyColumnBean.class);
+                List<StrategyColumnBean.DataBean.ChannelGroupsBean> arrayList = bean.getData().getChannel_groups();
+                if (bean.getData().getChannel_groups().get(0).getName().equals("品类")) {
+                    categoryList = new ArrayList<>();
+                    for (int i = 0; i < 6; i++) {
+                        categoryList.add(bean.getData().getChannel_groups().get(0).getChannels().get(i));
+                    }
                 }
+
+
                 StrateryColumnAdapter adapter = new StrateryColumnAdapter(context);
-                adapter.setArrayList(arrayList);
-                strategy_kind.setAdapter(adapter);
+                adapter.setArrayList(categoryList);
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 strategy_kind.setLayoutManager(manager);
+                strategy_kind.setAdapter(adapter);
 
 
             }
@@ -130,12 +115,5 @@ public class StrategyFragment extends BaseFragment implements View.OnClickListen
 
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.edit_strategy:
-                startActivity(new Intent(getContext(), EditActivity.class));
-                break;
-        }
-    }
+
 }

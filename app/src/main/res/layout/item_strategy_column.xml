@@ -4,28 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
 
         <TextView
             android:id="@+id/tv_column_kind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+
             />
-    </RelativeLayout>
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv_column_name"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
         <ImageView
             android:id="@+id/iv_column_image"
-            android:layout_width="100dp"
-            android:layout_height="50dp" />
-    </FrameLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="60dp" />
+
 </LinearLayout>

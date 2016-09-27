@@ -44,7 +44,7 @@
     <ImageView
         android:id="@+id/iv_image_home_select"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="160dp"
         android:layout_gravity="center" />
 
     <TextView

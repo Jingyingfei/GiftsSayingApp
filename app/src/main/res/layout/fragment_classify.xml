@@ -11,10 +11,17 @@
         android:layout_height="wrap_content"
         android:background="#ff384f"
         app:tabTextAppearance="@style/TabLayoutTextAppearance"></android.support.design.widget.TabLayout>
-
+    <EditText
+        android:id="@+id/edit_strategy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/file_name"
+        android:gravity="center" />
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_classify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"></android.support.v4.view.ViewPager>
+
 </LinearLayout>
