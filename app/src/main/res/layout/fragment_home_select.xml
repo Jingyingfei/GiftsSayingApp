@@ -5,9 +5,10 @@
     android:orientation="vertical">
 
 
-    <ListView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/ll_home_select"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#e7e7e7"></ListView>
+        android:layout_height="match_parent"
+        android:background="#e7e7e7">
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 </LinearLayout>

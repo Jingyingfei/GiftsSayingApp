@@ -30,4 +30,5 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.android.support:recyclerview-v7:24.1.1'
     compile 'com.bartoszlipinski:recyclerviewheader2:2.0.1'
+    compile project(':PullToRefresh')
 }

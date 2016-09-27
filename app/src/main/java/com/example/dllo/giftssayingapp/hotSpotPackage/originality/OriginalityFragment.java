@@ -51,8 +51,6 @@ public class OriginalityFragment extends BaseFragment {
 
                 View view = LayoutInflater.from(context).inflate(R.layout.item_originality_image, null);
                 image = (ImageView) view.findViewById(R.id.iv_image_origin);
-                ll_originality.addHeaderView(view);
-
 
                 ArrayList<OriginalityBean> arrayList = new ArrayList<>();
                 Gson gson = new Gson();
@@ -60,13 +58,12 @@ public class OriginalityFragment extends BaseFragment {
 
                 Picasso.with(context).load(bean.getData().getCover_image()).into(image);
                 arrayList.add(bean);
-
                 Log.d("OriginalityFragment", bean.getData().getCover_image());
 
                 OriginalityAdapter adapter = new OriginalityAdapter(context);
                 adapter.setArrayList(arrayList);
                 ll_originality.setAdapter(adapter);
-
+                ll_originality.addHeaderView(view);
 
 
             }

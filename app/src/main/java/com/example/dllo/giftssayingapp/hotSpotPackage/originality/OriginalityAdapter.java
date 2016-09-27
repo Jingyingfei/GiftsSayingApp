@@ -32,7 +32,7 @@ public class OriginalityAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return arrayList == null ? 0 : arrayList.size() / 2;
+        return arrayList.get(0).getData().getItems().size() / 2 - 1;
     }
 
     @Override
@@ -55,9 +55,11 @@ public class OriginalityAdapter extends BaseAdapter{
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
+
         Picasso.with(context).load(arrayList.get(0).getData().getItems().get(i).getCover_image_url()).into(viewHolder.image);
         viewHolder.name.setText(arrayList.get(0).getData().getItems().get(i).getName());
         viewHolder.price.setText(arrayList.get(0).getData().getItems().get(i).getPrice());
+
         Picasso.with(context).load(arrayList.get(0).getData().getItems().get(i + 1).getCover_image_url()).into(viewHolder.image1);
         viewHolder.name1.setText(arrayList.get(0).getData().getItems().get(i + 1).getName());
         viewHolder.price1.setText(arrayList.get(0).getData().getItems().get(i + 1).getPrice());
