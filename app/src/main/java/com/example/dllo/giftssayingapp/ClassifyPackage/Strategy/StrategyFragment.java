@@ -76,15 +76,19 @@ public class StrategyFragment extends BaseFragment {
         VolleySingleton.getInstance().addRequest(request);
     }
 
-    //获取品类数据
+
     public void requestDataKind() {
 
         StringRequest request = new StringRequest(URLValues.STRATEGY_COLUMN, new Response.Listener<String>() {
 
+
+            private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> targetList;
+            private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> styleList;
             private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> categoryList;
 
             @Override
             public void onResponse(String response) {
+                //获取品类数据
                 Gson gson = new Gson();
                 StrategyColumnBean bean = gson.
                         fromJson(response, StrategyColumnBean.class);
@@ -95,13 +99,35 @@ public class StrategyFragment extends BaseFragment {
                         categoryList.add(bean.getData().getChannel_groups().get(0).getChannels().get(i));
                     }
                 }
+                if (bean.getData().getChannel_groups().get(1).getName().equals("风格")){
+                    styleList = new ArrayList<>();
+                    for (int i = 0; i < 6; i++) {
+                        styleList.add(bean.getData().getChannel_groups().get(1).getChannels().get(i));
+                    }
+                }
+                if (bean.getData().getChannel_groups().get(2).getName().equals("对象")){
+                    targetList = new ArrayList<>();
+                    for (int i = 0; i < 6; i++) {
+                        targetList.add(bean.getData().getChannel_groups().get(2).getChannels().get(i));
+                    }
+                }
 
-
-                StrateryColumnAdapter adapter = new StrateryColumnAdapter(context);
-                adapter.setArrayList(categoryList);
+                StrategyColumnAdapter adapter = new StrategyColumnAdapter(context);
+                adapter.setCategoryList(categoryList);
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 strategy_kind.setLayoutManager(manager);
                 strategy_kind.setAdapter(adapter);
+
+
+                GridLayoutManager manager1 = new GridLayoutManager(context, 2);
+                adapter.setStyleList(styleList);
+                rv_strategy_style.setLayoutManager(manager1);
+                rv_strategy_style.setAdapter(adapter);
+
+                GridLayoutManager manager2 = new GridLayoutManager(context, 2);
+                adapter.setTargetList(targetList);
+                rv_strategy_target.setAdapter(adapter);
+                rv_strategy_target.setLayoutManager(manager2);
 
 
             }

@@ -2,6 +2,8 @@ package com.example.dllo.giftssayingapp.hotspotpackage.top;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ public class TopFragment extends BaseFragment {
 
     private RecyclerViewHeader mHeader;
     private ImageView image;
+    private FrameLayout fl_top;
 
     @Override
     protected int setLayout() {
@@ -35,8 +38,8 @@ public class TopFragment extends BaseFragment {
     @Override
     protected void initView() {
         top = bindView(R.id.rv_top);
-        image = bindView(R.id.iv_top_image);
-        mHeader = bindView(R.id.top_header);
+        mHeader = new RecyclerViewHeader(context);
+        fl_top = bindView(R.id.fl_top);
     }
 
     @Override
@@ -59,7 +62,8 @@ public class TopFragment extends BaseFragment {
                     arrayList.add(bean);
 
                 }
-
+                image = new ImageView(context);
+                image.setScaleType(ImageView.ScaleType.FIT_XY);
                 Picasso.with(context).load(bean.getData().getCover_image()).into(image);
 
                 TopAdapter adapter = new TopAdapter(context);
@@ -67,6 +71,8 @@ public class TopFragment extends BaseFragment {
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 top.setLayoutManager(manager);
                 top.setAdapter(adapter);
+                fl_top.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 300);
+                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 300);
                 mHeader.attachTo(top);
 
 

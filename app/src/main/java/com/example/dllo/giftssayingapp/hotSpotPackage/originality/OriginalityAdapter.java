@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/9/23.
  */
-public class OriginalityAdapter extends BaseAdapter{
+public class OriginalityAdapter extends BaseAdapter {
     private ArrayList<OriginalityBean> arrayList;
     private Context context;
 
@@ -48,14 +48,14 @@ public class OriginalityAdapter extends BaseAdapter{
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder = null;
-        if (view == null){
-            view = LayoutInflater.from(context).inflate(R.layout.item_originality,null);
+        if (view == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.item_originality, null);
             viewHolder = new ViewHolder(view);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-
+        i = i + i;
         Picasso.with(context).load(arrayList.get(0).getData().getItems().get(i).getCover_image_url()).into(viewHolder.image);
         viewHolder.name.setText(arrayList.get(0).getData().getItems().get(i).getName());
         viewHolder.price.setText(arrayList.get(0).getData().getItems().get(i).getPrice());
@@ -65,7 +65,8 @@ public class OriginalityAdapter extends BaseAdapter{
         viewHolder.price1.setText(arrayList.get(0).getData().getItems().get(i + 1).getPrice());
         return view;
     }
-    class ViewHolder{
+
+    class ViewHolder {
 
         private final ImageView image;
         private final ImageView image1;

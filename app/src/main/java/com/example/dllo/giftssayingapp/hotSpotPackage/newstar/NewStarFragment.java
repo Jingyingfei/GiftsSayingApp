@@ -2,6 +2,8 @@ package com.example.dllo.giftssayingapp.hotspotpackage.newstar;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -13,8 +15,6 @@ import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
-import com.example.dllo.giftssayingapp.hotspotpackage.recommend.RecommendAdapter;
-import com.example.dllo.giftssayingapp.hotspotpackage.recommend.RecommendBean;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -27,6 +27,8 @@ public class NewStarFragment extends BaseFragment {
     private RecyclerView newStar;
     private RecyclerViewHeader mHeader;
     private ImageView image;
+    private FrameLayout fl_newstar;
+
 
     @Override
     protected int setLayout() {
@@ -36,13 +38,14 @@ public class NewStarFragment extends BaseFragment {
     @Override
     protected void initView() {
         newStar = bindView(R.id.rv_newstar);
-        image = bindView(R.id.iv_newstar_image);
-        mHeader = bindView(R.id.newstar_header);
+        mHeader = new RecyclerViewHeader(context);
+        fl_newstar = bindView(R.id.fl_newstar);
 
     }
 
     @Override
     protected void initData() {
+
         requestData();
     }
 
@@ -61,7 +64,8 @@ public class NewStarFragment extends BaseFragment {
                     arrayList.add(bean);
 
                 }
-
+                image = new ImageView(context);
+                image.setScaleType(ImageView.ScaleType.FIT_XY);
                 Picasso.with(context).load(bean.getData().getCover_image()).into(image);
 
                 NewStarAdapter adapter = new NewStarAdapter(context);
@@ -69,6 +73,8 @@ public class NewStarFragment extends BaseFragment {
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 newStar.setLayoutManager(manager);
                 newStar.setAdapter(adapter);
+                fl_newstar.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 300);
+                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 300);
                 mHeader.attachTo(newStar);
 
 

@@ -52,7 +52,7 @@ public class HomeSelectFragment extends BaseFragment {
         }
     };
     private LinearLayout ll_dot;
-    private ArrayList<ImageView> dots;
+    private ArrayList<ImageView> dots = new ArrayList<>();
     private ArrayList<HomeImageBean> images;
     private LinearLayout home_special;
 
@@ -92,10 +92,11 @@ public class HomeSelectFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 for (int i = 0; i < dots.size(); i++) {
-                    if (i == position % images.size()) {
-                        dots.get(i).setImageResource(R.drawable.dot_focus);
+                    ImageView img = dots.get(i);
+                    if (i == position % dots.size()) {
+                        img.setImageResource(R.drawable.dot_focus);
                     } else {
-                        dots.get(i).setImageResource(R.drawable.dot_normal);
+                        img.setImageResource(R.drawable.dot_normal);
                     }
                 }
             }
@@ -162,6 +163,7 @@ public class HomeSelectFragment extends BaseFragment {
                 Gson gson = new Gson();
                 bean = gson.fromJson(response, HomeImageBean.class);
                 images.add(bean);
+
                 HomeImageAdapter adapter = new HomeImageAdapter(getContext());
                 adapter.setBean(bean);
                 homeImage.setAdapter(adapter);
@@ -180,7 +182,6 @@ public class HomeSelectFragment extends BaseFragment {
     //创建对应个数的小圆点
     public void initDots() {
         dots = new ArrayList<>();
-        dots.clear();
         for (int i = 0; i < images.size(); i++) {
             ImageView imageView = new ImageView(context);
             if (i == 0) {
@@ -188,11 +189,13 @@ public class HomeSelectFragment extends BaseFragment {
             } else {
                 imageView.setImageResource(R.drawable.dot_normal);
             }
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20, 20);
-            params.setMargins(5, 0, 5, 5);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+            params.setMargins(5, 10, 5, 10);
             dots.add(imageView);
             //加载到布局容器中
             ll_dot.addView(dots.get(i), params);
+            dots.add(imageView);
 
         }
     }

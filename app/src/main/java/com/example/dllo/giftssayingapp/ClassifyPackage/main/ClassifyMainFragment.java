@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.classifypackage;
+package com.example.dllo.giftssayingapp.classifypackage.main;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -19,6 +19,7 @@ import com.example.dllo.giftssayingapp.classifypackage.Single.SingleFragment;
 import com.example.dllo.giftssayingapp.classifypackage.Strategy.EditActivity;
 import com.example.dllo.giftssayingapp.classifypackage.Strategy.EditBean;
 import com.example.dllo.giftssayingapp.classifypackage.Strategy.StrategyFragment;
+import com.example.dllo.giftssayingapp.classifypackage.main.ClassifyMainAdapter;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

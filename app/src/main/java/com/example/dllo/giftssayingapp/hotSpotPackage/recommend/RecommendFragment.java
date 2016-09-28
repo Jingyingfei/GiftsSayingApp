@@ -2,6 +2,8 @@ package com.example.dllo.giftssayingapp.hotspotpackage.recommend;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,7 +29,7 @@ public class RecommendFragment extends BaseFragment {
 
     private RecyclerViewHeader mHeader;
     private ImageView image;
-
+    private FrameLayout mainFl;
 
     @Override
     protected int setLayout() {
@@ -37,8 +39,11 @@ public class RecommendFragment extends BaseFragment {
     @Override
     protected void initView() {
         recommend = bindView(R.id.rv_recommend);
-        image = bindView(R.id.iv_image);
-        mHeader = bindView(R.id.header);
+        //image = bindView(R.id.iv_image);
+      //  mHeader = bindView(R.id.header);
+        mHeader = new RecyclerViewHeader(getContext());
+        mainFl = bindView(R.id.main_fl);
+
 
     }
 
@@ -63,14 +68,19 @@ public class RecommendFragment extends BaseFragment {
 
                 }
 
+                image = new ImageView(getContext());
+                image.setScaleType(ImageView.ScaleType.FIT_XY);
                 Picasso.with(context).load(bean.getData().getCover_image()).into(image);
 
                 RecommendAdapter adapter = new RecommendAdapter(context);
                 adapter.setArrayList(arrayList);
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 recommend.setLayoutManager(manager);
-                mHeader.attachTo(recommend);
                 recommend.setAdapter(adapter);
+                mainFl.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT,300);
+                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT,300);
+
+                mHeader.attachTo(recommend);
 
 
 

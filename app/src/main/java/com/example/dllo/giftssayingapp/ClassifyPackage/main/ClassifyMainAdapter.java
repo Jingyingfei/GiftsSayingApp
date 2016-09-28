@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.classifypackage;
+package com.example.dllo.giftssayingapp.classifypackage.main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

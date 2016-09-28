@@ -7,7 +7,7 @@ import android.widget.RadioButton;
 
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseActivity;
-import com.example.dllo.giftssayingapp.classifypackage.ClassifyMainFragment;
+import com.example.dllo.giftssayingapp.classifypackage.main.ClassifyMainFragment;
 import com.example.dllo.giftssayingapp.homepackage.HomeMainFragment;
 import com.example.dllo.giftssayingapp.hotspotpackage.main.HotSpotMainFragment;
 import com.example.dllo.giftssayingapp.mepackage.MeMainFragment;

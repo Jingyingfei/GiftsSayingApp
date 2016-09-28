@@ -15,30 +15,48 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/9/23.
  */
-public class StrateryColumnAdapter extends RecyclerView.Adapter<StrateryColumnAdapter.ViewHolder> {
-    private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> categoryList;
-    private Context context;
+public class StrategyColumnAdapter extends RecyclerView.Adapter<StrategyColumnAdapter.ViewHolder> {
 
-    public void setArrayList(ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> categoryList) {
+
+    private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> categoryList;
+    private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> styleList;
+    private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> targetList;
+    public void setTargetList(ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> targetList) {
+        this.targetList = targetList;
+        notifyDataSetChanged();
+    }
+
+
+    private Context context;
+    public void setStyleList(ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> styleList) {
+        this.styleList = styleList;
+        notifyDataSetChanged();
+    }
+
+
+
+    public void setCategoryList(ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> categoryList) {
         this.categoryList = categoryList;
         notifyDataSetChanged();
     }
 
-    public StrateryColumnAdapter(Context context) {
+    public StrategyColumnAdapter(Context context) {
         this.context = context;
     }
 
     @Override
-    public StrateryColumnAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public StrategyColumnAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_strategy_column, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(StrateryColumnAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(StrategyColumnAdapter.ViewHolder holder, int position) {
 
         Picasso.with(context).load(categoryList.get(position).getCover_image_url()).into(holder.iv_column_image);
+        Picasso.with(context).load(styleList.get(position).getCover_image_url()).into(holder.iv_column_image);
+        Picasso.with(context).load(targetList.get(position).getCover_image_url()).into(holder.iv_column_image);
     }
 
     @Override
