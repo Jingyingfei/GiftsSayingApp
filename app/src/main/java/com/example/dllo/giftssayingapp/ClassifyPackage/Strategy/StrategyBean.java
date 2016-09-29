@@ -3,24 +3,17 @@ package com.example.dllo.giftssayingapp.classifypackage.Strategy;
 import java.util.List;
 
 /**
- * Created by dllo on 16/9/23.
- *
+ * Created by dllo on 16/9/27.
  */
 public class StrategyBean {
 
-
     /**
      * code : 200
-     * data : {"columns":[{"author":"上上签","banner_image_url":"http://img02.liwushuo.com/image/160902/9u68tzum1.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160902/9u68tzum1.jpg?imageView2/2/w/300/q/85/format/webp","category":"美物","cover_image_url":"http://img02.liwushuo.com/image/160902/gsscbi494.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160902/gsscbi494.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472785741,"description":"把对你的爱，写进365首诗里、歌里拥入365天的心里、梦里。","id":96,"order":0,"post_published_at":1474599600,"status":0,"subtitle":"","title":"日复一签","updated_at":1474621729},{"author":"凹凸曼","banner_image_url":"http://img03.liwushuo.com/image/160708/or81k6fea.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160708/or81k6fea.jpg?imageView2/2/w/300/q/85/format/webp","category":"礼物","cover_image_url":"http://img02.liwushuo.com/image/160720/xdt9kjriy.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160720/xdt9kjriy.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1467970933,"description":"会买不一定\u201c惠\u201d买，每日10款超低价，举双手奉上。\u2014\u2014from亚马逊良心出品","id":90,"order":0,"post_published_at":1474588800,"status":0,"subtitle":"更新至第76期","title":"省钱大总攻","updated_at":1474620748},{"author":"穿衣大队长","banner_image_url":"http://img02.liwushuo.com/image/160608/ygqtl238c.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160608/ygqtl238c.jpg?imageView2/2/w/300/q/85/format/webp","category":"穿搭","cover_image_url":"http://img02.liwushuo.com/image/160713/4egoefdla.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160713/4egoefdla.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501669,"description":"做你的私人搭配师，每日搭配治好你的选择困难症，满足你多睡5分钟的小小心愿。","id":13,"order":0,"post_published_at":1474588800,"status":0,"subtitle":"更新至第122期","title":"明天穿什么","updated_at":1474620103},{"author":"小C","banner_image_url":"http://img02.liwushuo.com/image/160608/kd1dy4pi3.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160608/kd1dy4pi3.jpg?imageView2/2/w/300/q/85/format/webp","category":"礼物","cover_image_url":"http://img01.liwushuo.com/image/160713/y2arp77qx.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160713/y2arp77qx.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501381,"description":"如果青春不会散场，时光可以珍藏。如果你的每一个米粒大小念想，都能找到与之匹配的美物安放...这样的店你会不会来？","id":5,"order":0,"post_published_at":1474599600,"status":0,"subtitle":"更新至第168期","title":"不打烊的礼物店","updated_at":1474619479},{"author":"三两","banner_image_url":"http://img02.liwushuo.com/image/160905/0i5yxvfy3.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160905/0i5yxvfy3.jpg?imageView2/2/w/300/q/85/format/webp","category":"爱读书","cover_image_url":"http://img03.liwushuo.com/image/160905/wk7lg4nme.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160905/wk7lg4nme.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472802190,"description":"多的是，三言两语道不尽之事。三两成群，独言不如众议。二三而成亖，亖亦为四，勤阅必有进步。","id":97,"order":0,"post_published_at":1474362000,"status":0,"subtitle":"更新至第3期","title":"亖言","updated_at":1474618320},{"author":"Mia","banner_image_url":"http://img01.liwushuo.com/image/160902/fm7knqhbd.jpg-w300","banner_webp_url":"http://img01.liwushuo.com/image/160902/fm7knqhbd.jpg?imageView2/2/w/300/q/85/format/webp","category":"美护","cover_image_url":"http://img02.liwushuo.com/image/160902/7obqmumbf.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160902/7obqmumbf.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472820604,"description":"明星的美丽秘诀永远是大家最感兴趣的话题之一，现在就让我们一一揭秘。","id":105,"order":0,"post_published_at":1474340400,"status":0,"subtitle":"更新至第3期","title":"星美妆报告","updated_at":1474614316},{"author":"小礼君","banner_image_url":"http://img02.liwushuo.com/image/160608/0gc251s33.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160608/0gc251s33.jpg?imageView2/2/w/300/q/85/format/webp","category":"鞋包","cover_image_url":"http://img02.liwushuo.com/image/160713/u0me31re7.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160713/u0me31re7.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501739,"description":"没有什么是一个包包解决不了的，如果有，那就两个。","id":16,"order":0,"post_published_at":1474534800,"status":0,"subtitle":"更新至第64期","title":"包治百病","updated_at":1474612975},{"author":"叫我小公举","banner_image_url":"http://img03.liwushuo.com/image/160608/muk9fdsya.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160608/muk9fdsya.jpg?imageView2/2/w/300/q/85/format/webp","category":"美物","cover_image_url":"http://img03.liwushuo.com/image/160713/1p98sh06h.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160713/1p98sh06h.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501717,"description":"僻静的街角有一家杂货铺，或许你带着忧愁走进店中，但不期而遇的小物却让你展露欢颜。","id":14,"order":0,"post_published_at":1474534800,"status":0,"subtitle":"更新至第63期","title":"解忧杂货铺","updated_at":1474602746},{"author":"鹿欧尼","banner_image_url":"http://img02.liwushuo.com/image/160630/npssjj3yc.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160630/npssjj3yc.jpg?imageView2/2/w/300/q/85/format/webp","category":"美食","cover_image_url":"http://img03.liwushuo.com/image/160713/l0nb4kpud.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160713/l0nb4kpud.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1467265951,"description":"无论是山珍海味还是街边小吃，\r\n无论是飞禽走兽还是五谷香料，\r\n美食不分贵贱没有国界\r\n我们都犯着一种罪，叫做\u201c食宗最\u201d","id":83,"order":0,"post_published_at":1474502400,"status":0,"subtitle":"更新至第33期","title":"吃货俱乐部","updated_at":1474593978},{"author":"美少女大人","banner_image_url":"http://img02.liwushuo.com/image/160902/xh7fnmi0x.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160902/xh7fnmi0x.jpg?imageView2/2/w/300/q/85/format/webp","category":"穿搭","cover_image_url":"http://img01.liwushuo.com/image/160902/ostfcv54z.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160902/ostfcv54z.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472812805,"description":"史上最实用又超级简单易懂的直男穿搭术。拯救直男审美，让你撩妹更轻松。","id":104,"order":0,"post_published_at":1474502400,"status":0,"subtitle":"","title":"穿衣指「男」","updated_at":1474593503},{"author":"4K馆长","banner_image_url":"http://img02.liwushuo.com/image/160905/558q5j6sx.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160905/558q5j6sx.jpg?imageView2/2/w/300/q/85/format/webp","category":"数码","cover_image_url":"http://img03.liwushuo.com/image/160905/75rv8fj87.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160905/75rv8fj87.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472806296,"description":"搜罗天下数码好物，每周测评体验极客最前沿。","id":99,"order":0,"post_published_at":1474588800,"status":0,"subtitle":"","title":"数码体验馆","updated_at":1474592639},{"author":"你作姐","banner_image_url":"http://img03.liwushuo.com/image/160612/81bq8qx6e.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160612/81bq8qx6e.jpg?imageView2/2/w/300/q/85/format/webp","category":"涨姿势","cover_image_url":"http://img02.liwushuo.com/image/160713/5aj2kn3iy.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160713/5aj2kn3iy.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1465722171,"description":"既然青春留不住，活得漂亮也赚了。","id":48,"order":0,"post_published_at":1469869200,"status":0,"subtitle":"更新至第10期","title":"作美指南","updated_at":1474557642},{"author":"灰姑娘","banner_image_url":"http://img03.liwushuo.com/image/160608/qojypq4pe.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160608/qojypq4pe.jpg?imageView2/2/w/300/q/85/format/webp","category":"美护","cover_image_url":"http://img03.liwushuo.com/image/160713/en5n83z34.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160713/en5n83z34.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501946,"description":"好看就行。\u2014\u2014玛丽莲·赫本·千颂伊","id":23,"order":0,"post_published_at":1474599600,"status":0,"subtitle":"更新至第71期","title":"靠脸吃饭","updated_at":1474525760},{"author":"Miss. talk ","banner_image_url":"http://img03.liwushuo.com/image/160712/3c1fj1dq6.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160712/3c1fj1dq6.jpg?imageView2/2/w/300/q/85/format/webp","category":"涨姿势","cover_image_url":"http://img01.liwushuo.com/image/160713/74m5db26q.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160713/74m5db26q.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462771521,"description":"同一件事，你怎么想，他怎么看，平行生活里的你我他，也许正经历同样的情绪，分享着类似的槽点，不管你是围观的吃瓜群众，还是森森被困扰的当事人甲，在shall we talk里，和Miss. talk一起聚众吐槽吧~  ","id":24,"order":0,"post_published_at":1474545600,"status":0,"subtitle":"更新至第138期","title":"Shall we talk","updated_at":1474525684},{"author":"淘局长","banner_image_url":"http://img02.liwushuo.com/image/160608/rcmok6bpq.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160608/rcmok6bpq.jpg?imageView2/2/w/300/q/85/format/webp","category":"海淘","cover_image_url":"http://img01.liwushuo.com/image/160713/5cbekga4c.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160713/5cbekga4c.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462500836,"description":"你想要的全世界，我都有！","id":3,"order":0,"post_published_at":1474448400,"status":0,"subtitle":"更新至第75期","title":"海淘情报局","updated_at":1474511847},{"author":"小礼君","banner_image_url":"http://img03.liwushuo.com/image/160905/f5g5ouwkz.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160905/f5g5ouwkz.jpg?imageView2/2/w/300/q/85/format/webp","category":"礼物","cover_image_url":"http://img03.liwushuo.com/image/160905/xqyvy9n1z.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160905/xqyvy9n1z.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1473045022,"description":"动心的太多，走心的1个足矣","id":106,"order":0,"post_published_at":1474534800,"status":0,"subtitle":"更新至第18期","title":"一个","updated_at":1474511703},{"author":"鸡汤哥","banner_image_url":"http://img02.liwushuo.com/image/160902/rnyu3ltr7.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160902/rnyu3ltr7.jpg?imageView2/2/w/300/q/85/format/webp","category":"涨姿势","cover_image_url":"http://img02.liwushuo.com/image/160902/ompte4huy.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160902/ompte4huy.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472812600,"description":"从搭讪到追求到恋爱到分手，一条龙全套大保健，从头教到尾","id":103,"order":0,"post_published_at":1474070400,"status":0,"subtitle":"","title":"撩妹学院","updated_at":1474452340},{"author":"美物娘","banner_image_url":"http://img02.liwushuo.com/image/160608/8nluue8yx.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160608/8nluue8yx.jpg?imageView2/2/w/300/q/85/format/webp","category":"美物","cover_image_url":"http://img03.liwushuo.com/image/160713/zlsbvl5it.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160713/zlsbvl5it.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501829,"description":"贪念时间所有美好的东西，唯一不吝啬的，就是与你分享。","id":19,"order":0,"post_published_at":1474588800,"status":0,"subtitle":"更新至第99期","title":"美物收割机","updated_at":1474450140},{"author":"礼帮主","banner_image_url":"http://img03.liwushuo.com/image/160905/dask3xap6.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160905/dask3xap6.jpg?imageView2/2/w/300/q/85/format/webp","category":"礼物","cover_image_url":"http://img01.liwushuo.com/image/160905/o8ud1yp9x.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160905/o8ud1yp9x.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472808060,"description":"追女生、送父母、找基友，最全最优送礼指南，从此送礼不操心","id":102,"order":0,"post_published_at":1474588800,"status":0,"subtitle":"","title":"礼物帮兄","updated_at":1474448320},{"author":"小礼君","banner_image_url":"http://img03.liwushuo.com/image/160901/hnxa6azdx.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160901/hnxa6azdx.jpg?imageView2/2/w/300/q/85/format/webp","category":"活动","cover_image_url":"http://img01.liwushuo.com/image/160901/6uqx378s8.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160901/6uqx378s8.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472708659,"description":"你我的互动让生活更生动","id":95,"order":0,"post_published_at":1474363800,"status":0,"subtitle":"","title":"热门活动","updated_at":1474339588}],"paging":{"next_url":"http://api.liwushuo.com/v2/columns?limit=20&offset=20"}}
+     * data : {"channel_groups":[{"channels":[{"cover_image_url":"http://img01.liwushuo.com/image/160624/hbd7w1sf4.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160414/kwzqtscoa.png-pw144","id":111,"items_count":1165,"name":"礼物","order":10,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/duk8guejk.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/58kdnthsn.png-pw144","id":112,"items_count":597,"name":"家居","order":9,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/axk8i901f.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160414/6eutomjeo.png-pw144","id":110,"items_count":707,"name":"穿搭","order":8,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160624/ayjeuhtji.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160414/abuv6vssc.png-pw144","id":2,"items_count":568,"name":"美物","order":7,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/x5vlfqcn4.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/5al9xhwg1.png-pw144","id":116,"items_count":196,"name":"饰品","order":6,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/otqmww3av.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/5dgflkj6g.png-pw144","id":117,"items_count":198,"name":"鞋包","order":5,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/1kx5seb62.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/58vv7n29y.png-pw144","id":118,"items_count":500,"name":"美食","order":5,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/38778o4e0.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/fb7e1012t.png-pw144","id":113,"items_count":531,"name":"美护","order":4,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/s69ub7yiq.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/59hgqd1x8.png-pw144","id":121,"items_count":215,"name":"数码","order":4,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/2ky6x596q.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/u4r2a9q72.png-pw144","id":3,"items_count":90,"name":"手工","order":3,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/d1xtmp1ig.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/i69bjp6bm.png-pw144","id":119,"items_count":51,"name":"母婴","order":0,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/y3aqzhu9v.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/t9t9hzntc.png-pw144","id":122,"items_count":66,"name":"爱动漫","order":0,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/ym66pnx98.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/3ziqypz1f.png-pw144","id":123,"items_count":31,"name":"爱运动","order":0,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160606/ad06sqrix.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/6pdxbaqz2.png-pw144","id":124,"items_count":22,"name":"爱读书","order":0,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/xxvb0a8aj.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/voku467wc.png-pw144","id":129,"items_count":165,"name":"海淘","order":0,"status":0,"url":""}],"id":5,"name":"品类","order":6,"status":0},{"channels":[{"cover_image_url":"http://img01.liwushuo.com/image/160630/l3222e4cx.png","group_id":1,"icon_url":"http://img02.liwushuo.com/image/160401/y6s6hso8w.png-pw144","id":125,"items_count":99,"name":"创意生活","order":5,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160630/3b91gmqd9.png","group_id":1,"icon_url":"http://img02.liwushuo.com/image/160401/vx9i89n0s.png-pw144","id":11,"items_count":191,"name":"萌萌哒","order":4,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160630/0vgsog6tm.png","group_id":1,"icon_url":"http://img03.liwushuo.com/image/160401/i3aupd3j5.png-pw144","id":14,"items_count":307,"name":"文艺风","order":3,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160630/noqxoncn0.png","group_id":1,"icon_url":"http://img03.liwushuo.com/image/160401/9hmc5ux1f.png-pw144","id":28,"items_count":108,"name":"科技范","order":3,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160630/5pf8qqzfu.png","group_id":1,"icon_url":"http://img02.liwushuo.com/image/160401/h54c765kw.png-pw144","id":126,"items_count":37,"name":"奇葩搞怪","order":0,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160630/lg049zh42.png","group_id":1,"icon_url":"http://img01.liwushuo.com/image/160401/laseg7k6q.png-pw144","id":127,"items_count":98,"name":"设计感","order":0,"status":0,"url":""}],"id":1,"name":"风格","order":5,"status":0},{"channels":[{"cover_image_url":"http://img03.liwushuo.com/image/160630/v825nm1kt.png","group_id":2,"icon_url":"http://img01.liwushuo.com/image/160414/j868ssqkl.png-pw144","id":10,"items_count":442,"name":"送女票","order":8,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160630/6el5oy61b.png","group_id":2,"icon_url":"http://img02.liwushuo.com/image/160401/56j52lxyq.png-pw144","id":9,"items_count":291,"name":"送男票","order":7,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160630/lnz6djelk.png","group_id":2,"icon_url":"http://img02.liwushuo.com/image/160401/9fml1mzye.png-pw144","id":24,"items_count":90,"name":"送宝贝","order":6,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160630/tdryuhq9z.png","group_id":2,"icon_url":"http://img03.liwushuo.com/image/160401/tsskwt8rq.png-pw144","id":6,"items_count":217,"name":"送爸妈","order":5,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160630/opxorjyik.png","group_id":2,"icon_url":"http://img02.liwushuo.com/image/160401/vq7h2y5ru.png-pw144","id":26,"items_count":589,"name":"送基友","order":5,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160630/1fv08oywk.png","group_id":2,"icon_url":"http://img03.liwushuo.com/image/160401/vmdxu2nrw.png-pw144","id":5,"items_count":1057,"name":"送闺蜜","order":4,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160630/r4bk4leke.png","group_id":2,"icon_url":"http://img01.liwushuo.com/image/160414/esbe2og0n.png-pw144","id":17,"items_count":102,"name":"送同事","order":2,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160630/wtbkkei5v.png","group_id":2,"icon_url":"http://img03.liwushuo.com/image/160414/49ludf8iy.png-pw144","id":132,"items_count":32,"name":"新婚夫妇","order":1,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160630/fr8mza1k1.png","group_id":2,"icon_url":"http://img01.liwushuo.com/image/160414/gglbvbdjd.png-pw144","id":133,"items_count":39,"name":"新手妈妈","order":0,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160630/1vhj1fqmh.png","group_id":2,"icon_url":"http://img03.liwushuo.com/image/160426/7gmz13c47.png-pw144","id":134,"items_count":177,"name":"送自己","order":0,"status":0,"url":""}],"id":2,"name":"对象","order":4,"status":0}]}
      * message : OK
      */
 
     private int code;
-    /**
-     * columns : [{"author":"上上签","banner_image_url":"http://img02.liwushuo.com/image/160902/9u68tzum1.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160902/9u68tzum1.jpg?imageView2/2/w/300/q/85/format/webp","category":"美物","cover_image_url":"http://img02.liwushuo.com/image/160902/gsscbi494.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160902/gsscbi494.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472785741,"description":"把对你的爱，写进365首诗里、歌里拥入365天的心里、梦里。","id":96,"order":0,"post_published_at":1474599600,"status":0,"subtitle":"","title":"日复一签","updated_at":1474621729},{"author":"凹凸曼","banner_image_url":"http://img03.liwushuo.com/image/160708/or81k6fea.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160708/or81k6fea.jpg?imageView2/2/w/300/q/85/format/webp","category":"礼物","cover_image_url":"http://img02.liwushuo.com/image/160720/xdt9kjriy.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160720/xdt9kjriy.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1467970933,"description":"会买不一定\u201c惠\u201d买，每日10款超低价，举双手奉上。\u2014\u2014from亚马逊良心出品","id":90,"order":0,"post_published_at":1474588800,"status":0,"subtitle":"更新至第76期","title":"省钱大总攻","updated_at":1474620748},{"author":"穿衣大队长","banner_image_url":"http://img02.liwushuo.com/image/160608/ygqtl238c.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160608/ygqtl238c.jpg?imageView2/2/w/300/q/85/format/webp","category":"穿搭","cover_image_url":"http://img02.liwushuo.com/image/160713/4egoefdla.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160713/4egoefdla.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501669,"description":"做你的私人搭配师，每日搭配治好你的选择困难症，满足你多睡5分钟的小小心愿。","id":13,"order":0,"post_published_at":1474588800,"status":0,"subtitle":"更新至第122期","title":"明天穿什么","updated_at":1474620103},{"author":"小C","banner_image_url":"http://img02.liwushuo.com/image/160608/kd1dy4pi3.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160608/kd1dy4pi3.jpg?imageView2/2/w/300/q/85/format/webp","category":"礼物","cover_image_url":"http://img01.liwushuo.com/image/160713/y2arp77qx.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160713/y2arp77qx.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501381,"description":"如果青春不会散场，时光可以珍藏。如果你的每一个米粒大小念想，都能找到与之匹配的美物安放...这样的店你会不会来？","id":5,"order":0,"post_published_at":1474599600,"status":0,"subtitle":"更新至第168期","title":"不打烊的礼物店","updated_at":1474619479},{"author":"三两","banner_image_url":"http://img02.liwushuo.com/image/160905/0i5yxvfy3.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160905/0i5yxvfy3.jpg?imageView2/2/w/300/q/85/format/webp","category":"爱读书","cover_image_url":"http://img03.liwushuo.com/image/160905/wk7lg4nme.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160905/wk7lg4nme.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472802190,"description":"多的是，三言两语道不尽之事。三两成群，独言不如众议。二三而成亖，亖亦为四，勤阅必有进步。","id":97,"order":0,"post_published_at":1474362000,"status":0,"subtitle":"更新至第3期","title":"亖言","updated_at":1474618320},{"author":"Mia","banner_image_url":"http://img01.liwushuo.com/image/160902/fm7knqhbd.jpg-w300","banner_webp_url":"http://img01.liwushuo.com/image/160902/fm7knqhbd.jpg?imageView2/2/w/300/q/85/format/webp","category":"美护","cover_image_url":"http://img02.liwushuo.com/image/160902/7obqmumbf.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160902/7obqmumbf.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472820604,"description":"明星的美丽秘诀永远是大家最感兴趣的话题之一，现在就让我们一一揭秘。","id":105,"order":0,"post_published_at":1474340400,"status":0,"subtitle":"更新至第3期","title":"星美妆报告","updated_at":1474614316},{"author":"小礼君","banner_image_url":"http://img02.liwushuo.com/image/160608/0gc251s33.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160608/0gc251s33.jpg?imageView2/2/w/300/q/85/format/webp","category":"鞋包","cover_image_url":"http://img02.liwushuo.com/image/160713/u0me31re7.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160713/u0me31re7.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501739,"description":"没有什么是一个包包解决不了的，如果有，那就两个。","id":16,"order":0,"post_published_at":1474534800,"status":0,"subtitle":"更新至第64期","title":"包治百病","updated_at":1474612975},{"author":"叫我小公举","banner_image_url":"http://img03.liwushuo.com/image/160608/muk9fdsya.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160608/muk9fdsya.jpg?imageView2/2/w/300/q/85/format/webp","category":"美物","cover_image_url":"http://img03.liwushuo.com/image/160713/1p98sh06h.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160713/1p98sh06h.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501717,"description":"僻静的街角有一家杂货铺，或许你带着忧愁走进店中，但不期而遇的小物却让你展露欢颜。","id":14,"order":0,"post_published_at":1474534800,"status":0,"subtitle":"更新至第63期","title":"解忧杂货铺","updated_at":1474602746},{"author":"鹿欧尼","banner_image_url":"http://img02.liwushuo.com/image/160630/npssjj3yc.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160630/npssjj3yc.jpg?imageView2/2/w/300/q/85/format/webp","category":"美食","cover_image_url":"http://img03.liwushuo.com/image/160713/l0nb4kpud.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160713/l0nb4kpud.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1467265951,"description":"无论是山珍海味还是街边小吃，\r\n无论是飞禽走兽还是五谷香料，\r\n美食不分贵贱没有国界\r\n我们都犯着一种罪，叫做\u201c食宗最\u201d","id":83,"order":0,"post_published_at":1474502400,"status":0,"subtitle":"更新至第33期","title":"吃货俱乐部","updated_at":1474593978},{"author":"美少女大人","banner_image_url":"http://img02.liwushuo.com/image/160902/xh7fnmi0x.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160902/xh7fnmi0x.jpg?imageView2/2/w/300/q/85/format/webp","category":"穿搭","cover_image_url":"http://img01.liwushuo.com/image/160902/ostfcv54z.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160902/ostfcv54z.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472812805,"description":"史上最实用又超级简单易懂的直男穿搭术。拯救直男审美，让你撩妹更轻松。","id":104,"order":0,"post_published_at":1474502400,"status":0,"subtitle":"","title":"穿衣指「男」","updated_at":1474593503},{"author":"4K馆长","banner_image_url":"http://img02.liwushuo.com/image/160905/558q5j6sx.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160905/558q5j6sx.jpg?imageView2/2/w/300/q/85/format/webp","category":"数码","cover_image_url":"http://img03.liwushuo.com/image/160905/75rv8fj87.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160905/75rv8fj87.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472806296,"description":"搜罗天下数码好物，每周测评体验极客最前沿。","id":99,"order":0,"post_published_at":1474588800,"status":0,"subtitle":"","title":"数码体验馆","updated_at":1474592639},{"author":"你作姐","banner_image_url":"http://img03.liwushuo.com/image/160612/81bq8qx6e.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160612/81bq8qx6e.jpg?imageView2/2/w/300/q/85/format/webp","category":"涨姿势","cover_image_url":"http://img02.liwushuo.com/image/160713/5aj2kn3iy.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160713/5aj2kn3iy.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1465722171,"description":"既然青春留不住，活得漂亮也赚了。","id":48,"order":0,"post_published_at":1469869200,"status":0,"subtitle":"更新至第10期","title":"作美指南","updated_at":1474557642},{"author":"灰姑娘","banner_image_url":"http://img03.liwushuo.com/image/160608/qojypq4pe.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160608/qojypq4pe.jpg?imageView2/2/w/300/q/85/format/webp","category":"美护","cover_image_url":"http://img03.liwushuo.com/image/160713/en5n83z34.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160713/en5n83z34.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501946,"description":"好看就行。\u2014\u2014玛丽莲·赫本·千颂伊","id":23,"order":0,"post_published_at":1474599600,"status":0,"subtitle":"更新至第71期","title":"靠脸吃饭","updated_at":1474525760},{"author":"Miss. talk ","banner_image_url":"http://img03.liwushuo.com/image/160712/3c1fj1dq6.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160712/3c1fj1dq6.jpg?imageView2/2/w/300/q/85/format/webp","category":"涨姿势","cover_image_url":"http://img01.liwushuo.com/image/160713/74m5db26q.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160713/74m5db26q.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462771521,"description":"同一件事，你怎么想，他怎么看，平行生活里的你我他，也许正经历同样的情绪，分享着类似的槽点，不管你是围观的吃瓜群众，还是森森被困扰的当事人甲，在shall we talk里，和Miss. talk一起聚众吐槽吧~  ","id":24,"order":0,"post_published_at":1474545600,"status":0,"subtitle":"更新至第138期","title":"Shall we talk","updated_at":1474525684},{"author":"淘局长","banner_image_url":"http://img02.liwushuo.com/image/160608/rcmok6bpq.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160608/rcmok6bpq.jpg?imageView2/2/w/300/q/85/format/webp","category":"海淘","cover_image_url":"http://img01.liwushuo.com/image/160713/5cbekga4c.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160713/5cbekga4c.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462500836,"description":"你想要的全世界，我都有！","id":3,"order":0,"post_published_at":1474448400,"status":0,"subtitle":"更新至第75期","title":"海淘情报局","updated_at":1474511847},{"author":"小礼君","banner_image_url":"http://img03.liwushuo.com/image/160905/f5g5ouwkz.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160905/f5g5ouwkz.jpg?imageView2/2/w/300/q/85/format/webp","category":"礼物","cover_image_url":"http://img03.liwushuo.com/image/160905/xqyvy9n1z.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160905/xqyvy9n1z.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1473045022,"description":"动心的太多，走心的1个足矣","id":106,"order":0,"post_published_at":1474534800,"status":0,"subtitle":"更新至第18期","title":"一个","updated_at":1474511703},{"author":"鸡汤哥","banner_image_url":"http://img02.liwushuo.com/image/160902/rnyu3ltr7.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160902/rnyu3ltr7.jpg?imageView2/2/w/300/q/85/format/webp","category":"涨姿势","cover_image_url":"http://img02.liwushuo.com/image/160902/ompte4huy.jpg-w720","cover_webp_url":"http://img02.liwushuo.com/image/160902/ompte4huy.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472812600,"description":"从搭讪到追求到恋爱到分手，一条龙全套大保健，从头教到尾","id":103,"order":0,"post_published_at":1474070400,"status":0,"subtitle":"","title":"撩妹学院","updated_at":1474452340},{"author":"美物娘","banner_image_url":"http://img02.liwushuo.com/image/160608/8nluue8yx.jpg-w300","banner_webp_url":"http://img02.liwushuo.com/image/160608/8nluue8yx.jpg?imageView2/2/w/300/q/85/format/webp","category":"美物","cover_image_url":"http://img03.liwushuo.com/image/160713/zlsbvl5it.jpg-w720","cover_webp_url":"http://img03.liwushuo.com/image/160713/zlsbvl5it.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1462501829,"description":"贪念时间所有美好的东西，唯一不吝啬的，就是与你分享。","id":19,"order":0,"post_published_at":1474588800,"status":0,"subtitle":"更新至第99期","title":"美物收割机","updated_at":1474450140},{"author":"礼帮主","banner_image_url":"http://img03.liwushuo.com/image/160905/dask3xap6.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160905/dask3xap6.jpg?imageView2/2/w/300/q/85/format/webp","category":"礼物","cover_image_url":"http://img01.liwushuo.com/image/160905/o8ud1yp9x.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160905/o8ud1yp9x.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472808060,"description":"追女生、送父母、找基友，最全最优送礼指南，从此送礼不操心","id":102,"order":0,"post_published_at":1474588800,"status":0,"subtitle":"","title":"礼物帮兄","updated_at":1474448320},{"author":"小礼君","banner_image_url":"http://img03.liwushuo.com/image/160901/hnxa6azdx.jpg-w300","banner_webp_url":"http://img03.liwushuo.com/image/160901/hnxa6azdx.jpg?imageView2/2/w/300/q/85/format/webp","category":"活动","cover_image_url":"http://img01.liwushuo.com/image/160901/6uqx378s8.jpg-w720","cover_webp_url":"http://img01.liwushuo.com/image/160901/6uqx378s8.jpg?imageView2/2/w/720/q/85/format/webp","created_at":1472708659,"description":"你我的互动让生活更生动","id":95,"order":0,"post_published_at":1474363800,"status":0,"subtitle":"","title":"热门活动","updated_at":1474339588}]
-     * paging : {"next_url":"http://api.liwushuo.com/v2/columns?limit=20&offset=20"}
-     */
-
     private DataBean data;
     private String message;
 
@@ -50,138 +43,41 @@ public class StrategyBean {
 
     public static class DataBean {
         /**
-         * next_url : http://api.liwushuo.com/v2/columns?limit=20&offset=20
-         */
-
-        private PagingBean paging;
-        /**
-         * author : 上上签
-         * banner_image_url : http://img02.liwushuo.com/image/160902/9u68tzum1.jpg-w300
-         * banner_webp_url : http://img02.liwushuo.com/image/160902/9u68tzum1.jpg?imageView2/2/w/300/q/85/format/webp
-         * category : 美物
-         * cover_image_url : http://img02.liwushuo.com/image/160902/gsscbi494.jpg-w720
-         * cover_webp_url : http://img02.liwushuo.com/image/160902/gsscbi494.jpg?imageView2/2/w/720/q/85/format/webp
-         * created_at : 1472785741
-         * description : 把对你的爱，写进365首诗里、歌里拥入365天的心里、梦里。
-         * id : 96
-         * order : 0
-         * post_published_at : 1474599600
+         * channels : [{"cover_image_url":"http://img01.liwushuo.com/image/160624/hbd7w1sf4.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160414/kwzqtscoa.png-pw144","id":111,"items_count":1165,"name":"礼物","order":10,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/duk8guejk.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/58kdnthsn.png-pw144","id":112,"items_count":597,"name":"家居","order":9,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/axk8i901f.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160414/6eutomjeo.png-pw144","id":110,"items_count":707,"name":"穿搭","order":8,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160624/ayjeuhtji.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160414/abuv6vssc.png-pw144","id":2,"items_count":568,"name":"美物","order":7,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/x5vlfqcn4.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/5al9xhwg1.png-pw144","id":116,"items_count":196,"name":"饰品","order":6,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/otqmww3av.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/5dgflkj6g.png-pw144","id":117,"items_count":198,"name":"鞋包","order":5,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/1kx5seb62.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/58vv7n29y.png-pw144","id":118,"items_count":500,"name":"美食","order":5,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/38778o4e0.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/fb7e1012t.png-pw144","id":113,"items_count":531,"name":"美护","order":4,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/s69ub7yiq.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/59hgqd1x8.png-pw144","id":121,"items_count":215,"name":"数码","order":4,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/2ky6x596q.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/u4r2a9q72.png-pw144","id":3,"items_count":90,"name":"手工","order":3,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/d1xtmp1ig.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/i69bjp6bm.png-pw144","id":119,"items_count":51,"name":"母婴","order":0,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/y3aqzhu9v.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/t9t9hzntc.png-pw144","id":122,"items_count":66,"name":"爱动漫","order":0,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/ym66pnx98.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/3ziqypz1f.png-pw144","id":123,"items_count":31,"name":"爱运动","order":0,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160606/ad06sqrix.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/6pdxbaqz2.png-pw144","id":124,"items_count":22,"name":"爱读书","order":0,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/xxvb0a8aj.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/voku467wc.png-pw144","id":129,"items_count":165,"name":"海淘","order":0,"status":0,"url":""}]
+         * id : 5
+         * name : 品类
+         * order : 6
          * status : 0
-         * subtitle :
-         * title : 日复一签
-         * updated_at : 1474621729
          */
 
-        private List<ColumnsBean> columns;
+        private List<ChannelGroupsBean> channel_groups;
 
-        public PagingBean getPaging() {
-            return paging;
+        public List<ChannelGroupsBean> getChannel_groups() {
+            return channel_groups;
         }
 
-        public void setPaging(PagingBean paging) {
-            this.paging = paging;
+        public void setChannel_groups(List<ChannelGroupsBean> channel_groups) {
+            this.channel_groups = channel_groups;
         }
 
-        public List<ColumnsBean> getColumns() {
-            return columns;
-        }
-
-        public void setColumns(List<ColumnsBean> columns) {
-            this.columns = columns;
-        }
-
-        public static class PagingBean {
-            private String next_url;
-
-            public String getNext_url() {
-                return next_url;
-            }
-
-            public void setNext_url(String next_url) {
-                this.next_url = next_url;
-            }
-        }
-
-        public static class ColumnsBean {
-            private String author;
-            private String banner_image_url;
-            private String banner_webp_url;
-            private String category;
-            private String cover_image_url;
-            private String cover_webp_url;
-            private int created_at;
-            private String description;
+        public static class ChannelGroupsBean {
             private int id;
+            private String name;
             private int order;
-            private int post_published_at;
             private int status;
-            private String subtitle;
-            private String title;
-            private int updated_at;
+            /**
+             * cover_image_url : http://img01.liwushuo.com/image/160624/hbd7w1sf4.png
+             * group_id : 5
+             * icon_url : http://img03.liwushuo.com/image/160414/kwzqtscoa.png-pw144
+             * id : 111
+             * items_count : 1165
+             * name : 礼物
+             * order : 10
+             * status : 0
+             * url :
+             */
 
-            public String getAuthor() {
-                return author;
-            }
-
-            public void setAuthor(String author) {
-                this.author = author;
-            }
-
-            public String getBanner_image_url() {
-                return banner_image_url;
-            }
-
-            public void setBanner_image_url(String banner_image_url) {
-                this.banner_image_url = banner_image_url;
-            }
-
-            public String getBanner_webp_url() {
-                return banner_webp_url;
-            }
-
-            public void setBanner_webp_url(String banner_webp_url) {
-                this.banner_webp_url = banner_webp_url;
-            }
-
-            public String getCategory() {
-                return category;
-            }
-
-            public void setCategory(String category) {
-                this.category = category;
-            }
-
-            public String getCover_image_url() {
-                return cover_image_url;
-            }
-
-            public void setCover_image_url(String cover_image_url) {
-                this.cover_image_url = cover_image_url;
-            }
-
-            public String getCover_webp_url() {
-                return cover_webp_url;
-            }
-
-            public void setCover_webp_url(String cover_webp_url) {
-                this.cover_webp_url = cover_webp_url;
-            }
-
-            public int getCreated_at() {
-                return created_at;
-            }
-
-            public void setCreated_at(int created_at) {
-                this.created_at = created_at;
-            }
-
-            public String getDescription() {
-                return description;
-            }
-
-            public void setDescription(String description) {
-                this.description = description;
-            }
+            private List<ChannelsBean> channels;
 
             public int getId() {
                 return id;
@@ -189,6 +85,14 @@ public class StrategyBean {
 
             public void setId(int id) {
                 this.id = id;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
             }
 
             public int getOrder() {
@@ -199,14 +103,6 @@ public class StrategyBean {
                 this.order = order;
             }
 
-            public int getPost_published_at() {
-                return post_published_at;
-            }
-
-            public void setPost_published_at(int post_published_at) {
-                this.post_published_at = post_published_at;
-            }
-
             public int getStatus() {
                 return status;
             }
@@ -215,28 +111,96 @@ public class StrategyBean {
                 this.status = status;
             }
 
-            public String getSubtitle() {
-                return subtitle;
+            public List<ChannelsBean> getChannels() {
+                return channels;
             }
 
-            public void setSubtitle(String subtitle) {
-                this.subtitle = subtitle;
+            public void setChannels(List<ChannelsBean> channels) {
+                this.channels = channels;
             }
 
-            public String getTitle() {
-                return title;
-            }
+            public static class ChannelsBean {
+                private String cover_image_url;
+                private int group_id;
+                private String icon_url;
+                private int id;
+                private int items_count;
+                private String name;
+                private int order;
+                private int status;
+                private String url;
 
-            public void setTitle(String title) {
-                this.title = title;
-            }
+                public String getCover_image_url() {
+                    return cover_image_url;
+                }
 
-            public int getUpdated_at() {
-                return updated_at;
-            }
+                public void setCover_image_url(String cover_image_url) {
+                    this.cover_image_url = cover_image_url;
+                }
 
-            public void setUpdated_at(int updated_at) {
-                this.updated_at = updated_at;
+                public int getGroup_id() {
+                    return group_id;
+                }
+
+                public void setGroup_id(int group_id) {
+                    this.group_id = group_id;
+                }
+
+                public String getIcon_url() {
+                    return icon_url;
+                }
+
+                public void setIcon_url(String icon_url) {
+                    this.icon_url = icon_url;
+                }
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public int getItems_count() {
+                    return items_count;
+                }
+
+                public void setItems_count(int items_count) {
+                    this.items_count = items_count;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public int getOrder() {
+                    return order;
+                }
+
+                public void setOrder(int order) {
+                    this.order = order;
+                }
+
+                public int getStatus() {
+                    return status;
+                }
+
+                public void setStatus(int status) {
+                    this.status = status;
+                }
+
+                public String getUrl() {
+                    return url;
+                }
+
+                public void setUrl(String url) {
+                    this.url = url;
+                }
             }
         }
     }

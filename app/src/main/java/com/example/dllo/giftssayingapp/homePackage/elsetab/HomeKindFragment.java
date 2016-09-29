@@ -1,5 +1,6 @@
-package com.example.dllo.giftssayingapp.homepackage;
+package com.example.dllo.giftssayingapp.homepackage.elsetab;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,9 +20,9 @@ import java.util.ArrayList;
  * http://api.liwushuo.com/v2/channels/9/items_v2?gender=2&limit=20&offset=0&generation=1
  */
 public class HomeKindFragment extends BaseFragment {
-    private String strNet = "http://api.liwushuo.com/v2/channels/9/items_v2?gender=2&limit=20&offset=0&generation=1";
 
     private ListView listView;
+    private String strUrl;
 
     @Override
     protected int setLayout() {
@@ -35,12 +36,15 @@ public class HomeKindFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        Bundle bundle = getArguments();
+        String urlNum = bundle.getString("url");
+        strUrl = "http://api.liwushuo.com/v2/channels/" + urlNum + "/items_v2?limit=20&ad=2&gender=2&offset=0&generation=2%20HTTP/1.1";
         requestData();
     }
 
     public void requestData() {
 
-        StringRequest request = new StringRequest(strNet, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(strUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("HomeKindFragment", "网络请求了?");
@@ -56,7 +60,6 @@ public class HomeKindFragment extends BaseFragment {
                 HomeKindAdapter adapter = new HomeKindAdapter(context);
                 adapter.setArrayList(arrayList);
                 listView.setAdapter(adapter);
-
 
             }
         }, new Response.ErrorListener() {

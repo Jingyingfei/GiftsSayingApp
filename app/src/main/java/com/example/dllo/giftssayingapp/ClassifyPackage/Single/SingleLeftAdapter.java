@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/9/28.
  */
-public class SingleAdapter extends BaseAdapter {
+public class SingleLeftAdapter extends BaseAdapter {
     private ArrayList<SingleBean> arrayList;
     private Context context;
 
@@ -23,7 +23,7 @@ public class SingleAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public SingleAdapter(Context context) {
+    public SingleLeftAdapter(Context context) {
 
         this.context = context;
     }

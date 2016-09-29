@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <ListView
-        android:id="@+id/ll_home_select"
+    <ExpandableListView
+        android:divider="@null"
+        android:id="@+id/expendlist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#e7e7e7"/>
+        android:layout_height="wrap_content" >
+    </ExpandableListView>
 
 </LinearLayout>

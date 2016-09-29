@@ -1,6 +1,7 @@
 package com.example.dllo.giftssayingapp.homepackage;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -18,6 +19,8 @@ import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.example.dllo.giftssayingapp.classifypackage.Strategy.EditBean;
+import com.example.dllo.giftssayingapp.homepackage.elsetab.HomeKindFragment;
+import com.example.dllo.giftssayingapp.homepackage.selection.HomeSelectFragment;
 import com.example.dllo.giftssayingapp.mainpackage.LoginActivity;
 import com.google.gson.Gson;
 
@@ -65,6 +68,7 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
         requestDataEdit();
     }
 
+    //标题的网络获取
     public void request() {
         //创建网络请求
         StringRequest request = new StringRequest(URLValues.HOME_TITLE, new Response.Listener<String>() {
@@ -78,12 +82,16 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
                     Log.d("HomeMainFragment", bean.getData().getChannels().get(i).getName());
                 }
                 for (int i = 0; i < strings.size(); i++) {
-//                    tb_homeTab.addTab(tb_homeTab.newTab().setText(strings.get(i)));
+
                     Log.d("HomeMainFragment", "strings.size():" + strings.size());
                     if (i == 0) {
                         fragments.add(new HomeSelectFragment());
                     } else {
-                        fragments.add(new HomeKindFragment());
+                        HomeKindFragment homeKindFragment = new HomeKindFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("url", String.valueOf(bean.getData().getChannels().get(i).getId()));
+                        homeKindFragment.setArguments(bundle);
+                        fragments.add(homeKindFragment);
                     }
                 }
 
@@ -106,6 +114,7 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
 
 
     }
+    //edittext的网络获取
     public void requestDataEdit(){
         StringRequest mStringRequests = new StringRequest(URLValues.EDIT_NAME, new Response.Listener<String>() {
             @Override
@@ -126,6 +135,7 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
     }
     @Override
     public void onClick(View view) {
+        Intent intent = new Intent(context, HomeQueryActivity.class);
 
     }
 }

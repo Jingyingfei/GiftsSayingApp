@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.homepackage;
+package com.example.dllo.giftssayingapp.homepackage.elsetab;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.homepackage;
+package com.example.dllo.giftssayingapp.homepackage.selection;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

@@ -34,6 +34,8 @@ public final class URLValues {
     //分类页
 
     // 2.攻略-栏目
+    public static final String STRATEGY_PART = "http://api.liwushuo.com/v2/columns?limit=20&offset=0";
+    // 攻略-品类
     public static final String STRATEGY_COLUMN = "http://api.liwushuo.com/v2/channel_groups/all";
 
     //3.单品

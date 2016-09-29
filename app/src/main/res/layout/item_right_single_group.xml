@@ -4,12 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:scrollbars="none"
-        android:divider="@null"
-        android:fastScrollEnabled="false"
-        android:id="@+id/lv_left_single"
-        android:background="@drawable/single_underline"
+    <TextView
+        android:id="@+id/tv_single_right_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="15sp" />
 </LinearLayout>

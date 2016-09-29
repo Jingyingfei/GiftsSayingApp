@@ -1,7 +1,11 @@
 package com.example.dllo.giftssayingapp.classifypackage.Strategy;
 
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -17,118 +21,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dllo on 16/9/20.
+ * Created by dllo on 16/9/26.
  */
 public class StrategyFragment extends BaseFragment {
-    private String strNet = "http://api.liwushuo.com/v2/columns?limit=20&offset=0";
+    private ExpandableListView expandableListView;
+    private List<String> group_list;
+    private List<List<String>> item_list;
+    private List<List<String>> item_list2;
+    private View viewHeader;
+    private RecyclerView raiderRv;
 
-    private RecyclerView raiders;
-    private RecyclerView strategy_kind;
-    private RecyclerView rv_strategy_style;
-    private RecyclerView rv_strategy_target;
 
     @Override
     protected int setLayout() {
-        return R.layout.fragment_strategy;
+        return R.layout.select_raider_layout;
     }
 
     @Override
     protected void initView() {
-        raiders = bindView(R.id.recycler_strategy);
-        strategy_kind = bindView(R.id.rv_strategy_kind);
-        rv_strategy_style = bindView(R.id.rv_strategy_kind_style);
-        rv_strategy_target = bindView(R.id.rv_strategy_kind_target);
-
+        expandableListView = bindView(R.id.expendlist);
+        View viewHeader = LayoutInflater.from(context).inflate(R.layout.raider_header_layout,null);
+        raiderRv = (RecyclerView) viewHeader.findViewById(R.id.rv_raider_header);
+        expandableListView.addHeaderView(viewHeader);
     }
 
     @Override
     protected void initData() {
-        requestData();
-        requestDataKind();
 
+        requestHeader();
+        RaiderGet();
     }
 
-    //获取recyclerview横向的图片
-    public void requestData() {
-        final ArrayList<StrategyBean> arrayList = new ArrayList<>();
-        StringRequest request = new StringRequest(strNet, new Response.Listener<String>() {
+
+    public void requestHeader(){
+        final ArrayList<RaiderHeaderBean> beanArrayList = new ArrayList<>();
+        StringRequest stringRequest = new StringRequest(URLValues.STRATEGY_PART, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                StrategyBean bean = gson.fromJson(response, StrategyBean.class);
+                RaiderHeaderBean bean = gson.fromJson(response,RaiderHeaderBean.class);
                 for (int i = 0; i < 12; i++) {
-                    arrayList.add(bean);
+                    beanArrayList.add(bean);
                 }
-                StrategyAdapter adapter = new StrategyAdapter(context);
-                adapter.setArrayList(arrayList);
-                GridLayoutManager manager = new GridLayoutManager(getContext(), 3);
-                manager.setOrientation(GridLayoutManager.HORIZONTAL);
-                raiders.setLayoutManager(manager);
-                raiders.setAdapter(adapter);
+                RaiderHeaderAdpter adpter = new RaiderHeaderAdpter(context);
+                adpter.setRaiderHeaderBean(beanArrayList);
+                raiderRv.setAdapter(adpter);
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-        VolleySingleton.getInstance().addRequest(request);
-    }
-
-
-    public void requestDataKind() {
-
-        StringRequest request = new StringRequest(URLValues.STRATEGY_COLUMN, new Response.Listener<String>() {
-
-
-            private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> targetList;
-            private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> styleList;
-            private ArrayList<StrategyColumnBean.DataBean.ChannelGroupsBean.ChannelsBean> categoryList;
-
-            @Override
-            public void onResponse(String response) {
-                //获取品类数据
-                Gson gson = new Gson();
-                StrategyColumnBean bean = gson.
-                        fromJson(response, StrategyColumnBean.class);
-                List<StrategyColumnBean.DataBean.ChannelGroupsBean> arrayList = bean.getData().getChannel_groups();
-                if (bean.getData().getChannel_groups().get(0).getName().equals("品类")) {
-                    categoryList = new ArrayList<>();
-                    for (int i = 0; i < 6; i++) {
-                        categoryList.add(bean.getData().getChannel_groups().get(0).getChannels().get(i));
-                    }
-                }
-                if (bean.getData().getChannel_groups().get(1).getName().equals("风格")){
-                    styleList = new ArrayList<>();
-                    for (int i = 0; i < 6; i++) {
-                        styleList.add(bean.getData().getChannel_groups().get(1).getChannels().get(i));
-                    }
-                }
-                if (bean.getData().getChannel_groups().get(2).getName().equals("对象")){
-                    targetList = new ArrayList<>();
-                    for (int i = 0; i < 6; i++) {
-                        targetList.add(bean.getData().getChannel_groups().get(2).getChannels().get(i));
-                    }
-                }
-
-                StrategyColumnAdapter adapter = new StrategyColumnAdapter(context);
-                adapter.setCategoryList(categoryList);
-                GridLayoutManager manager = new GridLayoutManager(context, 2);
-                strategy_kind.setLayoutManager(manager);
-                strategy_kind.setAdapter(adapter);
-
-
-                GridLayoutManager manager1 = new GridLayoutManager(context, 2);
-                adapter.setStyleList(styleList);
-                rv_strategy_style.setLayoutManager(manager1);
-                rv_strategy_style.setAdapter(adapter);
-
-                GridLayoutManager manager2 = new GridLayoutManager(context, 2);
-                adapter.setTargetList(targetList);
-                rv_strategy_target.setAdapter(adapter);
-                rv_strategy_target.setLayoutManager(manager2);
-
+                GridLayoutManager manager = new GridLayoutManager(context,3, LinearLayoutManager.HORIZONTAL,false);
+                raiderRv.setLayoutManager(manager);
 
             }
         }, new Response.ErrorListener() {
@@ -137,9 +77,62 @@ public class StrategyFragment extends BaseFragment {
                 Toast.makeText(context, "网络获取失败", Toast.LENGTH_SHORT).show();
             }
         });
-        VolleySingleton.getInstance().addRequest(request);
+        VolleySingleton.getInstance().addRequest(stringRequest);
+    }
+    public void RaiderGet() {
+        StringRequest stringRequest = new StringRequest(URLValues.STRATEGY_COLUMN, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                StrategyBean bean = gson.fromJson(response, StrategyBean.class);
+                group_list = new ArrayList<String>();
+                item_list = new ArrayList<List<String>>();
+                for (int i = 0; i < bean.getData().getChannel_groups().size(); i++) {
+                    group_list.add(bean.getData().getChannel_groups().get(i).getName());
+                    item_list.add(group_list);
+                }
 
+                List<String> tmp_list = new ArrayList<>();
+                item_list2 = new ArrayList<List<String>>();
+                for (int j = 0; j < 3; j++) {
+                    for (int i = 0; i < 6; i++) {
+                        tmp_list.add(bean.getData().getChannel_groups().get(j).getChannels().get(i).getCover_image_url());
+                        item_list2.add(tmp_list);
+
+                    }
+                }
+
+                adapterData();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        VolleySingleton.getInstance().addRequest(stringRequest);
     }
 
+    public void adapterData() {
 
+        StrategyAdapter adapter = new StrategyAdapter(context);
+        adapter.setGroup_list(group_list);
+        adapter.setItem_list(item_list);
+        adapter.setItem_list2(item_list2);
+        expandableListView.setGroupIndicator(null);
+        expandableListView.setAdapter(adapter);
+
+        for (int i = 0; i < group_list.size(); i++) {
+            expandableListView.expandGroup(i);
+        }
+
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                return true;
+            }
+        });
+    }
 }

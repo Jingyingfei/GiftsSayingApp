@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.homepackage;
+package com.example.dllo.giftssayingapp.homepackage.selection;
 
 import android.os.Handler;
 import android.os.Message;
@@ -18,8 +18,6 @@ import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -32,9 +30,9 @@ import java.util.ArrayList;
 public class HomeSelectFragment extends BaseFragment {
     private String strNetImage = "http://api.liwushuo.com/v2/banners";
     private String strNetSpe = "http://api.liwushuo.com/v2/secondary_banners?gender=2&generation=1";
-    private PullToRefreshListView homeSelect;
     private ViewPager homeImage;
     private HomeImageBean bean;
+    private ListView homeSelect;
     private int currentItem = 0;
     //设置轮播图的定时器
     //判断是否自己滚动
@@ -73,8 +71,7 @@ public class HomeSelectFragment extends BaseFragment {
         View view = LayoutInflater.from(context).inflate(R.layout.vp_home_image, null);
         homeImage = (ViewPager) view.findViewById(R.id.vp_home_lunbo);
         home_special = (LinearLayout) view.findViewById(R.id.ll_home_image);
-        ListView listView = homeSelect.getRefreshableView();
-        listView.addHeaderView(view);
+        homeSelect.addHeaderView(view);
         //开启定时器
         handler.sendEmptyMessageDelayed(0, 2000);
         requestImageData();
@@ -106,22 +103,19 @@ public class HomeSelectFragment extends BaseFragment {
 
             }
         });
-        homeSelect.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
-            @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
 
-
-            }
-
-            @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                View view1 = LayoutInflater.from(context).inflate(R.layout.refresh_home_select, null);
+//                ImageView refresh = (ImageView) view1.findViewById(R.id.iv_refresh);
+//                refresh.setImageResource(R.drawable.refresh);
+//                AnimationDrawable animationDrawable = (AnimationDrawable) refresh.getDrawable();
+//                animationDrawable.start();
 
             }
-        });
-        homeSelect.onRefreshComplete();
 
 
-    }
+
+
+
 
 
     public void requestData() {

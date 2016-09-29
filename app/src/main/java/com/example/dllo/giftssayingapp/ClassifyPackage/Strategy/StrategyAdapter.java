@@ -1,72 +1,144 @@
 package com.example.dllo.giftssayingapp.classifypackage.Strategy;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-
+import java.util.List;
 
 /**
- * Created by dllo on 16/9/23.
+ * Created by dllo on 16/9/26.
  */
-public class StrategyAdapter extends RecyclerView.Adapter<StrategyAdapter.StrategyViewHolder> {
-    Context mContext;
-    ArrayList<StrategyBean> arrayList = new ArrayList<>();
+public class StrategyAdapter extends BaseExpandableListAdapter {
+    private Context context;
+
+    public void setGroup_list(List<String> group_list) {
+        this.group_list = group_list;
+    }
+
+    private List<String> group_list;
+
+    public void setItem_list(List<List<String>> item_list) {
+        this.item_list = item_list;
+    }
+
+    private List<List<String>> item_list;
+
+    public void setItem_list2(List<List<String>> item_list2) {
+        this.item_list2 = item_list2;
+    }
+
+    private List<List<String>> item_list2;
 
     public StrategyAdapter(Context context) {
-        mContext = context;
-    }
-
-    public void setArrayList(ArrayList<StrategyBean> arrayList) {
-        this.arrayList = arrayList;
+        this.context = context;
     }
 
     @Override
-    public StrategyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_strategy,parent,false);
-        StrategyViewHolder viewHolder = new StrategyViewHolder(view);
-        return viewHolder;
+    public int getGroupCount() {
+        return group_list.size();
     }
 
     @Override
-    public void onBindViewHolder(StrategyViewHolder holder, int position) {
-
-        Picasso.with(mContext)
-                .load(arrayList.get(position).getData().getColumns().get(position).getBanner_image_url())
-                .into(holder.mBanner_image_url);
-        holder.mTitle_strategy.setText(arrayList.get(position).getData().getColumns().get(position).getTitle());
-        holder.mSubtitle_strategy.setText(arrayList.get(position).getData().getColumns().get(position).getSubtitle());
-        holder.mAuthor_strategy.setText(arrayList.get(position).getData().getColumns().get(position).getAuthor());
-
+    public int getChildrenCount(int groupPosition) {
+        return item_list.get(groupPosition).size();
     }
 
     @Override
-    public int getItemCount() {
-        return arrayList == null ? 0 : arrayList.size();
+    public Object getGroup(int groupPosition) {
+        return group_list.get(groupPosition);
     }
 
-    public class StrategyViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public Object getChild(int groupPosition, int childPosition) {
+        return item_list.get(groupPosition).get(childPosition);
+    }
 
-        private final ImageView mBanner_image_url;
-        private final TextView mTitle_strategy;
-        private final TextView mSubtitle_strategy;
-        private final TextView mAuthor_strategy;
+    @Override
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
 
-        public StrategyViewHolder(View itemView) {
-            super(itemView);
-            mBanner_image_url = (ImageView) itemView.findViewById(R.id.banner_image_url_strategy);
-            mTitle_strategy = (TextView) itemView.findViewById(R.id.title_strategy);
-            mSubtitle_strategy = (TextView) itemView.findViewById(R.id.subtitle_strategy);
-            mAuthor_strategy = (TextView) itemView.findViewById(R.id.author_strategy);
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return childPosition;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return true;
+    }
+
+    @Override
+    public View getGroupView(int groupPosition, boolean isExpanded,
+                             View convertView, ViewGroup parent) {
+        GroupHolder groupHolder = null;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.expendlist_group, null);
+
+            groupHolder = new GroupHolder();
+            groupHolder.txt = (TextView) convertView.findViewById(R.id.txt);
+
+            convertView.setTag(groupHolder);
+        } else {
+            groupHolder = (GroupHolder) convertView.getTag();
         }
+        groupHolder.txt.setText(group_list.get(groupPosition));
+        return convertView;
+    }
+
+    @Override
+    public View getChildView(int groupPosition, int childPosition,
+                             boolean isLastChild, View convertView, ViewGroup parent) {
+        ItemHolder itemHolder = null;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.expendlist_item, null);
+
+            itemHolder = new ItemHolder();
+            itemHolder.img = (ImageView) convertView.findViewById(R.id.img);
+            itemHolder.imgRider = (ImageView) convertView.findViewById(R.id.img_raider);
+            convertView.setTag(itemHolder);
+        } else {
+            itemHolder = (ItemHolder) convertView.getTag();
+        }
+        childPosition = childPosition + childPosition;
+        if (groupPosition == 0) {
+            Picasso.with(context).load(item_list2.get(groupPosition).get(childPosition)).into(itemHolder.img);
+            Picasso.with(context).load(item_list2.get(groupPosition).get(childPosition + 1)).into(itemHolder.imgRider);
+        } else if(groupPosition == 1){
+            childPosition = childPosition + 6;
+            Picasso.with(context).load(item_list2.get(groupPosition).get(childPosition)).into(itemHolder.img);
+            Picasso.with(context).load(item_list2.get(groupPosition).get(childPosition + 1)).into(itemHolder.imgRider);
+        } else {
+            childPosition = childPosition + 12;
+            Picasso.with(context).load(item_list2.get(groupPosition).get(childPosition)).into(itemHolder.img);
+            Picasso.with(context).load(item_list2.get(groupPosition).get(childPosition + 1)).into(itemHolder.imgRider);
+        }
+
+        return convertView;
+    }
+
+    @Override
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
+        return true;
+    }
+
+
+    class GroupHolder {
+        public TextView txt;
+        public ImageView img;
+    }
+
+    class ItemHolder {
+        public ImageView img;
+        public TextView txt;
+        public ImageView imgRider;
     }
 }
-
