@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.classifypackage.Strategy;
+package com.example.dllo.giftssayingapp.basepackage;
 
 import java.util.List;
 

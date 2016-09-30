@@ -18,7 +18,7 @@ import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
-import com.example.dllo.giftssayingapp.classifypackage.Strategy.EditBean;
+import com.example.dllo.giftssayingapp.basepackage.EditBean;
 import com.example.dllo.giftssayingapp.homepackage.elsetab.HomeKindFragment;
 import com.example.dllo.giftssayingapp.homepackage.selection.HomeSelectFragment;
 import com.example.dllo.giftssayingapp.mainpackage.LoginActivity;
@@ -136,6 +136,8 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(context, HomeQueryActivity.class);
+        getActivity().startActivity(intent);
+        getActivity().finish();
 
     }
 }

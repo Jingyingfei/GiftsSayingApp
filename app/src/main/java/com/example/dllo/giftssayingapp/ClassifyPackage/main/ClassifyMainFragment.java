@@ -16,8 +16,7 @@ import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.example.dllo.giftssayingapp.classifypackage.Single.SingleFragment;
-import com.example.dllo.giftssayingapp.classifypackage.Strategy.EditActivity;
-import com.example.dllo.giftssayingapp.classifypackage.Strategy.EditBean;
+import com.example.dllo.giftssayingapp.basepackage.EditBean;
 import com.example.dllo.giftssayingapp.classifypackage.Strategy.StrategyFragment;
 import com.google.gson.Gson;
 

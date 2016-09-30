@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.classifypackage.Strategy;
+package com.example.dllo.giftssayingapp.classifypackage.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

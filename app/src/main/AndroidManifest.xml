@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".mainpackage.LoginActivity" />
-        <activity android:name=".classifypackage.Strategy.EditActivity"></activity>
+        <activity android:name=".classifypackage.main.EditActivity"></activity>
+        <activity android:name=".homepackage.selection.HomeItemActivity"></activity>
+        <activity android:name=".homepackage.HomeQueryActivity"></activity>
     </application>
 
 </manifest>

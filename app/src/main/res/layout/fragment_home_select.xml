@@ -6,6 +6,7 @@
 
 
     <ListView
+        android:divider="@null"
         android:id="@+id/ll_home_select"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

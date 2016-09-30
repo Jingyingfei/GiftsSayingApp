@@ -1,10 +1,12 @@
 package com.example.dllo.giftssayingapp.homepackage.selection;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -77,7 +79,7 @@ public class HomeSelectFragment extends BaseFragment {
         requestImageData();
         requestData();
         requestSpecial();
-
+        jumpItem();
         initDots();
 
         homeImage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -104,18 +106,26 @@ public class HomeSelectFragment extends BaseFragment {
             }
         });
 
-//                View view1 = LayoutInflater.from(context).inflate(R.layout.refresh_home_select, null);
-//                ImageView refresh = (ImageView) view1.findViewById(R.id.iv_refresh);
-//                refresh.setImageResource(R.drawable.refresh);
-//                AnimationDrawable animationDrawable = (AnimationDrawable) refresh.getDrawable();
-//                animationDrawable.start();
+//动画刷新
+//        View view1 = LayoutInflater.from(context).inflate(R.layout.refresh_home_select, null);
+//        ImageView refresh = (ImageView) view1.findViewById(R.id.iv_refresh);
+//        refresh.setImageResource(R.drawable.refresh);
+//        AnimationDrawable animationDrawable = (AnimationDrawable) refresh.getDrawable();
+//        animationDrawable.start();
+    }
 
+    //item的点击跳转事件
+    public void jumpItem() {
+        homeSelect.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                HomeSelectBean bean = (HomeSelectBean) adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(context, HomeItemActivity.class);
+                intent.putExtra("url", bean.getData().getItems().get(i).getUrl());
+                getActivity().startActivity(intent);
             }
-
-
-
-
-
+        });
+    }
 
 
     public void requestData() {

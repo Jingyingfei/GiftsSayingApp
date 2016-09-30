@@ -13,5 +13,15 @@
         android:duration="200"/>
     <item android:drawable="@drawable/heart"
         android:duration="200"/>
+    <item android:drawable="@drawable/box_05"
+        android:duration="200"/>
+    <item android:drawable="@drawable/box_04"
+        android:duration="200"/>
+    <item android:drawable="@drawable/box_03"
+        android:duration="200"/>
+    <item android:drawable="@drawable/box_02"
+        android:duration="200"/>
+    <item android:drawable="@drawable/box_01"
+        android:duration="200"/>
 
 </animation-list>

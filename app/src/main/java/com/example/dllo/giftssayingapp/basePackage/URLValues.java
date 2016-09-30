@@ -15,6 +15,8 @@ public final class URLValues {
     //home的listview url
     public static final String HOME_CELL = "http://api.liwushuo.com/v2/channels/103/items_v2?ad=2&gender=2&generation=1&limit=20&offset=0";
 
+    //home搜索edittext点击进入后的按钮
+    public  static final String HOME_QUERY = "http://api.liwushuo.com/v2/search/hot_words";
     //home的listview 点击进入界面的url
     public static final String HOME_DETAIL_CLICK_TAOBAO = "http://www.liwushuo.com/posts/";
     public static final String HOME_DETAIL_BEFORE = "http://api.liwushuo.com/v2/posts/";
