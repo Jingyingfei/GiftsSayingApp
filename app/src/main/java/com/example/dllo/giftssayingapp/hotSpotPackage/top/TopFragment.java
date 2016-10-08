@@ -71,8 +71,8 @@ public class TopFragment extends BaseFragment {
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 top.setLayoutManager(manager);
                 top.setAdapter(adapter);
-                fl_top.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 300);
-                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 300);
+                fl_top.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 500);
+                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 500);
                 mHeader.attachTo(top);
 
 

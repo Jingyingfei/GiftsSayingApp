@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <include layout="@layout/hometitle" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/hometitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true" />
+
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tb_home_top"
         android:layout_width="match_parent"
-        android:layout_height="30dp">
-    </android.support.design.widget.TabLayout>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include"
+        android:layout_toLeftOf="@+id/iv_dropDownButton" />
+
+    <ImageView
+        android:id="@+id/iv_dropDownButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/include"
+        android:padding="18dp"
+        android:src="@mipmap/arrow_index_down" />
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_home_top"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tb_home_top"/>
 
-</LinearLayout>
+</RelativeLayout>

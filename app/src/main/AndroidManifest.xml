@@ -20,9 +20,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".mainpackage.LoginActivity" />
-        <activity android:name=".classifypackage.main.EditActivity"></activity>
-        <activity android:name=".homepackage.selection.HomeItemActivity"></activity>
-        <activity android:name=".homepackage.HomeQueryActivity"></activity>
+        <activity android:name=".classifypackage.main.EditActivity" />
+        <activity android:name=".homepackage.selection.HomeItemActivity" />
+        <activity android:name=".homepackage.HomeQueryActivity" />
+        <activity android:name=".hotspotpackage.recommend.RecommendItemActivity"></activity>
+        <activity android:name=".mepackage.SettingActivity"/>
     </application>
 
 </manifest>

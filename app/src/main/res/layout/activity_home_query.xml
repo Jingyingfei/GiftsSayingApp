@@ -56,7 +56,8 @@
     </LinearLayout>
 <com.example.dllo.giftssayingapp.homepackage.FlowLayout
     android:id="@+id/flowlayout"
+    android:layout_marginTop="20dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"></com.example.dllo.giftssayingapp.homepackage.FlowLayout>
+    android:layout_height="wrap_content"/>
 
 </LinearLayout>

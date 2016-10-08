@@ -28,12 +28,10 @@ public class HomeQueryActivity extends BaseActivity {
     private EditText query_name;
     private TextView query_cancel;
     private FlowLayout flowLayout;
-    private HomeQueryBean bean;
 
 
-    private List<HomeQueryBean> arrayList = new ArrayList<>();
-    final int size = arrayList.size();
-    String mNames[] = (String[]) arrayList.toArray(new String[size]);
+    private List<String> arrayList = new ArrayList<>();
+
 
     @Override
     protected int setLayout() {
@@ -52,20 +50,17 @@ public class HomeQueryActivity extends BaseActivity {
         editData();
         kindData();
 
-        flowLayout = (FlowLayout) findViewById(R.id.flowlayout);
-        ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp.leftMargin = 5;
-        lp.rightMargin = 5;
-        lp.topMargin = 5;
-        lp.bottomMargin = 5;
-        for (int i = 0; i < mNames.length; i++) {
-            TextView view = new TextView(this);
-            view.setText(mNames[i]);
-            view.setTextColor(Color.WHITE);
-            view.setBackgroundDrawable(getResources().getDrawable(R.drawable.textview_bg));
-            flowLayout.addView(view, lp);
-        }
+        //点击取消返回当前页
+//        query_cancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(HomeQueryActivity.this, HomeMainFragment.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+
+
     }
 
     public void editData() {
@@ -92,11 +87,31 @@ public class HomeQueryActivity extends BaseActivity {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                bean = gson.fromJson(response, HomeQueryBean.class);
+                HomeQueryBean bean = gson.fromJson(response, HomeQueryBean.class);
 
                 for (int i = 0; i < bean.getData().getHot_words().size(); i++) {
-                    arrayList.add(bean);
+                    arrayList.add(bean.getData().getHot_words().get(i));
                 }
+
+                //流式布局
+                ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                lp.leftMargin = 15;
+                lp.rightMargin = 15;
+                lp.topMargin = 5;
+                lp.bottomMargin = 5;
+                for (int i = 0; i < arrayList.size(); i++) {
+                    TextView view = new TextView(HomeQueryActivity.this);
+                    view.setText(arrayList.get(i));
+                    if (arrayList.size() == 1) {
+                        view.setTextColor(Color.RED);
+                    } else {
+                        view.setTextColor(Color.BLACK);
+                    }
+                    view.setBackgroundDrawable(getResources().getDrawable(R.drawable.textview_bg));
+                    flowLayout.addView(view, lp);
+                }
+
 
             }
         }, new Response.ErrorListener() {

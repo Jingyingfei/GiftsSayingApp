@@ -20,6 +20,12 @@ import java.util.ArrayList;
 public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.ViewHolder> {
     private ArrayList<RecommendBean> arrayList;
     private Context context;
+    private RecommendOnItemClickListener recommendOnItemClickListener;
+    private ViewHolder viewHolder;
+
+    public void setRecommendOnItemClickListener(RecommendOnItemClickListener recommendOnItemClickListener) {
+        this.recommendOnItemClickListener = recommendOnItemClickListener;
+    }
 
     public void setArrayList(ArrayList<RecommendBean> arrayList) {
         this.arrayList = arrayList;
@@ -35,7 +41,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
     public RecommendAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.item_recommend, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
@@ -46,6 +52,15 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
             holder.price.setText(arrayList.get(position).getData().getItems().get(position).getPrice());
             Picasso.with(context).load(arrayList.get(position).getData().getItems().get(position).getCover_image_url()).into(holder.image);
 
+        if (recommendOnItemClickListener != null){
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    recommendOnItemClickListener.OnItemClickListener
+                            (viewHolder.itemView, viewHolder.getLayoutPosition());
+                }
+            });
+        }
 
     }
 

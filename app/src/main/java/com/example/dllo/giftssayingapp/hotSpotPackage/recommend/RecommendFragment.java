@@ -1,7 +1,9 @@
 package com.example.dllo.giftssayingapp.hotspotpackage.recommend;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -58,7 +60,7 @@ public class RecommendFragment extends BaseFragment {
             public void onResponse(String response) {
                 ArrayList<RecommendBean> arrayList = new ArrayList<>();
                 Gson gson = new Gson();
-                RecommendBean bean = gson.fromJson(response, RecommendBean.class);
+                final RecommendBean bean = gson.fromJson(response, RecommendBean.class);
 
                 for (int i = 0; i < bean.getData().getItems().size(); i++) {
                     bean.getData().getItems().get(i).getCover_image_url();
@@ -77,10 +79,23 @@ public class RecommendFragment extends BaseFragment {
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 recommend.setLayoutManager(manager);
                 recommend.setAdapter(adapter);
-                mainFl.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT,300);
-                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT,300);
+                mainFl.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT,500);
+                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT,500);
 
                 mHeader.attachTo(recommend);
+
+                //实现接口
+                adapter.setRecommendOnItemClickListener(new RecommendOnItemClickListener() {
+                    @Override
+                    public void OnItemClickListener(View view, int position) {
+
+                        Intent intent = new Intent(context, RecommendItemActivity.class);
+                        intent.putExtra("purchase_url", bean.getData().getItems().get(position).getPurchase_url());
+                        getActivity().startActivity(intent);
+                        getActivity().finish();
+
+                        }
+                });
 
 
 

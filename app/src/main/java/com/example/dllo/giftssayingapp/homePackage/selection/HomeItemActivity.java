@@ -31,6 +31,9 @@ public class HomeItemActivity extends BaseActivity {
         String url = intent.getStringExtra("url");
         itemWeb.loadUrl(url);
 
+        String url_kind =intent.getStringExtra("url_kind");
+        itemWeb.loadUrl(url_kind);
+
         WebSettings webSettings = itemWeb.getSettings();
         webSettings.setJavaScriptEnabled(true);
         itemWeb.setWebViewClient(new WebViewClient());

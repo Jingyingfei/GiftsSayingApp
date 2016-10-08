@@ -62,8 +62,8 @@ public class NewStarFragment extends BaseFragment {
                     bean.getData().getItems().get(i).getName();
                     bean.getData().getItems().get(i).getPrice();
                     arrayList.add(bean);
-
                 }
+
                 image = new ImageView(context);
                 image.setScaleType(ImageView.ScaleType.FIT_XY);
                 Picasso.with(context).load(bean.getData().getCover_image()).into(image);
@@ -73,8 +73,8 @@ public class NewStarFragment extends BaseFragment {
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 newStar.setLayoutManager(manager);
                 newStar.setAdapter(adapter);
-                fl_newstar.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 300);
-                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 300);
+                fl_newstar.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 500);
+                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 500);
                 mHeader.attachTo(newStar);
 
 

@@ -120,9 +120,13 @@ public class HomeSelectFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 HomeSelectBean bean = (HomeSelectBean) adapterView.getItemAtPosition(i);
-                Intent intent = new Intent(context, HomeItemActivity.class);
-                intent.putExtra("url", bean.getData().getItems().get(i).getUrl());
-                getActivity().startActivity(intent);
+                if (bean.getData().getItems().get(i).getUrl() != null) {
+                    Intent intent = new Intent(context, HomeItemActivity.class);
+                    intent.putExtra("url", bean.getData().getItems().get(i - 1).getUrl());
+                    getActivity().startActivity(intent);
+                } else {
+                    Toast.makeText(context, "没有接口", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
