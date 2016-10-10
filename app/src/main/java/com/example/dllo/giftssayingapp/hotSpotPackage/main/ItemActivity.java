@@ -1,7 +1,8 @@
-package com.example.dllo.giftssayingapp.hotspotpackage.recommend;
+package com.example.dllo.giftssayingapp.hotspotpackage.main;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -9,7 +10,7 @@ import android.webkit.WebViewClient;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseActivity;
 
-public class RecommendItemActivity extends BaseActivity {
+public class ItemActivity extends BaseActivity {
 
 
     private WebView webView;
@@ -30,8 +31,23 @@ public class RecommendItemActivity extends BaseActivity {
         String url = intent.getStringExtra("purchase_url");
         webView.loadUrl(url);
 
+        String purchase_url = intent.getStringExtra("url");
+        webView.loadUrl(purchase_url);
+
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
+
+    }
+
+    //按返回键时， 不退出程序而是返回上一浏览页面
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()){
+            webView.goBack();
+            Log.d("ItemActivity", "000000000000");
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

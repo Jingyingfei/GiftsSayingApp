@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -30,8 +31,6 @@ import java.util.ArrayList;
  * http://api.liwushuo.com/v2/channels/103/items?limit=20&ad=2&gender=2&offset=0&generation=1
  */
 public class HomeSelectFragment extends BaseFragment {
-    private String strNetImage = "http://api.liwushuo.com/v2/banners";
-    private String strNetSpe = "http://api.liwushuo.com/v2/secondary_banners?gender=2&generation=1";
     private ViewPager homeImage;
     private HomeImageBean bean;
     private ListView homeSelect;
@@ -84,8 +83,55 @@ public class HomeSelectFragment extends BaseFragment {
 
         homeImage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            public void onPageScrolled(final int position, float positionOffset, int positionOffsetPixels) {
+                //当手指按住轮播图不动时，轮播图停止滚动；当点击轮播图时，跳转到相关界面
+                homeImage.setOnTouchListener(new View.OnTouchListener() {
+                    private long downTime;
+                    private int downX;
 
+                    //给图片注册触摸事件
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        switch (motionEvent.getAction()) {
+                            // 按下去时，记录按下的坐标和时间，用于判断是否是点击事件
+                            case MotionEvent.ACTION_DOWN:
+                                // 手指按下时，取消所有事件，即轮播图不在滚动了
+                                handler.removeCallbacksAndMessages(null);
+                                downX = (int) motionEvent.getX();
+                                downTime = System.currentTimeMillis();
+                                break;
+                            // 抬起手指时，判断落下抬起的时间差和坐标，符合以下条件为点击
+                            case MotionEvent.ACTION_UP:
+                                handler.sendEmptyMessageDelayed(0, 2000);
+                                // 考虑到手按下和抬起时的坐标不可能完全重合，这里给出30的坐标偏差
+                                if (System.currentTimeMillis() - downTime < 500
+                                        && Math.abs(downX - motionEvent.getX()) < 30) {
+                                    if (4 == position) {
+                                        Intent intent = new Intent(context, HomeImageFiveActivity.class);
+                                        startActivity(intent);
+                                    }
+                                    if (3 == position) {
+                                        Intent intent = new Intent(context, HomeImageFourActivity.class);
+                                        startActivity(intent);
+                                    }
+                                    if (2 == position) {
+                                        Intent intent = new Intent(context, HomeImageThreeActivity.class);
+                                        startActivity(intent);
+                                    }
+                                    if (1 == position) {
+                                        Intent intent = new Intent(context, HomeImageTwoActivity.class);
+                                        startActivity(intent);
+                                    }
+                                    if (0 == position) {
+                                        Intent intent = new Intent(context, HomeImageOneActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }
+                                break;
+                        }
+                        return false;
+                    }
+                });
             }
 
             @Override
@@ -106,13 +152,17 @@ public class HomeSelectFragment extends BaseFragment {
             }
         });
 
+
 //动画刷新
 //        View view1 = LayoutInflater.from(context).inflate(R.layout.refresh_home_select, null);
 //        ImageView refresh = (ImageView) view1.findViewById(R.id.iv_refresh);
 //        refresh.setImageResource(R.drawable.refresh);
 //        AnimationDrawable animationDrawable = (AnimationDrawable) refresh.getDrawable();
 //        animationDrawable.start();
+
+
     }
+
 
     //item的点击跳转事件
     public void jumpItem() {
@@ -120,7 +170,7 @@ public class HomeSelectFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 HomeSelectBean bean = (HomeSelectBean) adapterView.getItemAtPosition(i);
-                if (bean.getData().getItems().get(i).getUrl() != null) {
+                if (bean.getData().getItems().get(0).getUrl() != null) {
                     Intent intent = new Intent(context, HomeItemActivity.class);
                     intent.putExtra("url", bean.getData().getItems().get(i - 1).getUrl());
                     getActivity().startActivity(intent);
@@ -165,7 +215,7 @@ public class HomeSelectFragment extends BaseFragment {
     public void requestImageData() {
         //创建轮播图的网络请求
         images = new ArrayList<>();
-        StringRequest request = new StringRequest(strNetImage, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(URLValues.HOME_CAROUSEL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
@@ -209,7 +259,7 @@ public class HomeSelectFragment extends BaseFragment {
     }
 
     public void requestSpecial() {
-        StringRequest request = new StringRequest(strNetSpe, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(URLValues.HOME_BOX, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();

@@ -1,6 +1,6 @@
 package com.example.dllo.giftssayingapp.hotspotpackage.originality;
 
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +14,7 @@ import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.hotspotpackage.main.ItemActivity;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -54,18 +55,33 @@ public class OriginalityFragment extends BaseFragment {
 
                 ArrayList<OriginalityBean> arrayList = new ArrayList<>();
                 Gson gson = new Gson();
-                OriginalityBean bean = gson.fromJson(response, OriginalityBean.class);
+                final OriginalityBean bean = gson.fromJson(response, OriginalityBean.class);
 
                 Picasso.with(context).load(bean.getData().getCover_image()).into(image);
                 arrayList.add(bean);
-                Log.d("OriginalityFragment", bean.getData().getCover_image());
 
                 OriginalityAdapter adapter = new OriginalityAdapter(context);
                 adapter.setArrayList(arrayList);
                 ll_originality.setAdapter(adapter);
                 ll_originality.addHeaderView(view);
 
+                adapter.setOnListViewItemClick(new OnListViewItemClick() {
+                    @Override
+                    public void click(int itemPositon) {
+                        Intent intent = new Intent(context, ItemActivity.class);
+                        intent.putExtra("url", bean.getData().getItems().get(itemPositon).getPurchase_url());
+                        startActivity(intent);
+                    }
+                });
 
+                adapter.setOnListViewItemRightClick(new OnListViewItemRightClick() {
+                    @Override
+                    public void rightClick(int rightPosition) {
+                        Intent intent = new Intent(context, ItemActivity.class);
+                        intent.putExtra("url", bean.getData().getItems().get(rightPosition).getPurchase_url());
+                        startActivity(intent);
+                    }
+                });
             }
         }, new Response.ErrorListener() {
             @Override

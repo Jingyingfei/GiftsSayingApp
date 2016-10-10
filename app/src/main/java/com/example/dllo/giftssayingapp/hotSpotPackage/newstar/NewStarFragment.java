@@ -1,7 +1,9 @@
 package com.example.dllo.giftssayingapp.hotspotpackage.newstar;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -15,6 +17,8 @@ import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.hotspotpackage.main.ItemActivity;
+import com.example.dllo.giftssayingapp.hotspotpackage.main.OnItemClickListener;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -55,7 +59,7 @@ public class NewStarFragment extends BaseFragment {
             public void onResponse(String response) {
                 ArrayList<NewStarBean> arrayList = new ArrayList<>();
                 Gson gson = new Gson();
-                NewStarBean bean = gson.fromJson(response, NewStarBean.class);
+                final NewStarBean bean = gson.fromJson(response, NewStarBean.class);
 
                 for (int i = 0; i < bean.getData().getItems().size(); i++) {
                     bean.getData().getItems().get(i).getCover_image_url();
@@ -77,6 +81,21 @@ public class NewStarFragment extends BaseFragment {
                 mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 500);
                 mHeader.attachTo(newStar);
 
+
+                //接口实现
+                adapter.setStarOnItemClickListener(new OnItemClickListener() {
+                    @Override
+                    public void OnItemClickListener(View view, int position) {
+                        if (bean.getData().getItems().get(position).getPurchase_url() != null) {
+                            Intent intent = new Intent(context, ItemActivity.class);
+                            intent.putExtra("purchase_url", bean.getData().getItems().get(position).getPurchase_url());
+                            getActivity().startActivity(intent);
+
+                        } else {
+                            Toast.makeText(context, "接口未找到", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
             }
         }, new Response.ErrorListener() {

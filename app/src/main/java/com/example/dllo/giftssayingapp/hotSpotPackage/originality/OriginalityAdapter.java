@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
@@ -19,6 +20,16 @@ import java.util.ArrayList;
 public class OriginalityAdapter extends BaseAdapter {
     private ArrayList<OriginalityBean> arrayList;
     private Context context;
+    private OnListViewItemClick onListViewItemClick;
+    private OnListViewItemRightClick onListViewItemRightClick;
+
+    public void setOnListViewItemRightClick(OnListViewItemRightClick onListViewItemRightClick) {
+        this.onListViewItemRightClick = onListViewItemRightClick;
+    }
+
+    public void setOnListViewItemClick(OnListViewItemClick onListViewItemClick) {
+        this.onListViewItemClick = onListViewItemClick;
+    }
 
     public void setArrayList(ArrayList<OriginalityBean> arrayList) {
         this.arrayList = arrayList;
@@ -55,6 +66,10 @@ public class OriginalityAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
+        RelativeLayout left_item = (RelativeLayout) view.findViewById(R.id.left_item);
+        RelativeLayout right_item = (RelativeLayout) view.findViewById(R.id.right_item);
+
+
         i = i + i;
         Picasso.with(context).load(arrayList.get(0).getData().getItems().get(i).getCover_image_url()).into(viewHolder.image);
         viewHolder.name.setText(arrayList.get(0).getData().getItems().get(i).getName());
@@ -63,6 +78,26 @@ public class OriginalityAdapter extends BaseAdapter {
         Picasso.with(context).load(arrayList.get(0).getData().getItems().get(i + 1).getCover_image_url()).into(viewHolder.image1);
         viewHolder.name1.setText(arrayList.get(0).getData().getItems().get(i + 1).getName());
         viewHolder.price1.setText(arrayList.get(0).getData().getItems().get(i + 1).getPrice());
+
+        final int finalI = i;
+        left_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int itemPosition = finalI;
+                onListViewItemClick.click(itemPosition);
+            }
+        });
+        final int finalI1 = i;
+        right_item.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                int rightPosition = finalI1 + 1;
+                onListViewItemRightClick.rightClick(rightPosition);
+            }
+        });
+
+
         return view;
     }
 

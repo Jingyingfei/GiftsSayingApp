@@ -10,6 +10,8 @@ public final class URLValues {
     public static final String HOME_TITLE = "http://api.liwushuo.com/v2/channels/preset?gender=2&generation=1";
     //home轮播图url
     public static final String HOME_CAROUSEL = "http://api.liwushuo.com/v2/banners";
+    //home第五张轮播图url
+    public static final String HOME_CAROUSEL_FIVE = "http://api.liwushuo.com/v2/collections/356/posts?gender=1&generation=2&limit=20&offset=0";
     //home小方框url
     public static final String HOME_BOX = "http://api.liwushuo.com/v2/secondary_banners?gender=2&generation=1";
     //home的listview url
@@ -17,10 +19,7 @@ public final class URLValues {
 
     //home搜索edittext点击进入后的按钮
     public  static final String HOME_QUERY = "http://api.liwushuo.com/v2/search/hot_words";
-    //home的listview 点击进入界面的url
-    public static final String HOME_DETAIL_CLICK_TAOBAO = "http://www.liwushuo.com/posts/";
-    public static final String HOME_DETAIL_BEFORE = "http://api.liwushuo.com/v2/posts/";
-    public static final String HOME_DETAIL_AFTER = "?show_baichuan=1";
+
 
 
     //榜单

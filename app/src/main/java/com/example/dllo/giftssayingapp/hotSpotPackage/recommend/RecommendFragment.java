@@ -17,6 +17,8 @@ import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.hotspotpackage.main.ItemActivity;
+import com.example.dllo.giftssayingapp.hotspotpackage.main.OnItemClickListener;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -42,10 +44,9 @@ public class RecommendFragment extends BaseFragment {
     protected void initView() {
         recommend = bindView(R.id.rv_recommend);
         //image = bindView(R.id.iv_image);
-      //  mHeader = bindView(R.id.header);
+        //  mHeader = bindView(R.id.header);
         mHeader = new RecyclerViewHeader(getContext());
         mainFl = bindView(R.id.main_fl);
-
 
     }
 
@@ -79,26 +80,26 @@ public class RecommendFragment extends BaseFragment {
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 recommend.setLayoutManager(manager);
                 recommend.setAdapter(adapter);
-                mainFl.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT,500);
-                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT,500);
+                mainFl.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 500);
+                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 500);
 
                 mHeader.attachTo(recommend);
 
                 //实现接口
-                adapter.setRecommendOnItemClickListener(new RecommendOnItemClickListener() {
+                adapter.setRecommendOnItemClickListener(new OnItemClickListener() {
                     @Override
                     public void OnItemClickListener(View view, int position) {
-
-                        Intent intent = new Intent(context, RecommendItemActivity.class);
-                        intent.putExtra("purchase_url", bean.getData().getItems().get(position).getPurchase_url());
-                        getActivity().startActivity(intent);
-                        getActivity().finish();
-
+                        if (bean.getData().getItems().get(position).getPurchase_url() != null) {
+                            Intent intent = new Intent(context, ItemActivity.class);
+                            intent.putExtra("purchase_url", bean.getData().getItems().get(position).getPurchase_url());
+                            getActivity().startActivity(intent);
+                        } else {
+                            Toast.makeText(context, "接口未找到", Toast.LENGTH_SHORT).show();
                         }
+
+
+                    }
                 });
-
-
-
             }
         }, new Response.ErrorListener() {
             @Override

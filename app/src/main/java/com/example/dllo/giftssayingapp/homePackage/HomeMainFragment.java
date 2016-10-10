@@ -179,7 +179,6 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
                 if (motionEvent.getAction() == MotionEvent.ACTION_OUTSIDE) {
                     Log.d("HomeMainFragment", "点击了popupWindow外侧");
                     popupWindow.dismiss();
-
                     return true;
                 }
                 return false;

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
+import com.example.dllo.giftssayingapp.hotspotpackage.main.OnItemClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -20,10 +21,10 @@ import java.util.ArrayList;
 public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.ViewHolder> {
     private ArrayList<RecommendBean> arrayList;
     private Context context;
-    private RecommendOnItemClickListener recommendOnItemClickListener;
+    private OnItemClickListener recommendOnItemClickListener;
     private ViewHolder viewHolder;
 
-    public void setRecommendOnItemClickListener(RecommendOnItemClickListener recommendOnItemClickListener) {
+    public void setRecommendOnItemClickListener(OnItemClickListener recommendOnItemClickListener) {
         this.recommendOnItemClickListener = recommendOnItemClickListener;
     }
 
@@ -46,18 +47,18 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(RecommendAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecommendAdapter.ViewHolder holder, int position) {
 
             holder.name.setText(arrayList.get(position).getData().getItems().get(position).getName());
             holder.price.setText(arrayList.get(position).getData().getItems().get(position).getPrice());
             Picasso.with(context).load(arrayList.get(position).getData().getItems().get(position).getCover_image_url()).into(holder.image);
 
         if (recommendOnItemClickListener != null){
-            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     recommendOnItemClickListener.OnItemClickListener
-                            (viewHolder.itemView, viewHolder.getLayoutPosition());
+                            (holder.itemView, holder.getLayoutPosition());
                 }
             });
         }

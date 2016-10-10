@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.dllo.giftssayingapp.mepackage.FeedBackActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ff384f">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_holo_dark"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="15dp"
+                android:src="@mipmap/abc_ic_ab_back_holo_dark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="意见反馈"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="发送"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:text="反馈内容" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="5dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="小礼君很需要你的意见和建议~"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:singleLine="true"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:text="联系方式" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@null"
+            android:hint="电话/QQ/邮箱"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:text="加入礼物说Q群415897693,回复更及时哦~" />
+</LinearLayout>

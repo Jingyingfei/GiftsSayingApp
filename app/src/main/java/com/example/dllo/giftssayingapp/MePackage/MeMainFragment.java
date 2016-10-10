@@ -28,7 +28,6 @@ public class MeMainFragment extends BaseFragment implements View.OnClickListener
         message = bindView(R.id.iv_me_message);
         scan = bindView(R.id.iv_me_scan);
         setting.setOnClickListener(this);
-
     }
 
     @Override

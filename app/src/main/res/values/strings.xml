@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GiftsSayingApp</string>
+    <string name="text_image_five">海淘宝典</string>
+    <string name="text_image_one">攻略详情</string>
+    <string name="text_image_two">攻略详情</string>
+    <string name="text_image_three">攻略详情</string>
+    <string name="text_image_four">[一个]</string>
 </resources>

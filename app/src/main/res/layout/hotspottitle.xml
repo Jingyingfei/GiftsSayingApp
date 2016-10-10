@@ -17,6 +17,5 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
-        android:alpha="0.5"
         android:src="@mipmap/attendance_share_icon" />
 </RelativeLayout>

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
+import com.example.dllo.giftssayingapp.hotspotpackage.main.OnItemClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -19,6 +20,11 @@ import java.util.ArrayList;
 public class NewStarAdapter extends RecyclerView.Adapter<NewStarAdapter.ViewHolder> {
     private ArrayList<NewStarBean> arrayList;
     private Context context;
+    private OnItemClickListener starOnItemClickListener;
+
+    public void setStarOnItemClickListener(OnItemClickListener starOnItemClickListener) {
+        this.starOnItemClickListener = starOnItemClickListener;
+    }
 
     public void setArrayList(ArrayList<NewStarBean> arrayList) {
         this.arrayList = arrayList;
@@ -38,12 +44,20 @@ public class NewStarAdapter extends RecyclerView.Adapter<NewStarAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(NewStarAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final NewStarAdapter.ViewHolder holder, int position) {
 
         holder.name.setText(arrayList.get(position).getData().getItems().get(position).getName());
         holder.price.setText(arrayList.get(position).getData().getItems().get(position).getPrice());
         Picasso.with(context).load(arrayList.get(position).getData().getItems().get(position).getCover_image_url()).into(holder.image);
-
+        if (starOnItemClickListener != null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    starOnItemClickListener.OnItemClickListener
+                            (holder.itemView, holder.getLayoutPosition());
+                }
+            });
+        }
 
     }
 
