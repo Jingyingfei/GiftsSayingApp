@@ -1,5 +1,8 @@
 package com.example.dllo.giftssayingapp.homepackage;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -23,6 +26,7 @@ import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.example.dllo.giftssayingapp.homepackage.selection.HomeQueryBean;
 import com.example.dllo.giftssayingapp.homepackage.selection.HomeSearchFragment;
+import com.example.dllo.giftssayingapp.homepackage.selection.QueryAdapter;
 import com.google.gson.Gson;
 
 import java.io.UnsupportedEncodingException;
@@ -45,6 +49,9 @@ public class HomeQueryActivity extends BaseActivity {
     private List<String> arrayList = new ArrayList<>();
     private HomeQueryBean bean;
     private String wordUrl;
+    private SQLiteDatabase database;
+    private TextView search_record;
+    private QueryAdapter adapter;
 
 
     @Override
@@ -57,8 +64,9 @@ public class HomeQueryActivity extends BaseActivity {
         query_name = bindView(R.id.et_home_query_name);
         query_cancel = bindView(R.id.tv_home_query_cancel);
         flowLayout = bindView(R.id.flowlayout);
-        lv = bindView(R.id.lv_search_jilu);
+        lv = bindView(R.id.lv_search_query);
         deteAll = bindView(R.id.btn_search_deteall);
+        search_record = bindView(R.id.tv_search_record);
 
     }
 
@@ -100,9 +108,21 @@ public class HomeQueryActivity extends BaseActivity {
 
             }
         });
+        search_record.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (query_name.getText().length() != 0) {
+                    dataBase();
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        queryData();
+
+
 
     }
-
 
     public void editData() {
         StringRequest request = new StringRequest(URLValues.EDIT_NAME, new Response.Listener<String>() {
@@ -121,8 +141,6 @@ public class HomeQueryActivity extends BaseActivity {
         });
         VolleySingleton.getInstance().addRequest(request);
     }
-
-
 
     //搜索种类的网络获取解析
     public void kindData() {
@@ -193,6 +211,50 @@ public class HomeQueryActivity extends BaseActivity {
 
             }
         });
+
+    }
+    public void dataBase() {
+        GiftsSearchHelper helper = new GiftsSearchHelper(this, "giftsSearch.db", null, 1);
+        database = helper.getWritableDatabase();
+        if (query_name.getText().length() != 0) {
+            ContentValues values = new ContentValues();
+            values.put("name", query_name.getText().toString());
+            database.insert("search", null, values);
+        }
+    }
+
+    //查找数据库后放在listView
+    public void queryData(){
+        final ArrayList<String> strings = new ArrayList<>();
+        Cursor cursor = database.query("search", null, null, null, null, null, null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(cursor.getColumnIndex("name"));
+                strings.add(name);
+            }
+            adapter = new QueryAdapter(this);
+            adapter.setStrings(strings);
+            lv.setAdapter(adapter);
+
+            adapter.setOnItemClickListener(new QueryAdapter.OnQueryItemClickListener() {
+                @Override
+                public void onClick(int position) {
+                    database.delete("search", "name = ?", new String[]{strings.get(position)});
+                    strings.remove(position);
+                    adapter.notifyDataSetChanged();
+                }
+            });
+
+            //点击删除全部
+            deteAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    database.delete("word", null, null);
+                    strings.clear();
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }
 
     }
 

@@ -34,10 +34,6 @@
             android:textSize="15sp" />
     </RelativeLayout>
 
-
-
-
-
     <FrameLayout
         android:id="@+id/frame_home_query"
         android:layout_width="match_parent"
@@ -101,10 +97,9 @@
             </RelativeLayout>
 
             <ListView
-                android:id="@+id/lv_search_jilu"
+                android:id="@+id/lv_search_query"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
             </ListView>
         </LinearLayout>
     </FrameLayout>

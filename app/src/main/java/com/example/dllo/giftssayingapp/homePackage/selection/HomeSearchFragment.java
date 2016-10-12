@@ -48,7 +48,7 @@ public class HomeSearchFragment extends BaseFragment {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                WordBean bean = gson.fromJson(response,WordBean.class);
+                HomeNameBean bean = gson.fromJson(response,HomeNameBean.class);
                 List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
                 for (int i = 0; i < bean.getData().getWords().size(); i++) {
                     Map<String, Object> listItem = new HashMap<String, Object>();
