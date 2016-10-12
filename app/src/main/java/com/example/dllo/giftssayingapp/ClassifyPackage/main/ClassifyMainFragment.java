@@ -18,6 +18,7 @@ import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.example.dllo.giftssayingapp.classifypackage.Single.SingleFragment;
 import com.example.dllo.giftssayingapp.basepackage.EditBean;
 import com.example.dllo.giftssayingapp.classifypackage.Strategy.StrategyFragment;
+import com.example.dllo.giftssayingapp.homepackage.HomeQueryActivity;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -81,7 +82,7 @@ public class ClassifyMainFragment extends BaseFragment implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.edit_strategy:
-                startActivity(new Intent(getContext(), EditActivity.class));
+                startActivity(new Intent(getContext(), HomeQueryActivity.class));
                 break;
         }
     }

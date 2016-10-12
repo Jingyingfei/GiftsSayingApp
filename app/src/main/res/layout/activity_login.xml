@@ -9,7 +9,7 @@
     <ImageButton
         android:id="@+id/iBtn_wrong"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_margin="10dp"
         android:background="#fafafa"
         android:src="@mipmap/btn_close" />
@@ -23,13 +23,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="15dp"
                 android:layout_marginLeft="30dp"
                 android:src="@mipmap/icon_mobile" />
 
@@ -39,29 +38,72 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:hint="输入手机号"
+                android:paddingLeft="10dp"
+                android:background="@null"
                 android:singleLine="true" />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="40dp"
+            android:layout_marginRight="30dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:src="@mipmap/icon_password" />
 
-            <EditText
-                android:id="@+id/et_passWord"
+            <LinearLayout
+                android:id="@+id/login_linear_The_login"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:hint="输入密码"
-                android:singleLine="true" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/icon_password"/>
+
+                <EditText
+                    android:id="@+id/et_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    android:paddingLeft="5dp"
+                    android:hint="输入密码"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/login_linear_Verification_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/icon_password"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    android:paddingLeft="5dp"
+                    android:hint="短信验证码"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:text="获取验证码"
+                    android:textSize="10dp"
+                    android:layout_height="match_parent"/>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/btn_login"
@@ -107,7 +149,7 @@
             <ImageButton
                 android:id="@+id/iBtn_sina_weibo"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="#fafafa"
                 android:src="@mipmap/ic_share_sina_weibo" />
@@ -115,7 +157,7 @@
             <ImageButton
                 android:id="@+id/iBtn_wechat"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="#fafafa"
                 android:src="@mipmap/ic_share_wechat" />
@@ -123,7 +165,7 @@
             <ImageButton
                 android:id="@+id/iBtn_tencent_qq"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="#fafafa"
                 android:src="@mipmap/ic_share_tencent_qq" />

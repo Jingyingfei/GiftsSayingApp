@@ -20,12 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".mainpackage.LoginActivity" />
-        <activity android:name=".classifypackage.main.EditActivity" />
         <activity android:name=".homepackage.selection.HomeItemActivity" />
         <activity android:name=".homepackage.HomeQueryActivity" />
         <activity android:name=".hotspotpackage.main.ItemActivity" />
-        <activity android:name=".mepackage.SettingActivity" />
+        <activity android:name=".mepackage.SettingActivity"/>
         <activity android:name=".mepackage.FeedBackActivity" />
+
         <activity android:name=".homepackage.selection.HomeImageFiveActivity" />
         <activity android:name=".homepackage.selection.HomeImageFourActivity" />
         <activity android:name=".homepackage.selection.HomeImageThreeActivity" />

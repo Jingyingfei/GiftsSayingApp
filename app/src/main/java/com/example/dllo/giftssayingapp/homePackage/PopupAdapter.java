@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
+import com.example.dllo.giftssayingapp.hotspotpackage.main.OnItemClickListener;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,11 @@ import java.util.ArrayList;
 public class PopupAdapter extends RecyclerView.Adapter<PopupAdapter.ViewHolder> {
     private ArrayList<String> arrayList;
     private Context context;
+    private OnItemClickListener popupOnItemClickListener;
+
+    public void setPopupOnItemClickListener(OnItemClickListener popupOnItemClickListener) {
+        this.popupOnItemClickListener = popupOnItemClickListener;
+    }
 
     public void setArrayList(ArrayList<String> arrayList) {
         this.arrayList = arrayList;
@@ -37,8 +43,18 @@ public class PopupAdapter extends RecyclerView.Adapter<PopupAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.name_popup.setText(arrayList.get(position));
+
+        if (popupOnItemClickListener != null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    popupOnItemClickListener.OnItemClickListener
+                            (holder.itemView, holder.getLayoutPosition());
+                }
+            });
+        }
     }
 
 

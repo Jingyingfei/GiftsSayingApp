@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by dllo on 16/9/30.
  */
-public class FlowLayout extends ViewGroup {
+public class FlowLayout extends ViewGroup implements View.OnClickListener {
     //存储所有的子view
     private List<List<View>> mAllChildViews = new ArrayList<>();
     //每一行的高度
@@ -159,6 +159,30 @@ public class FlowLayout extends ViewGroup {
         // TODO Auto-generated method stub
 
         return new MarginLayoutParams(getContext(), attrs);
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+        int count = getChildCount();
+        for (int i = 0; i < count; i++) {
+            View view = getChildAt(i);
+            view.setTag(i);
+            view.setOnClickListener(this);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        int position = (int) view.getTag();
+        if (onItemClickListener != null) {
+            onItemClickListener.onItemClick(position);
+        }
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
     }
 }
 

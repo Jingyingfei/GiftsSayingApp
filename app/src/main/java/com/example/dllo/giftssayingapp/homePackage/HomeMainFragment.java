@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -27,6 +28,7 @@ import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.example.dllo.giftssayingapp.homepackage.elsetab.HomeKindFragment;
 import com.example.dllo.giftssayingapp.homepackage.selection.HomeSelectFragment;
+import com.example.dllo.giftssayingapp.hotspotpackage.main.OnItemClickListener;
 import com.example.dllo.giftssayingapp.mainpackage.LoginActivity;
 import com.google.gson.Gson;
 
@@ -47,6 +49,7 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
     private ImageView dropDownButton;
     private RecyclerView rv_popupWindow;
     private HomeTabBean bean;
+    private RelativeLayout change;
 
     @Override
     protected int setLayout() {
@@ -73,7 +76,6 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
             public void onClick(View view) {
                 Intent intent = new Intent(context, LoginActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         request();
@@ -124,8 +126,9 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
 
 
     }
+
     //edittext的网络获取
-    public void requestDataEdit(){
+    public void requestDataEdit() {
         StringRequest mStringRequests = new StringRequest(URLValues.EDIT_NAME, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -145,18 +148,17 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
     }
 
 
-
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.et_name:
                 Intent intent = new Intent(context, HomeQueryActivity.class);
                 getActivity().startActivity(intent);
-                getActivity().finish();
                 break;
             case R.id.iv_dropDownButton:
                 showPopupWindow(view);
                 break;
+
         }
     }
 
@@ -164,15 +166,33 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
         //自定义布局,显示内容
         View view1 = LayoutInflater.from(context).inflate(R.layout.popup_window, null);
         rv_popupWindow = (RecyclerView) view1.findViewById(R.id.rv_popup_window);
+        change = (RelativeLayout) view1.findViewById(R.id.rLayout_change);
         PopupAdapter adapter = new PopupAdapter(context);
         adapter.setArrayList(strings);
-        Log.d("HomeMainFragment", "strings:" + strings);
         GridLayoutManager manager = new GridLayoutManager(context, 17);
         rv_popupWindow.setLayoutManager(manager);
         rv_popupWindow.setAdapter(adapter);
 
-        final PopupWindow popupWindow = new PopupWindow(view1, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,true);
+        final PopupWindow popupWindow = new PopupWindow(view1, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setTouchable(true);
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (popupWindow.isShowing()){
+                    popupWindow.dismiss();
+                }
+            }
+        });
+
+        adapter.setPopupOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void OnItemClickListener(View view, int position) {
+                vp_homeTab.setCurrentItem(position);
+                popupWindow.dismiss();
+            }
+        });
+
+
         popupWindow.setTouchInterceptor(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -186,7 +206,7 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
         });
         popupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.dot_focus));
         // 设置好参数之后再show
-        popupWindow.showAsDropDown(view);
+        popupWindow.showAsDropDown(view, 0, -100);
 
 
     }

@@ -46,7 +46,7 @@ public class HomeSelectFragment extends BaseFragment {
             homeImage.setCurrentItem(homeImage.getCurrentItem() + 1);
             if (isRunning) {
                 //发出一个hander的延时
-                handler.sendEmptyMessageDelayed(0, 2000);
+                handler.sendEmptyMessageDelayed(0, 4000);
             }
         }
     };
@@ -74,7 +74,7 @@ public class HomeSelectFragment extends BaseFragment {
         home_special = (LinearLayout) view.findViewById(R.id.ll_home_image);
         homeSelect.addHeaderView(view);
         //开启定时器
-        handler.sendEmptyMessageDelayed(0, 2000);
+        handler.sendEmptyMessageDelayed(0, 4000);
         requestImageData();
         requestData();
         requestSpecial();
@@ -89,7 +89,7 @@ public class HomeSelectFragment extends BaseFragment {
                     private long downTime;
                     private int downX;
 
-                    //给图片注册触摸事件
+                    //给轮播图图片注册触摸事件
                     @Override
                     public boolean onTouch(View view, MotionEvent motionEvent) {
                         switch (motionEvent.getAction()) {
@@ -102,7 +102,7 @@ public class HomeSelectFragment extends BaseFragment {
                                 break;
                             // 抬起手指时，判断落下抬起的时间差和坐标，符合以下条件为点击
                             case MotionEvent.ACTION_UP:
-                                handler.sendEmptyMessageDelayed(0, 2000);
+                                handler.sendEmptyMessageDelayed(0, 4000);
                                 // 考虑到手按下和抬起时的坐标不可能完全重合，这里给出30的坐标偏差
                                 if (System.currentTimeMillis() - downTime < 500
                                         && Math.abs(downX - motionEvent.getX()) < 30) {

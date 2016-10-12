@@ -11,6 +11,8 @@ import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 public class HomeImageFiveActivity extends BaseActivity {
 
 
@@ -37,6 +39,13 @@ public class HomeImageFiveActivity extends BaseActivity {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
+                final HomeImageFiveBean fiveBean = gson.fromJson(response,HomeImageFiveBean.class);
+                ArrayList<HomeImageFiveBean> arrayList = new ArrayList<>();
+                arrayList.add(fiveBean);
+
+                HomeImageFiveAdapter adpter = new HomeImageFiveAdapter(HomeImageFiveActivity.this);
+                adpter.setArrayList(arrayList);
+                listView_five.setAdapter(adpter);
                 
             }
         }, new Response.ErrorListener() {

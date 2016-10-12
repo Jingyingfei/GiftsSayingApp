@@ -14,7 +14,7 @@
 
     <EditText
         android:id="@+id/et_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_weight="1"
@@ -27,9 +27,7 @@
     <ImageView
         android:id="@+id/imageB_signin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="18dp"
-        android:alpha="0.5"
         android:src="@mipmap/btn_signin" />
 </LinearLayout>

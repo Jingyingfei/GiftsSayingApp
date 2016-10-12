@@ -16,14 +16,14 @@
         <ImageView
             android:id="@+id/iv_single_left_photo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="60dp" />
 
         <TextView
             android:id="@+id/tv_single_left_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="10sp" />
+            android:textSize="@dimen/single_right"/>
 
     </LinearLayout>
 
@@ -38,14 +38,14 @@
         <ImageView
             android:id="@+id/iv_single_center_photo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="60dp" />
 
         <TextView
             android:id="@+id/tv_single_center_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="10sp" />
+            android:textSize="@dimen/single_right"/>
     </LinearLayout>
 
     <LinearLayout
@@ -59,13 +59,13 @@
         <ImageView
             android:id="@+id/iv_single_right_photo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="60dp" />
 
         <TextView
             android:id="@+id/tv_single_right_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="10sp" />
+            android:textSize="@dimen/single_right"/>
     </LinearLayout>
 </LinearLayout>

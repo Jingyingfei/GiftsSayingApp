@@ -38,8 +38,7 @@ public class SettingActivity extends BaseActivity {
         iv_holo_dark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SettingActivity.this, MeMainFragment.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
     }
@@ -54,5 +53,8 @@ public class SettingActivity extends BaseActivity {
         });
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

@@ -20,8 +20,6 @@ public final class URLValues {
     //home搜索edittext点击进入后的按钮
     public  static final String HOME_QUERY = "http://api.liwushuo.com/v2/search/hot_words";
 
-
-
     //榜单
     //每日推荐
     public static final String HOTSPOT_RECOMMEND = "http://api.liwushuo.com/v2/ranks_v2/ranks/1?limit=20&offset=0";

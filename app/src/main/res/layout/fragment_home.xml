@@ -18,6 +18,7 @@
         android:layout_below="@+id/include"
         android:layout_toLeftOf="@+id/iv_dropDownButton" />
 
+
     <ImageView
         android:id="@+id/iv_dropDownButton"
         android:layout_width="50dp"
@@ -32,6 +33,6 @@
         android:id="@+id/vp_home_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tb_home_top"/>
+        android:layout_below="@+id/tb_home_top" />
 
 </RelativeLayout>
