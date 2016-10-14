@@ -59,9 +59,12 @@ public class RaiderHeaderAdpter extends RecyclerView.Adapter {
 
             Picasso.with(context).load(raidersBeen.get(0).getData()
                     .getColumns().get(position).getBanner_image_url()).into(myViewHolder.imageView);
-            myViewHolder.subtitle.setText(raidersBeen.get(0).getData().getColumns().get(position).getSubtitle());
-            myViewHolder.author.setText(raidersBeen.get(0).getData().getColumns().get(position).getAuthor());
-            myViewHolder.title.setText(raidersBeen.get(0).getData().getColumns().get(position).getTitle());
+            myViewHolder.subtitle.setText(raidersBeen.get(0).getData()
+                    .getColumns().get(position).getSubtitle());
+            myViewHolder.author.setText(raidersBeen.get(0).getData()
+                    .getColumns().get(position).getAuthor());
+            myViewHolder.title.setText(raidersBeen.get(0).getData()
+                    .getColumns().get(position).getTitle());
 
         } else {
             All all1 = (All) holder;

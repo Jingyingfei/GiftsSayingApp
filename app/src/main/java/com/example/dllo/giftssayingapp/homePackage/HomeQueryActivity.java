@@ -3,7 +3,6 @@ package com.example.dllo.giftssayingapp.homepackage;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
@@ -13,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * Created by dllo on 16/9/29.
  */
-public class HomeQueryActivity extends BaseActivity {
+public class HomeQueryActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText query_name;
     private TextView query_cancel;
@@ -52,7 +52,9 @@ public class HomeQueryActivity extends BaseActivity {
     private SQLiteDatabase database;
     private TextView search_record;
     private QueryAdapter adapter;
-
+    private ArrayList<String> strings;
+    private HomeSearchFragment searchFragment;
+    private RelativeLayout ll_search;
 
     @Override
     protected int setLayout() {
@@ -65,23 +67,22 @@ public class HomeQueryActivity extends BaseActivity {
         query_cancel = bindView(R.id.tv_home_query_cancel);
         flowLayout = bindView(R.id.flowlayout);
         lv = bindView(R.id.lv_search_query);
+        ll_search = bindView(R.id.ll_search);
         deteAll = bindView(R.id.btn_search_deteall);
         search_record = bindView(R.id.tv_search_record);
+        query_cancel.setOnClickListener(this);
+
 
     }
 
     @Override
     protected void initData() {
+        GiftsSearchHelper helper = new GiftsSearchHelper(this, "gifts.db", null, 1);
+        database = helper.getWritableDatabase();
         editData();
         kindData();
+        queryData();
 
-        //点击取消返回当前页
-        query_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
 
         //搜索
         query_name.addTextChangedListener(new TextWatcher() {
@@ -100,6 +101,23 @@ public class HomeQueryActivity extends BaseActivity {
                 }
                 wordUrl = "http://api.liwushuo.com/v2/search/word_completed?keyword=" + str;
 
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+
+                if (searchFragment == null) {
+                    searchFragment = new HomeSearchFragment();
+                }
+//                Bundle args = new Bundle();
+//                args.putString("wordUrl", wordUrl);
+//                searchFragment.setArguments(args);
+
+                if (!searchFragment.isVisible()) {
+                    transaction.replace(R.id.frame_home_query, searchFragment);
+                    transaction.commit();
+                }
+                searchFragment.setUrl(wordUrl);
+
+
             }
 
             @Override
@@ -108,19 +126,6 @@ public class HomeQueryActivity extends BaseActivity {
 
             }
         });
-        search_record.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (query_name.getText().length() != 0) {
-                    dataBase();
-                    adapter.notifyDataSetChanged();
-                }
-            }
-        });
-
-        queryData();
-
-
 
     }
 
@@ -170,8 +175,6 @@ public class HomeQueryActivity extends BaseActivity {
                 flowData();
 
 
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -189,33 +192,16 @@ public class HomeQueryActivity extends BaseActivity {
 
 
     //流式布局的点击事件
-    public void flowData(){
-
+    public void flowData() {
         flowLayout.setOnItemClickListener(new FlowLayout.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(HomeQueryActivity.this, "点击" + position, Toast.LENGTH_SHORT).show();
-                Toast.makeText(HomeQueryActivity.this, "点击", Toast.LENGTH_SHORT).show();
                 query_name.setText(bean.getData().getHot_words().get(position));
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-
-                HomeSearchFragment searchFragment = new HomeSearchFragment();
-                Bundle args = new Bundle();
-                args.putString("wordUrl", wordUrl);
-                searchFragment.setArguments(args);
-
-                transaction.replace(R.id.frame_home_query, searchFragment);
-                transaction.commit();
-
-
             }
         });
-
     }
+
     public void dataBase() {
-        GiftsSearchHelper helper = new GiftsSearchHelper(this, "giftsSearch.db", null, 1);
-        database = helper.getWritableDatabase();
         if (query_name.getText().length() != 0) {
             ContentValues values = new ContentValues();
             values.put("name", query_name.getText().toString());
@@ -224,17 +210,29 @@ public class HomeQueryActivity extends BaseActivity {
     }
 
     //查找数据库后放在listView
-    public void queryData(){
-        final ArrayList<String> strings = new ArrayList<>();
+    public void queryData() {
+        strings = new ArrayList<>();
         Cursor cursor = database.query("search", null, null, null, null, null, null);
+//        final SimpleCursorAdapter adapter = new SimpleCursorAdapter(HomeQueryActivity.this,R.layout.item_record,cursor,new String[]{"name"},new int[]{R.id.tv_search_query});
+//        lv.setAdapter(adapter);
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 String name = cursor.getString(cursor.getColumnIndex("name"));
                 strings.add(name);
             }
+            if (!strings.isEmpty()) {
+                for (int i = 0; i < strings.size(); i++) {
+                    for (int j = strings.size() - 1; j > i; j--) {
+                        if (strings.get(i).equals(strings.get(j))) {
+                            strings.remove(j);
+                        }
+                    }
+                }
+            }
             adapter = new QueryAdapter(this);
             adapter.setStrings(strings);
             lv.setAdapter(adapter);
+            ll_search.setVisibility(View.VISIBLE);
 
             adapter.setOnItemClickListener(new QueryAdapter.OnQueryItemClickListener() {
                 @Override
@@ -244,18 +242,31 @@ public class HomeQueryActivity extends BaseActivity {
                     adapter.notifyDataSetChanged();
                 }
             });
-
-            //点击删除全部
-            deteAll.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    database.delete("word", null, null);
-                    strings.clear();
-                    adapter.notifyDataSetChanged();
-                }
-            });
         }
+        //点击删除全部
+        deteAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                database.delete("search", null, null);
+                strings.clear();
+                ll_search.setVisibility(View.INVISIBLE);
+                adapter.notifyDataSetChanged();
+            }
+        });
 
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            //点击取消返回当前页,并存入数据库
+            case R.id.tv_home_query_cancel:
+                if (query_name.getText().toString() != null) {
+                    dataBase();
+                    adapter.notifyDataSetChanged();
+                }
+                onBackPressed();
+                break;
+        }
+    }
 }

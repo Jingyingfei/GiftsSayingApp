@@ -1,10 +1,15 @@
 package com.example.dllo.giftssayingapp.hotspotpackage.main;
 
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
@@ -34,7 +39,7 @@ public class HotSpotMainFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        ShareSDK.initSDK(context,"sharesdk的appkey");
+        ShareSDK.initSDK(context);
         tb_hotspot = bindView(R.id.tb_hotspot);
         vp_hotspot = bindView(R.id.vp_hotspot);
         share = bindView(R.id.iv_hot_spot_share);
@@ -88,6 +93,20 @@ public class HotSpotMainFragment extends BaseFragment {
         oks.setSite(getString(R.string.app_name));
         // siteUrl是分享此内容的网站地址，仅在QQ空间使用
         oks.setSiteUrl("http://sharesdk.cn");
+
+        // 构造一个复制链接的图标
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),R.mipmap.ic_share_hyperlink);
+        String label = "复制链接";
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager copy = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                copy.setText("http://hawaii.liwushuo.com/ranks_v2/ranks/1");
+                Toast.makeText(getContext(), "复制成功", Toast.LENGTH_LONG).show();
+            }
+        };
+        oks.setCustomerLogo(bitmap, label, listener);
+
 
         // 启动分享GUI
         oks.show(context);

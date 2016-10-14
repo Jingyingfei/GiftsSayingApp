@@ -57,12 +57,12 @@ public class HomeImageFiveAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.category.setText(arrayList.get(0).getData().getPosts().get(i).getColumn().getCategory());
-        viewHolder.column_title.setText(arrayList.get(0).getData().getPosts().get(i).getColumn().getTitle());
-        viewHolder.nickname.setText(arrayList.get(0).getData().getPosts().get(i).getAuthor().getNickname());
-        viewHolder.posts_title.setText(arrayList.get(0).getData().getPosts().get(i).getTitle());
-        Picasso.with(context).load(arrayList.get(0).getData().getCover_image_url()).into(viewHolder.cover_image_url);
-        Picasso.with(context).load(arrayList.get(0).getData().getPosts().get(i).getAuthor().getAvatar_url()).into(viewHolder.avatar_url);
+        viewHolder.category.setText(arrayList.get(i).getData().getPosts().get(i).getColumn().getTitle());
+        viewHolder.column_title.setText(arrayList.get(i).getData().getPosts().get(i).getAuthor().getNickname());
+        viewHolder.nickname.setText(arrayList.get(i).getData().getPosts().get(i).getColumn().getCategory());
+        viewHolder.posts_title.setText(arrayList.get(i).getData().getPosts().get(i).getTitle());
+        Picasso.with(context).load(arrayList.get(i).getData().getCover_image_url()).into(viewHolder.cover_image_url);
+        Picasso.with(context).load(arrayList.get(i).getData().getPosts().get(i).getAuthor().getAvatar_url()).into(viewHolder.avatar_url);
 
         return view;
     }

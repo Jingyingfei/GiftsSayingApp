@@ -30,4 +30,9 @@ public class ClassifyMainAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return fragments == null? 0 : fragments.size();
     }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return super.getPageTitle(position);
+    }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -50,10 +51,11 @@ public class HomeSelectFragment extends BaseFragment {
             }
         }
     };
-    private LinearLayout ll_dot;
     private ArrayList<ImageView> dots = new ArrayList<>();
     private ArrayList<HomeImageBean> images;
     private LinearLayout home_special;
+    private LinearLayout ll_viewpager;
+    ArrayList<HomeSelectBean> arrayList = new ArrayList<>();
 
     @Override
     protected int setLayout() {
@@ -63,7 +65,6 @@ public class HomeSelectFragment extends BaseFragment {
     @Override
     protected void initView() {
         homeSelect = bindView(R.id.ll_home_select);
-        ll_dot = bindView(R.id.ll_dot);
     }
 
     @Override
@@ -71,6 +72,7 @@ public class HomeSelectFragment extends BaseFragment {
         //轮播图加头
         View view = LayoutInflater.from(context).inflate(R.layout.vp_home_image, null);
         homeImage = (ViewPager) view.findViewById(R.id.vp_home_lunbo);
+        ll_viewpager = (LinearLayout) view.findViewById(R.id.ll_viewpager);
         home_special = (LinearLayout) view.findViewById(R.id.ll_home_image);
         homeSelect.addHeaderView(view);
         //开启定时器
@@ -79,11 +81,15 @@ public class HomeSelectFragment extends BaseFragment {
         requestData();
         requestSpecial();
         jumpItem();
-        initDots();
+
 
         homeImage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            int a;
+
             @Override
             public void onPageScrolled(final int position, float positionOffset, int positionOffsetPixels) {
+                Log.d("HomeSelectFragment", "position:" + position);
+
                 //当手指按住轮播图不动时，轮播图停止滚动；当点击轮播图时，跳转到相关界面
                 homeImage.setOnTouchListener(new View.OnTouchListener() {
                     private long downTime;
@@ -103,29 +109,29 @@ public class HomeSelectFragment extends BaseFragment {
                             // 抬起手指时，判断落下抬起的时间差和坐标，符合以下条件为点击
                             case MotionEvent.ACTION_UP:
                                 handler.sendEmptyMessageDelayed(0, 4000);
-                                // 考虑到手按下和抬起时的坐标不可能完全重合，这里给出30的坐标偏差
-                                if (System.currentTimeMillis() - downTime < 500
-                                        && Math.abs(downX - motionEvent.getX()) < 30) {
-                                    if (4 == position) {
-                                        Intent intent = new Intent(context, HomeImageFiveActivity.class);
-                                        startActivity(intent);
-                                    }
-                                    if (3 == position) {
-                                        Intent intent = new Intent(context, HomeImageFourActivity.class);
-                                        startActivity(intent);
-                                    }
-                                    if (2 == position) {
-                                        Intent intent = new Intent(context, HomeImageThreeActivity.class);
-                                        startActivity(intent);
-                                    }
-                                    if (1 == position) {
-                                        Intent intent = new Intent(context, HomeImageTwoActivity.class);
-                                        startActivity(intent);
-                                    }
-                                    if (0 == position) {
-                                        Intent intent = new Intent(context, HomeImageOneActivity.class);
-                                        startActivity(intent);
-                                    }
+
+                                if (4 == position) {
+                                    Intent intent = new Intent(context, HomeImageFiveActivity.class);
+                                    intent.putExtra("title_five", bean.getData().getBanners().get(4).getTarget().getTitle());
+                                    intent.putExtra("five", bean.getData().getBanners().get(4).getTarget_id());
+                                    startActivity(intent);
+                                }
+                                if (3 == position) {
+                                    Intent intent = new Intent(context, HomeImageFourActivity.class);
+                                    startActivity(intent);
+                                }
+                                if (2 == position) {
+                                    Intent intent = new Intent(context, HomeImageThreeActivity.class);
+                                    startActivity(intent);
+                                }
+                                if (1 == position) {
+                                    Intent intent = new Intent(context, HomeImageTwoActivity.class);
+                                    //  intent.putExtra("three",bean.getData().getBanners().get(1).getTarget_id());
+                                    startActivity(intent);
+                                }
+                                if (0 == position) {
+                                    Intent intent = new Intent(context, HomeImageOneActivity.class);
+                                    startActivity(intent);
                                 }
                                 break;
                         }
@@ -136,12 +142,12 @@ public class HomeSelectFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
+                a = position % dots.size();
                 for (int i = 0; i < dots.size(); i++) {
-                    ImageView img = dots.get(i);
-                    if (i == position % dots.size()) {
-                        img.setImageResource(R.drawable.dot_focus);
+                    if (i == a) {
+                        dots.get(i).setImageResource(R.drawable.dot_normal);
                     } else {
-                        img.setImageResource(R.drawable.dot_normal);
+                        dots.get(i).setImageResource(R.drawable.dot_focus);
                     }
                 }
             }
@@ -153,7 +159,7 @@ public class HomeSelectFragment extends BaseFragment {
         });
 
 
-//动画刷新
+        //动画刷新
 //        View view1 = LayoutInflater.from(context).inflate(R.layout.refresh_home_select, null);
 //        ImageView refresh = (ImageView) view1.findViewById(R.id.iv_refresh);
 //        refresh.setImageResource(R.drawable.refresh);
@@ -188,14 +194,9 @@ public class HomeSelectFragment extends BaseFragment {
             @Override
             public void onResponse(String response) {
                 // 解析
-                ArrayList<HomeSelectBean> arrayList = new ArrayList<>();
                 Gson gson = new Gson();
                 HomeSelectBean bean = gson.fromJson(response, HomeSelectBean.class);
                 for (int i = 0; i < bean.getData().getItems().size(); i++) {
-                    bean.getData().getItems().get(i).getCover_image_url();
-                    bean.getData().getItems().get(i).getTitle();
-                    bean.getData().getItems().get(i).getAuthor().getNickname();
-                    bean.getData().getItems().get(i).getAuthor().getAvatar_url();
                     arrayList.add(bean);
                 }
                 HomeSelectAdapter adapter = new HomeSelectAdapter(getContext());
@@ -221,12 +222,26 @@ public class HomeSelectFragment extends BaseFragment {
                 Gson gson = new Gson();
                 bean = gson.fromJson(response, HomeImageBean.class);
                 images.add(bean);
-
                 HomeImageAdapter adapter = new HomeImageAdapter(getContext());
                 adapter.setBean(bean);
                 homeImage.setAdapter(adapter);
+                //创建小圆点个数
+                if (bean != null) {
+                    for (int i = 0; i < bean.getData().getBanners().size(); i++) {
+                        ImageView imageView = new ImageView(context);
+                        if (0 == i) {
+                            imageView.setImageResource(R.drawable.dot_normal);
+                        } else {
+                            imageView.setImageResource(R.drawable.dot_focus);
+                        }
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(15, 15);
+                        params.setMargins(15, 0, 15, 0);
+                        imageView.setLayoutParams(params);
+                        dots.add(imageView);
+                        ll_viewpager.addView(dots.get(i));
+                    }
 
-
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -235,27 +250,6 @@ public class HomeSelectFragment extends BaseFragment {
             }
         });
         VolleySingleton.getInstance().addRequest(request);
-    }
-
-    //创建对应个数的小圆点
-    public void initDots() {
-        dots = new ArrayList<>();
-        for (int i = 0; i < images.size(); i++) {
-            ImageView imageView = new ImageView(context);
-            if (i == 0) {
-                imageView.setImageResource(R.drawable.dot_focus);
-            } else {
-                imageView.setImageResource(R.drawable.dot_normal);
-            }
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT, 1);
-            params.setMargins(5, 10, 5, 10);
-            dots.add(imageView);
-            //加载到布局容器中
-            ll_dot.addView(dots.get(i), params);
-            dots.add(imageView);
-
-        }
     }
 
     public void requestSpecial() {

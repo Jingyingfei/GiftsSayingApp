@@ -9,5 +9,12 @@
     <string name="homeQuerySearch">大家都在搜</string>
     <string name="textHome">切换频道</string>
     <string name="searchKind">我搜过的</string>
+    <string name="settingDialogOne">拨打礼物说客服电话</string>
+    <string name="settingDialogTwo">客服时间: 周一至周五</string>
+    <string name="settingDialogThree">9:00 - 18:00</string>
+    <string name="Home">首页</string>
+    <string name="HotsSpot">榜单</string>
+    <string name="classify">分类</string>
+    <string name="me">我的</string>
 
 </resources>

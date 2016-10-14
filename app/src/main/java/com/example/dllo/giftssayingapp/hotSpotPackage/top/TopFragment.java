@@ -60,9 +60,6 @@ public class TopFragment extends BaseFragment {
                 final TopBean bean = gson.fromJson(response, TopBean.class);
 
                 for (int i = 0; i < bean.getData().getItems().size(); i++) {
-                    bean.getData().getItems().get(i).getCover_image_url();
-                    bean.getData().getItems().get(i).getName();
-                    bean.getData().getItems().get(i).getPrice();
                     arrayList.add(bean);
 
                 }
@@ -75,8 +72,8 @@ public class TopFragment extends BaseFragment {
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 top.setLayoutManager(manager);
                 top.setAdapter(adapter);
-                fl_top.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 500);
-                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 500);
+                fl_top.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 350);
+                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 350);
                 mHeader.attachTo(top);
 
                 //接口实现

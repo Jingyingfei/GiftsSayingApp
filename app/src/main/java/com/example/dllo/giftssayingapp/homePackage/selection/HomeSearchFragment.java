@@ -1,7 +1,5 @@
 package com.example.dllo.giftssayingapp.homepackage.selection;
 
-import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -25,6 +23,7 @@ public class HomeSearchFragment extends BaseFragment {
 
     private ListView lv_home_search;
     private String strUrl;
+    private String url;
 
     @Override
     protected int setLayout() {
@@ -38,27 +37,26 @@ public class HomeSearchFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        Bundle agrs = getArguments();
-        strUrl = agrs.getString("wordUrl");
+//        Bundle agrs = getArguments();
+//        strUrl = agrs.getString("wordUrl");
         wordData();
     }
 
-    public void wordData(){
+    public void wordData() {
         StringRequest request = new StringRequest(strUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                HomeNameBean bean = gson.fromJson(response,HomeNameBean.class);
+                HomeNameBean bean = gson.fromJson(response, HomeNameBean.class);
                 List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
                 for (int i = 0; i < bean.getData().getWords().size(); i++) {
                     Map<String, Object> listItem = new HashMap<String, Object>();
-                    listItem.put("word",bean.getData().getWords().get(i));
-                    Log.d("SearchFragment", bean.getData().getWords().get(i));
+                    listItem.put("name", bean.getData().getWords().get(i));
                     listItems.add(listItem);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(getContext(),listItems,R.layout.simple_item,
-                        new String[]{"word"}, new int[]{R.id.tv_search_slimply});
+                SimpleAdapter adapter = new SimpleAdapter(getContext(), listItems, R.layout.simple_item,
+                        new String[]{"name"}, new int[]{R.id.tv_search_slimply});
                 lv_home_search.setAdapter(adapter);
             }
         }, new Response.ErrorListener() {
@@ -68,5 +66,10 @@ public class HomeSearchFragment extends BaseFragment {
             }
         });
         VolleySingleton.getInstance().addRequest(request);
+    }
+
+    public void setUrl(String url) {
+        this.strUrl = url;
+        wordData();
     }
 }

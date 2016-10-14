@@ -146,24 +146,24 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/iBtn_sina_weibo"
+            <ImageView
+                android:id="@+id/iv_sina_weibo"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="#fafafa"
                 android:src="@mipmap/ic_share_sina_weibo" />
 
-            <ImageButton
-                android:id="@+id/iBtn_wechat"
+            <ImageView
+                android:id="@+id/iv_wechat"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="#fafafa"
                 android:src="@mipmap/ic_share_wechat" />
 
-            <ImageButton
-                android:id="@+id/iBtn_tencent_qq"
+            <ImageView
+                android:id="@+id/iv_tencent_qq"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"

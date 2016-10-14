@@ -99,8 +99,8 @@
             <ListView
                 android:id="@+id/lv_search_query"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </ListView>
+                android:layout_height="match_parent"
+                android:divider="@null"/>
         </LinearLayout>
     </FrameLayout>
 

@@ -206,6 +206,7 @@
                 android:background="#aabfbfbf" />
 
             <RelativeLayout
+                android:id="@+id/rv_setting_mobile_service"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="#ffffff">
@@ -268,6 +269,14 @@
                     android:text="喜欢单品到默认清单"
                     android:textSize="15sp" />
 
+                <Switch
+                    android:checked="true"
+                    android:background="#00ff00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+
 
             </RelativeLayout>
 
@@ -278,6 +287,7 @@
                 android:background="#aabfbfbf" />
 
             <RelativeLayout
+                android:id="@+id/rv_setting_notification"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="#ffffff">
@@ -348,6 +358,7 @@
                 android:background="#aabfbfbf" />
 
             <RelativeLayout
+                android:id="@+id/rv_setting_clean_cache"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="#ffffff">
@@ -370,6 +381,7 @@
                     android:textSize="15sp" />
 
                 <TextView
+                    android:id="@+id/tv_clean_cache"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

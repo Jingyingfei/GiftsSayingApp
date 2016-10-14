@@ -38,7 +38,6 @@ public class QueryAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-
     @Override
     public int getCount() {
         return strings == null ? 0 : strings.size();
@@ -51,7 +50,7 @@ public class QueryAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return i;
+        return 0;
     }
 
     @Override
@@ -60,19 +59,18 @@ public class QueryAdapter extends BaseAdapter {
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_record, null);
             viewHolder = new ViewHolder(view);
-
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.record.setText(strings.get(i));
+
         viewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onItemClickListener.onClick(i);
             }
         });
-
         return view;
     }
 

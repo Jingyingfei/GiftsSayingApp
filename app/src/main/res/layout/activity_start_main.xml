@@ -30,7 +30,7 @@
             android:button="@null"
             android:drawableTop="@drawable/home"
             android:gravity="center"
-            android:text="首页" />
+            android:text="@string/Home" />
 
         <RadioButton
             android:id="@+id/rBtn_hotspot"
@@ -40,7 +40,7 @@
             android:button="@null"
             android:drawableTop="@drawable/hotspot"
             android:gravity="center"
-            android:text="榜单" />
+            android:text="@string/HotsSpot" />
 
         <RadioButton
             android:id="@+id/rBtn_classify"
@@ -50,7 +50,7 @@
             android:button="@null"
             android:drawableTop="@drawable/classification"
             android:gravity="center"
-            android:text="分类" />
+            android:text="@string/classify" />
 
         <RadioButton
             android:id="@+id/rBtn_me"
@@ -60,7 +60,7 @@
             android:button="@null"
             android:drawableTop="@drawable/my"
             android:gravity="center"
-            android:text="我的" />
+            android:text="@string/me" />
 
 
     </RadioGroup>

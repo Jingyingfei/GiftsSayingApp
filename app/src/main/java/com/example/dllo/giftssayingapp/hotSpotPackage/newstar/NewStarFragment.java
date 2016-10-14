@@ -77,8 +77,8 @@ public class NewStarFragment extends BaseFragment {
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 newStar.setLayoutManager(manager);
                 newStar.setAdapter(adapter);
-                fl_newstar.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 500);
-                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 500);
+                fl_newstar.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 350);
+                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 350);
                 mHeader.attachTo(newStar);
 
 

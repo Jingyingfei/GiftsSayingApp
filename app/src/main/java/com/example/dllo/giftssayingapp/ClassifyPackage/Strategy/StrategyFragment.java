@@ -25,11 +25,14 @@ import java.util.List;
  */
 public class StrategyFragment extends BaseFragment {
     private ExpandableListView expandableListView;
-    private List<String> group_list;
-    private List<List<String>> item_list;
-    private List<List<String>> item_list2;
-    private View viewHeader;
+    private List<String> group_list = new ArrayList<String>();
+    private List<List<String>> item_list = new ArrayList<List<String>>();
+
+    private List<List<String>> item_list2 = new ArrayList<List<String>>();
+    private List<String> group_list2 = new ArrayList<>();
+
     private RecyclerView raiderRv;
+    ArrayList<RaiderHeaderBean> beanArrayList = new ArrayList<>();
 
 
     @Override
@@ -40,7 +43,7 @@ public class StrategyFragment extends BaseFragment {
     @Override
     protected void initView() {
         expandableListView = bindView(R.id.expendlist);
-        View viewHeader = LayoutInflater.from(context).inflate(R.layout.raider_header_layout,null);
+        View viewHeader = LayoutInflater.from(context).inflate(R.layout.raider_header_layout, null);
         raiderRv = (RecyclerView) viewHeader.findViewById(R.id.rv_raider_header);
         expandableListView.addHeaderView(viewHeader);
     }
@@ -53,21 +56,20 @@ public class StrategyFragment extends BaseFragment {
     }
 
 
-    public void requestHeader(){
-        final ArrayList<RaiderHeaderBean> beanArrayList = new ArrayList<>();
+    public void requestHeader() {
+
         StringRequest stringRequest = new StringRequest(URLValues.STRATEGY_PART, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                RaiderHeaderBean bean = gson.fromJson(response,RaiderHeaderBean.class);
-                for (int i = 0; i < 12; i++) {
-                    beanArrayList.add(bean);
-                }
+                RaiderHeaderBean bean = gson.fromJson(response, RaiderHeaderBean.class);
+                beanArrayList.add(bean);
+
                 RaiderHeaderAdpter adpter = new RaiderHeaderAdpter(context);
                 adpter.setRaiderHeaderBean(beanArrayList);
                 raiderRv.setAdapter(adpter);
 
-                GridLayoutManager manager = new GridLayoutManager(context,3, LinearLayoutManager.HORIZONTAL,false);
+                GridLayoutManager manager = new GridLayoutManager(context, 3, LinearLayoutManager.HORIZONTAL, false);
                 raiderRv.setLayoutManager(manager);
 
             }
@@ -79,25 +81,22 @@ public class StrategyFragment extends BaseFragment {
         });
         VolleySingleton.getInstance().addRequest(stringRequest);
     }
+
     public void RaiderGet() {
         StringRequest stringRequest = new StringRequest(URLValues.STRATEGY_COLUMN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
                 StrategyBean bean = gson.fromJson(response, StrategyBean.class);
-                group_list = new ArrayList<String>();
-                item_list = new ArrayList<List<String>>();
+
                 for (int i = 0; i < bean.getData().getChannel_groups().size(); i++) {
                     group_list.add(bean.getData().getChannel_groups().get(i).getName());
                     item_list.add(group_list);
                 }
-
-                List<String> tmp_list = new ArrayList<>();
-                item_list2 = new ArrayList<List<String>>();
                 for (int j = 0; j < 3; j++) {
                     for (int i = 0; i < 6; i++) {
-                        tmp_list.add(bean.getData().getChannel_groups().get(j).getChannels().get(i).getCover_image_url());
-                        item_list2.add(tmp_list);
+                        group_list2.add(bean.getData().getChannel_groups().get(j).getChannels().get(i).getCover_image_url());
+                        item_list2.add(group_list2);
 
                     }
                 }

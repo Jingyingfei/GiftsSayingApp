@@ -45,7 +45,7 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
     private ArrayList<String> strings = new ArrayList<>();
     private EditText et_name;
     private ImageView imageB_sigin;
-    ArrayList<Fragment> fragments = new ArrayList<>();
+    private ArrayList<Fragment> fragments = new ArrayList<>();
     private ImageView dropDownButton;
     private RecyclerView rv_popupWindow;
     private HomeTabBean bean;
@@ -191,7 +191,6 @@ public class HomeMainFragment extends BaseFragment implements View.OnClickListen
                 popupWindow.dismiss();
             }
         });
-
 
         popupWindow.setTouchInterceptor(new View.OnTouchListener() {
             @Override

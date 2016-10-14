@@ -30,6 +30,7 @@ public class ClassifyMainFragment extends BaseFragment implements View.OnClickLi
     private EditText mEditText;
     private TabLayout tb_calssify;
     private ViewPager vp_classify;
+    private ArrayList<Fragment> fragments;
 
     @Override
     protected int setLayout() {
@@ -47,7 +48,7 @@ public class ClassifyMainFragment extends BaseFragment implements View.OnClickLi
 
     @Override
     protected void initData() {
-        ArrayList<Fragment> fragments = new ArrayList<>();
+        fragments = new ArrayList<>();
         fragments.add(new StrategyFragment());
         fragments.add(new SingleFragment());
 

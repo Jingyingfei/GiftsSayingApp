@@ -64,9 +64,6 @@ public class RecommendFragment extends BaseFragment {
                 final RecommendBean bean = gson.fromJson(response, RecommendBean.class);
 
                 for (int i = 0; i < bean.getData().getItems().size(); i++) {
-                    bean.getData().getItems().get(i).getCover_image_url();
-                    bean.getData().getItems().get(i).getName();
-                    bean.getData().getItems().get(i).getPrice();
                     arrayList.add(bean);
 
                 }
@@ -80,8 +77,8 @@ public class RecommendFragment extends BaseFragment {
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 recommend.setLayoutManager(manager);
                 recommend.setAdapter(adapter);
-                mainFl.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 500);
-                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 500);
+                mainFl.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 350);
+                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 350);
 
                 mHeader.attachTo(recommend);
 

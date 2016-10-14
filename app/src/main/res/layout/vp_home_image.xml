@@ -3,33 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_home_lunbo"
+    <FrameLayout
+        android:id="@+id/fl_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="160dp" />
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/vp_home_lunbo"
-        android:background="#33000000"
-        android:orientation="vertical"
-        android:padding="5dp">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_home_lunbo"
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
 
         <LinearLayout
-            android:id="@+id/ll_dot"
+            android:id="@+id/ll_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"></LinearLayout>
-    </LinearLayout>
+            android:layout_height="20dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+        </LinearLayout>
+
+    </FrameLayout>
 
     <HorizontalScrollView
         android:id="@+id/hs_home_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/vp_home_lunbo"
+        android:layout_below="@+id/fl_viewpager"
         android:scrollbars="none">
 
         <LinearLayout
