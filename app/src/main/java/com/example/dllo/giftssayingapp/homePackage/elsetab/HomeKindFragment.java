@@ -2,7 +2,6 @@ package com.example.dllo.giftssayingapp.homepackage.elsetab;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -14,6 +13,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.beanpackage.HomeKindBean;
 import com.example.dllo.giftssayingapp.homepackage.selection.HomeItemActivity;
 import com.google.gson.Gson;
 
@@ -27,6 +27,7 @@ public class HomeKindFragment extends BaseFragment {
 
     private ListView listView;
     private String strUrl;
+    ArrayList<HomeKindBean> arrayList = new ArrayList<>();
 
     @Override
     protected int setLayout() {
@@ -57,6 +58,7 @@ public class HomeKindFragment extends BaseFragment {
                 }
             }
         });
+
     }
 
     public void requestData() {
@@ -64,14 +66,11 @@ public class HomeKindFragment extends BaseFragment {
         StringRequest request = new StringRequest(strUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("HomeKindFragment", "网络请求了?");
-                ArrayList<HomeKindBean> arrayList = new ArrayList<>();
+
                 Gson gson = new Gson();
                 HomeKindBean bean = gson.fromJson(response, HomeKindBean.class);
                 for (int i = 0; i < bean.getData().getItems().size(); i++) {
-                    bean.getData().getItems().get(i).getCover_image_url();
-                    bean.getData().getItems().get(i).getTitle();
-                    bean.getData().getItems().get(i).getAuthor().getNickname();
+
                     arrayList.add(bean);
                 }
                 HomeKindAdapter adapter = new HomeKindAdapter(context);

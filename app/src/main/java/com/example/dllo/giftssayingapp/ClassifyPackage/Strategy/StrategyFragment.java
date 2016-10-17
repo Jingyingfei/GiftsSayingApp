@@ -15,6 +15,8 @@ import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.beanpackage.RaiderHeaderBean;
+import com.example.dllo.giftssayingapp.beanpackage.StrategyBean;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

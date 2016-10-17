@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
+import com.example.dllo.giftssayingapp.beanpackage.OriginalityBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

@@ -3,8 +3,8 @@ package com.example.dllo.giftssayingapp.hotspotpackage.top;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -12,13 +12,12 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.beanpackage.TopBean;
 import com.example.dllo.giftssayingapp.hotspotpackage.main.ItemActivity;
-import com.example.dllo.giftssayingapp.hotspotpackage.main.OnItemClickListener;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -30,9 +29,11 @@ import java.util.ArrayList;
 public class TopFragment extends BaseFragment {
     private RecyclerView top;
 
-    private RecyclerViewHeader mHeader;
     private ImageView image;
     private FrameLayout fl_top;
+    private TopBean bean;
+    private TopAdapter adapter;
+    private RecyclerView header;
 
     @Override
     protected int setLayout() {
@@ -42,8 +43,8 @@ public class TopFragment extends BaseFragment {
     @Override
     protected void initView() {
         top = bindView(R.id.rv_top);
-        mHeader = new RecyclerViewHeader(context);
         fl_top = bindView(R.id.fl_top);
+
     }
 
     @Override
@@ -57,29 +58,23 @@ public class TopFragment extends BaseFragment {
             public void onResponse(String response) {
                 ArrayList<TopBean> arrayList = new ArrayList<>();
                 Gson gson = new Gson();
-                final TopBean bean = gson.fromJson(response, TopBean.class);
-
+                bean = gson.fromJson(response, TopBean.class);
                 for (int i = 0; i < bean.getData().getItems().size(); i++) {
                     arrayList.add(bean);
-
                 }
-                image = new ImageView(context);
-                image.setScaleType(ImageView.ScaleType.FIT_XY);
-                Picasso.with(context).load(bean.getData().getCover_image()).into(image);
 
-                TopAdapter adapter = new TopAdapter(context);
+                adapter = new TopAdapter(context);
                 adapter.setArrayList(arrayList);
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
                 top.setLayoutManager(manager);
                 top.setAdapter(adapter);
-                fl_top.addView(mHeader, ViewGroup.LayoutParams.MATCH_PARENT, 350);
-                mHeader.addView(image, ViewGroup.LayoutParams.MATCH_PARENT, 350);
-                mHeader.attachTo(top);
+                setHeader(top);
+
 
                 //接口实现
-                adapter.setTopOnItemClickListener(new OnItemClickListener() {
+                adapter.setTopOnItemClickListener(new TopAdapter.OnItemClickListener() {
                     @Override
-                    public void OnItemClickListener(View view, int position) {
+                    public void onItemClick(int position, TopBean data) {
                         if (bean.getData().getItems().get(position).getPurchase_url() != null) {
                             Intent intent = new Intent(context, ItemActivity.class);
                             intent.putExtra("purchase_url", bean.getData().getItems().get(position).getPurchase_url());
@@ -101,4 +96,11 @@ public class TopFragment extends BaseFragment {
         VolleySingleton.getInstance().addRequest(request);
     }
 
+
+    public void setHeader(RecyclerView view) {
+        View header = LayoutInflater.from(context).inflate(R.layout.header, view, false);
+        ImageView imageView = (ImageView) header.findViewById(R.id.iv_header);
+        Picasso.with(context).load(bean.getData().getCover_image()).into(imageView);
+        adapter.setHeaderView(header);
+    }
 }

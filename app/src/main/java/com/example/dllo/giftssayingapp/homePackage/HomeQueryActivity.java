@@ -21,12 +21,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseActivity;
-import com.example.dllo.giftssayingapp.basepackage.EditBean;
+import com.example.dllo.giftssayingapp.beanpackage.EditBean;
+import com.example.dllo.giftssayingapp.basepackage.GiftsSearchHelper;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
-import com.example.dllo.giftssayingapp.homepackage.selection.HomeQueryBean;
+import com.example.dllo.giftssayingapp.beanpackage.HomeQueryBean;
 import com.example.dllo.giftssayingapp.homepackage.selection.HomeSearchFragment;
 import com.example.dllo.giftssayingapp.homepackage.selection.QueryAdapter;
+import com.example.dllo.giftssayingapp.toolbar.FlowLayout;
 import com.google.gson.Gson;
 
 import java.io.UnsupportedEncodingException;
@@ -44,7 +46,6 @@ public class HomeQueryActivity extends BaseActivity implements View.OnClickListe
     private FlowLayout flowLayout;
     private ListView lv;
     private ImageView deteAll;
-
 
     private List<String> arrayList = new ArrayList<>();
     private HomeQueryBean bean;

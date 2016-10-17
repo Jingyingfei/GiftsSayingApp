@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseActivity;
+import com.example.dllo.giftssayingapp.toolbar.DataCleanManager;
 
 /**
  * Created by dllo on 16/10/8.

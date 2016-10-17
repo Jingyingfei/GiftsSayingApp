@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,7 +20,12 @@ import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.beanpackage.HomeImageBean;
+import com.example.dllo.giftssayingapp.beanpackage.HomeSelectBean;
+import com.example.dllo.giftssayingapp.beanpackage.HomeSpecialBean;
 import com.google.gson.Gson;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -34,8 +38,8 @@ import java.util.ArrayList;
 public class HomeSelectFragment extends BaseFragment {
     private ViewPager homeImage;
     private HomeImageBean bean;
-    private ListView homeSelect;
-    private int currentItem = 0;
+    private PullToRefreshListView homeSelect;
+
     //设置轮播图的定时器
     //判断是否自己滚动
     private boolean isRunning = true;
@@ -52,7 +56,7 @@ public class HomeSelectFragment extends BaseFragment {
         }
     };
     private ArrayList<ImageView> dots = new ArrayList<>();
-    private ArrayList<HomeImageBean> images;
+    private ArrayList<HomeImageBean> images = new ArrayList<>();
     private LinearLayout home_special;
     private LinearLayout ll_viewpager;
     ArrayList<HomeSelectBean> arrayList = new ArrayList<>();
@@ -74,11 +78,13 @@ public class HomeSelectFragment extends BaseFragment {
         homeImage = (ViewPager) view.findViewById(R.id.vp_home_lunbo);
         ll_viewpager = (LinearLayout) view.findViewById(R.id.ll_viewpager);
         home_special = (LinearLayout) view.findViewById(R.id.ll_home_image);
-        homeSelect.addHeaderView(view);
+        ListView listView = homeSelect.getRefreshableView();
+        listView.addHeaderView(view);
         //开启定时器
         handler.sendEmptyMessageDelayed(0, 4000);
         requestImageData();
-        requestData();
+        requestData(URLValues.HOME_CELL);
+        homeSelect.onRefreshComplete();
         requestSpecial();
         jumpItem();
 
@@ -88,7 +94,6 @@ public class HomeSelectFragment extends BaseFragment {
 
             @Override
             public void onPageScrolled(final int position, float positionOffset, int positionOffsetPixels) {
-                Log.d("HomeSelectFragment", "position:" + position);
 
                 //当手指按住轮播图不动时，轮播图停止滚动；当点击轮播图时，跳转到相关界面
                 homeImage.setOnTouchListener(new View.OnTouchListener() {
@@ -110,29 +115,6 @@ public class HomeSelectFragment extends BaseFragment {
                             case MotionEvent.ACTION_UP:
                                 handler.sendEmptyMessageDelayed(0, 4000);
 
-                                if (4 == position) {
-                                    Intent intent = new Intent(context, HomeImageFiveActivity.class);
-                                    intent.putExtra("title_five", bean.getData().getBanners().get(4).getTarget().getTitle());
-                                    intent.putExtra("five", bean.getData().getBanners().get(4).getTarget_id());
-                                    startActivity(intent);
-                                }
-                                if (3 == position) {
-                                    Intent intent = new Intent(context, HomeImageFourActivity.class);
-                                    startActivity(intent);
-                                }
-                                if (2 == position) {
-                                    Intent intent = new Intent(context, HomeImageThreeActivity.class);
-                                    startActivity(intent);
-                                }
-                                if (1 == position) {
-                                    Intent intent = new Intent(context, HomeImageTwoActivity.class);
-                                    //  intent.putExtra("three",bean.getData().getBanners().get(1).getTarget_id());
-                                    startActivity(intent);
-                                }
-                                if (0 == position) {
-                                    Intent intent = new Intent(context, HomeImageOneActivity.class);
-                                    startActivity(intent);
-                                }
                                 break;
                         }
                         return false;
@@ -157,16 +139,18 @@ public class HomeSelectFragment extends BaseFragment {
 
             }
         });
+        //刷新加载
+        homeSelect.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                requestData(URLValues.HOME_CELL);
+            }
 
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 
-        //动画刷新
-//        View view1 = LayoutInflater.from(context).inflate(R.layout.refresh_home_select, null);
-//        ImageView refresh = (ImageView) view1.findViewById(R.id.iv_refresh);
-//        refresh.setImageResource(R.drawable.refresh);
-//        AnimationDrawable animationDrawable = (AnimationDrawable) refresh.getDrawable();
-//        animationDrawable.start();
-
-
+            }
+        });
     }
 
 
@@ -176,9 +160,9 @@ public class HomeSelectFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 HomeSelectBean bean = (HomeSelectBean) adapterView.getItemAtPosition(i);
-                if (bean.getData().getItems().get(0).getUrl() != null) {
+                if (bean.getData().getItems().get(i-2).getUrl() != null) {
                     Intent intent = new Intent(context, HomeItemActivity.class);
-                    intent.putExtra("url", bean.getData().getItems().get(i - 1).getUrl());
+                    intent.putExtra("url", bean.getData().getItems().get(i - 2).getUrl());
                     getActivity().startActivity(intent);
                 } else {
                     Toast.makeText(context, "没有接口", Toast.LENGTH_SHORT).show();
@@ -188,7 +172,7 @@ public class HomeSelectFragment extends BaseFragment {
     }
 
 
-    public void requestData() {
+    public void requestData(String url) {
         //创建网络请求
         StringRequest request = new StringRequest(URLValues.HOME_CELL, new Response.Listener<String>() {
             @Override
@@ -202,6 +186,7 @@ public class HomeSelectFragment extends BaseFragment {
                 HomeSelectAdapter adapter = new HomeSelectAdapter(getContext());
                 adapter.setArrayList(arrayList);
                 homeSelect.setAdapter(adapter);
+                homeSelect.onRefreshComplete();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -215,7 +200,6 @@ public class HomeSelectFragment extends BaseFragment {
 
     public void requestImageData() {
         //创建轮播图的网络请求
-        images = new ArrayList<>();
         StringRequest request = new StringRequest(URLValues.HOME_CAROUSEL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -234,11 +218,13 @@ public class HomeSelectFragment extends BaseFragment {
                         } else {
                             imageView.setImageResource(R.drawable.dot_focus);
                         }
+                        ll_viewpager.removeView(imageView);
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(15, 15);
                         params.setMargins(15, 0, 15, 0);
                         imageView.setLayoutParams(params);
                         dots.add(imageView);
                         ll_viewpager.addView(dots.get(i));
+
                     }
 
                 }

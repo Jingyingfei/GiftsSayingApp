@@ -3,6 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#FF4081</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="transparent">#dfe0e0</color>
+    <color name="transparent">#808080</color>
+    <color name="colorTran">#ffffff</color>
     <color name="colorImage">#ff384f</color>
+    <color name="listItem">#0000ff</color>
 </resources>

@@ -42,6 +42,7 @@ public class MeMainFragment extends BaseFragment implements View.OnClickListener
                 Intent intent = new Intent(context, SettingActivity.class);
                 getActivity().startActivity(intent);
                 break;
+
         }
     }
 }

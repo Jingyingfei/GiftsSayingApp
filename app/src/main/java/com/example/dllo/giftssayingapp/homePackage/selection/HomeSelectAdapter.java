@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
+import com.example.dllo.giftssayingapp.beanpackage.HomeSelectBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -55,14 +56,17 @@ public class HomeSelectAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        if (arrayList.get(i).getData().getItems().get(i).getColumn() != null) {
-            viewHolder.category.setText(arrayList.get(i).getData().getItems().get(i).getColumn().getCategory());
-            viewHolder.title_little.setText(arrayList.get(i).getData().getItems().get(i).getColumn().getTitle());
-            viewHolder.nickname.setText(arrayList.get(i).getData().getItems().get(i).getAuthor().getNickname());
-            Picasso.with(context).load(arrayList.get(i).getData().getItems().get(i).getCover_image_url()).into(viewHolder.image);
-            Picasso.with(context).load(arrayList.get(i).getData().getItems().get(i).getAuthor().getAvatar_url()).into(viewHolder.avatar);
-            viewHolder.title.setText(arrayList.get(i).getData().getItems().get(i).getTitle());
+        if (arrayList.get(0).getData().getItems().get(i).getColumn() != null) {
+            viewHolder.category.setText(arrayList.get(0).getData().getItems().get(i).getColumn().getCategory());
+            viewHolder.title_little.setText(arrayList.get(0).getData().getItems().get(i).getColumn().getTitle());
+
         }
+        if (arrayList.get(0).getData().getItems().get(i).getAuthor() != null){
+            Picasso.with(context).load(arrayList.get(0).getData().getItems().get(i).getAuthor().getAvatar_url()).into(viewHolder.avatar);
+        }
+        viewHolder.nickname.setText(arrayList.get(0).getData().getItems().get(i).getAuthor().getNickname());
+        Picasso.with(context).load(arrayList.get(0).getData().getItems().get(i).getCover_image_url()).into(viewHolder.image);
+        viewHolder.title.setText(arrayList.get(0).getData().getItems().get(i).getTitle());
 
         return view;
     }

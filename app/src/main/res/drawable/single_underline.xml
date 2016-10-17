@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-        <item android:state_checked="true">
-            <layer-list>
+    <item android:state_checked="true">
+        <layer-list>
 
-                <item android:right="50dp">
+            <item android:right="50dp">
 
-                    <shape android:shape="line" >
-                        <solid android:color="#ff0000" />
-                    </shape>
-                </item>
-            </layer-list>
-        </item>
-        <item android:drawable="@color/transparent"></item>
+                <shape android:shape="line">
+                    <solid android:color="#808080" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:drawable="@color/transparent"></item>
 </selector>

@@ -7,14 +7,11 @@
     <stroke
         android:width="2dp"
         android:color="#ffffff"/>
-    <size
-        android:width="200dp"
-        android:height="30dp"/>
     <corners
-        android:bottomRightRadius="100dip"
-        android:bottomLeftRadius="100dip"
-        android:topLeftRadius="100dip"
-        android:topRightRadius="100dip"/>
+        android:bottomRightRadius="10dip"
+        android:bottomLeftRadius="10dip"
+        android:topLeftRadius="10dip"
+        android:topRightRadius="10dip"/>
 
 
 </shape>

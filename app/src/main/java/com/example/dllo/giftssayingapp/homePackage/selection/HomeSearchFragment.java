@@ -9,6 +9,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.beanpackage.HomeNameBean;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

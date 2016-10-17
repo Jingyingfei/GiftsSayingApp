@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
+import com.example.dllo.giftssayingapp.beanpackage.HomeKindBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -55,15 +56,19 @@ public class HomeKindAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.nickname.setText(arrayList.get(i).getData().getItems().get(i).getAuthor().getNickname());
-        viewHolder.title_kind.setText(arrayList.get(i).getData().getItems().get(i).getTitle());
+        viewHolder.nickname.setText(arrayList.get(0).getData().getItems().get(i).getAuthor().getNickname());
+        viewHolder.title_kind.setText(arrayList.get(0).getData().getItems().get(i).getTitle());
         Picasso.with(context).load
-                (arrayList.get(i).getData().getItems().get(i).getCover_image_url()).
+                (arrayList.get(0).getData().getItems().get(i).getCover_image_url()).
                 into(viewHolder.image_kind);
-        viewHolder.category.setText(arrayList.get(i).getData().getItems().get(i).getColumn().getCategory());
-        viewHolder.title.setText(arrayList.get(i).getData().getItems().get(i).getColumn().getTitle());
-        Picasso.with(context).load(arrayList.get(i).getData().getItems().get(i).getAuthor().getAvatar_url()).into(viewHolder.avatar);
-
+        if (arrayList.get(0).getData().getItems().get(i).getColumn() != null){
+            viewHolder.category.setText(arrayList.get(0)
+                    .getData().getItems().get(i).getColumn().getCategory());
+            viewHolder.title.setText(arrayList.get(0)
+                    .getData().getItems().get(i).getColumn().getTitle());
+        }
+        Picasso.with(context).load(arrayList.get(0)
+                .getData().getItems().get(i).getAuthor().getAvatar_url()).into(viewHolder.avatar);
         return view;
     }
 

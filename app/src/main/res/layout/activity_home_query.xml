@@ -65,7 +65,7 @@
 
             </LinearLayout>
 
-            <com.example.dllo.giftssayingapp.homepackage.FlowLayout
+            <com.example.dllo.giftssayingapp.toolbar.FlowLayout
                 android:id="@+id/flowlayout"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

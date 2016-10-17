@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.giftssayingapp.R;
+import com.example.dllo.giftssayingapp.beanpackage.HomeImageFiveBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

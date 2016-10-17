@@ -11,6 +11,10 @@
         android:width="200dp"
         android:height="@dimen/activity_vertical_margin"/>
 
-
+    <corners
+        android:bottomRightRadius="10dip"
+        android:bottomLeftRadius="10dip"
+        android:topLeftRadius="10dip"
+        android:topRightRadius="10dip"/>
 
 </shape>

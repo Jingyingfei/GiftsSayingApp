@@ -1,7 +1,6 @@
 package com.example.dllo.giftssayingapp.homepackage.selection;
 
 import android.content.Intent;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,6 +11,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseActivity;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.beanpackage.HomeImageFiveBean;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -43,15 +43,14 @@ public class HomeImageFiveActivity extends BaseActivity {
     protected void initData() {
 
         Intent intent = getIntent();
-        five_id = (int) intent.getExtras().get("five");
-        Log.d("HomeImageFiveActivity", "five_id:" + five_id);
-        title_url = intent.getStringExtra("title_five");
-        title.setText(title_url);
+//        five_id = (int) intent.getExtras().get("five");
+//        title_url = intent.getStringExtra("title_five");
+//        title.setText(title_url);
         url = "http://api.liwushuo.com/v2/collections/"+ five_id +"/posts?gender=1&generation=2&limit=20&offset=0";
         requestData();
     }
 
-    //第五张轮播图点击进入网络获取
+    //轮播图点击进入网络获取
     public void requestData(){
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override

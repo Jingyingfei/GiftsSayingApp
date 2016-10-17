@@ -1,6 +1,7 @@
 package com.example.dllo.giftssayingapp.classifypackage.Single;
 
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
@@ -13,6 +14,7 @@ import com.example.dllo.giftssayingapp.R;
 import com.example.dllo.giftssayingapp.basepackage.BaseFragment;
 import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
+import com.example.dllo.giftssayingapp.beanpackage.SingleBean;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ public class SingleFragment extends BaseFragment {
     private ExpandableListView expandableListView;
     private ListView lv_left_single;
     private List<SingleBean> singleArrayList = new ArrayList<>();;
+    private SingleLeftAdapter adapter;
 
     @Override
     protected int setLayout() {
@@ -98,7 +101,7 @@ public class SingleFragment extends BaseFragment {
                 for (int i = 0; i < bean.getData().getCategories().size(); i++) {
                     arrayList.add(bean);
                 }
-                SingleLeftAdapter adapter = new SingleLeftAdapter(context);
+                adapter = new SingleLeftAdapter(context);
                 adapter.setArrayList(arrayList);
                 lv_left_single.setAdapter(adapter);
 
@@ -119,28 +122,33 @@ public class SingleFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 expandableListView.setSelectedGroup(i);
+                adapter.setSelectedPosition(i);
+                adapter.notifyDataSetInvalidated();
+
             }
         });
         //滑动右边  右侧对左侧的联动
-//        expandableListView.setOnScrollListener(new AbsListView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(AbsListView absListView, int i) {
-//                switch (i){
-//                    //当不滚动时
-//                    case SCROLL_STATE_IDLE:
-//                        // 判断滚动到底部
-//                        if (absListView.getLastVisiblePosition() == (absListView.getCount() - 1)) {
-//
-//                        }
-//                        break;
-//                }
-//
-//            }
-//            @Override
-//            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
-//
-//            }
-//        });
+        expandableListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            boolean userScrolled = false;
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+                if (i == SCROLL_STATE_IDLE) {
+                    userScrolled = false;
+                } else {
+                    userScrolled = true;
+                }
+            }
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+                if (userScrolled) {
+
+                    lv_left_single.setSelection(i);
+//                    lv_left_single.setBackgroundResource(R.color.listItem);
+                    adapter.notifyDataSetInvalidated();
+
+                }
+            }
+        });
     }
 //            @Override
 //            public void onScrollStateChanged(AbsListView view, int scrollState) {

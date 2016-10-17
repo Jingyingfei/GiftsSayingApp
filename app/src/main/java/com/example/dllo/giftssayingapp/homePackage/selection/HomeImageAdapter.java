@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.dllo.giftssayingapp.R;
+import com.example.dllo.giftssayingapp.beanpackage.HomeImageBean;
 import com.squareup.picasso.Picasso;
 
 

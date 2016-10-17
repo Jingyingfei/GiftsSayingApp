@@ -38,10 +38,6 @@
         <activity android:name=".mepackage.SettingActivity" />
         <activity android:name=".mepackage.FeedBackActivity" />
         <activity android:name=".homepackage.selection.HomeImageFiveActivity" />
-        <activity android:name=".homepackage.selection.HomeImageFourActivity" />
-        <activity android:name=".homepackage.selection.HomeImageThreeActivity" />
-        <activity android:name=".homepackage.selection.HomeImageTwoActivity" />
-        <activity android:name=".homepackage.selection.HomeImageOneActivity" />
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"

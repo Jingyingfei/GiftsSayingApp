@@ -42,6 +42,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         btn_code = bindView(R.id.btn_code);
         login_linear_Verification_code = bindView(R.id.login_linear_Verification_code);
         login_linear_The_login = bindView(R.id.login_linear_The_login);
+        login_linear_Verification_code.setVisibility(View.GONE);
         et_hint = bindView(R.id.et_hint);
         sina_weibo = bindView(R.id.iv_sina_weibo);
         wechat = bindView(R.id.iv_wechat);
@@ -69,7 +70,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
                 if (isVisible) {
                     isVisible = false;
-                    login_linear_Verification_code.setVisibility(View.INVISIBLE);
+                    login_linear_Verification_code.setVisibility(View.VISIBLE);
                     login_linear_The_login.setVisibility(View.GONE);
 //                    et_hint .setText("使用密码登录");
                 } else {
@@ -77,7 +78,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     login_linear_The_login.setVisibility(View.VISIBLE);
                     login_linear_Verification_code.setVisibility(View.GONE);
 //                    btn_code.setText("使用验证码登录");
-
                 }
 
             }
@@ -92,7 +92,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         switch (view.getId()){
             case R.id.iv_sina_weibo:
                 Platform weibo = ShareSDK.getPlatform(SinaWeibo.NAME);
-
                 weibo.setPlatformActionListener(paListener);
                 //authorize与showUser单独调用一个即可
                 weibo.authorize();//单独授权,OnComplete返回的hashmap是空的
@@ -102,7 +101,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.iv_tencent_qq:
                 Platform qq = ShareSDK.getPlatform(QQ.NAME);
-
                 qq.setPlatformActionListener(paListener);
                 //authorize与showUser单独调用一个即可
                 qq.authorize();//单独授权,OnComplete返回的hashmap是空的
