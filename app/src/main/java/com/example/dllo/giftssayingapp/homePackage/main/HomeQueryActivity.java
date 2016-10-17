@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.homepackage;
+package com.example.dllo.giftssayingapp.homepackage.main;
 
 import android.content.ContentValues;
 import android.database.Cursor;

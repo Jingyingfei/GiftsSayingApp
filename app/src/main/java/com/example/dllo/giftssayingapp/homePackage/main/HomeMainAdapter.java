@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.homepackage;
+package com.example.dllo.giftssayingapp.homepackage.main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

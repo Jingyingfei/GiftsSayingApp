@@ -18,7 +18,6 @@ import com.example.dllo.giftssayingapp.basepackage.URLValues;
 import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.example.dllo.giftssayingapp.beanpackage.NewStarBean;
 import com.example.dllo.giftssayingapp.hotspotpackage.main.ItemActivity;
-import com.example.dllo.giftssayingapp.hotspotpackage.main.OnItemClickListener;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -68,8 +67,6 @@ public class NewStarFragment extends BaseFragment {
                     arrayList.add(bean);
                 }
 
-                Picasso.with(context).load(bean.getData().getCover_image()).into(image);
-
                 adapter = new NewStarAdapter(context);
                 adapter.setArrayList(arrayList);
                 GridLayoutManager manager = new GridLayoutManager(context, 2);
@@ -79,9 +76,9 @@ public class NewStarFragment extends BaseFragment {
 
 
                 //接口实现
-                adapter.setStarOnItemClickListener(new OnItemClickListener() {
+                adapter.setStarOnItemClickListener(new NewStarAdapter.OnItemClickListener() {
                     @Override
-                    public void OnItemClickListener(View view, int position) {
+                    public void onItemClick(int position, NewStarBean data) {
                         if (bean.getData().getItems().get(position).getPurchase_url() != null) {
                             Intent intent = new Intent(context, ItemActivity.class);
                             intent.putExtra("purchase_url", bean.getData().getItems().get(position).getPurchase_url());
@@ -102,6 +99,7 @@ public class NewStarFragment extends BaseFragment {
         });
         VolleySingleton.getInstance().addRequest(request);
     }
+
 
     public void setHeader(RecyclerView view) {
         View header = LayoutInflater.from(context).inflate(R.layout.header, view, false);

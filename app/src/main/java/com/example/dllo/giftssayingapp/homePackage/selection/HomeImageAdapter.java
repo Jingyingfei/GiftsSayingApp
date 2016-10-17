@@ -5,6 +5,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ImageView;
 
 import com.example.dllo.giftssayingapp.R;
@@ -52,8 +53,13 @@ public class HomeImageAdapter extends PagerAdapter {
         ImageView image = (ImageView) view.findViewById(R.id.iv_home_image);
         Picasso.with(context).load(bean.getData().getBanners().get
                 (position% bean.getData().getBanners().size()).getImage_url()).into(image);
+        //如果View已经在之前添加到了一个父组件，则必须先remove，否则会抛出IllegalStateException。
+        ViewParent vp = view.getParent();
+        if (vp != null) {
+            ViewGroup parent = (ViewGroup) vp;
+            parent.removeAllViews();
+        }
         container.addView(view);
-
         return view;
 
     }

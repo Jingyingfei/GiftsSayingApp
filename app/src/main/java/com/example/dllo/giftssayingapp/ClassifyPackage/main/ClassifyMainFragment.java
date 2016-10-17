@@ -18,7 +18,7 @@ import com.example.dllo.giftssayingapp.basepackage.VolleySingleton;
 import com.example.dllo.giftssayingapp.classifypackage.Single.SingleFragment;
 import com.example.dllo.giftssayingapp.beanpackage.EditBean;
 import com.example.dllo.giftssayingapp.classifypackage.Strategy.StrategyFragment;
-import com.example.dllo.giftssayingapp.homepackage.HomeQueryActivity;
+import com.example.dllo.giftssayingapp.homepackage.main.HomeQueryActivity;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

@@ -17,7 +17,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/file_name"
+            android:background="@drawable/file__edit_name"
             android:drawableLeft="@mipmap/nav_bar_icon_search_dark"
             android:drawablePadding="10dp"
             android:paddingLeft="10dp"

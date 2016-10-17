@@ -68,9 +68,9 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
 
         final int pos = getRealPosition(holder);
         final TopBean data = arrayList.get(pos);
-        holder.name.setText(arrayList.get(position).getData().getItems().get(position - 1).getName());
-        holder.price.setText(arrayList.get(position).getData().getItems().get(position - 1).getPrice());
-        Picasso.with(context).load(arrayList.get(position).getData().getItems().get(position - 1).getCover_image_url()).into(holder.image);
+        holder.name.setText(data.getData().getItems().get(position - 1).getName());
+        holder.price.setText(data.getData().getItems().get(position - 1).getPrice());
+        Picasso.with(context).load(data.getData().getItems().get(position - 1).getCover_image_url()).into(holder.image);
 
         if (topOnItemClickListener == null) return;
         holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -35,6 +35,8 @@ public class StrategyFragment extends BaseFragment {
 
     private RecyclerView raiderRv;
     ArrayList<RaiderHeaderBean> beanArrayList = new ArrayList<>();
+    private RaiderHeaderAdpter mAdpter;
+    private StrategyBean mBean;
 
 
     @Override
@@ -66,13 +68,13 @@ public class StrategyFragment extends BaseFragment {
                 Gson gson = new Gson();
                 RaiderHeaderBean bean = gson.fromJson(response, RaiderHeaderBean.class);
                 beanArrayList.add(bean);
-
-                RaiderHeaderAdpter adpter = new RaiderHeaderAdpter(context);
-                adpter.setRaiderHeaderBean(beanArrayList);
-                raiderRv.setAdapter(adpter);
+                mAdpter = new RaiderHeaderAdpter(context);
+                mAdpter.setRaiderHeaderBean(beanArrayList);
+                raiderRv.setAdapter(mAdpter);
 
                 GridLayoutManager manager = new GridLayoutManager(context, 3, LinearLayoutManager.HORIZONTAL, false);
                 raiderRv.setLayoutManager(manager);
+
 
             }
         }, new Response.ErrorListener() {
@@ -89,15 +91,15 @@ public class StrategyFragment extends BaseFragment {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                StrategyBean bean = gson.fromJson(response, StrategyBean.class);
+                mBean = gson.fromJson(response, StrategyBean.class);
 
-                for (int i = 0; i < bean.getData().getChannel_groups().size(); i++) {
-                    group_list.add(bean.getData().getChannel_groups().get(i).getName());
+                for (int i = 0; i < mBean.getData().getChannel_groups().size(); i++) {
+                    group_list.add(mBean.getData().getChannel_groups().get(i).getName());
                     item_list.add(group_list);
                 }
                 for (int j = 0; j < 3; j++) {
                     for (int i = 0; i < 6; i++) {
-                        group_list2.add(bean.getData().getChannel_groups().get(j).getChannels().get(i).getCover_image_url());
+                        group_list2.add(mBean.getData().getChannel_groups().get(j).getChannels().get(i).getCover_image_url());
                         item_list2.add(group_list2);
 
                     }

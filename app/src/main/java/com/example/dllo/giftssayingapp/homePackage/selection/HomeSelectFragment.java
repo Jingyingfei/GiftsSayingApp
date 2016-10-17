@@ -124,14 +124,17 @@ public class HomeSelectFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
-                a = position % dots.size();
-                for (int i = 0; i < dots.size(); i++) {
-                    if (i == a) {
-                        dots.get(i).setImageResource(R.drawable.dot_normal);
-                    } else {
-                        dots.get(i).setImageResource(R.drawable.dot_focus);
+                if (dots.size() > 0){
+                    a = position % dots.size();
+                    for (int i = 0; i < dots.size(); i++) {
+                        if (i == a) {
+                            dots.get(i).setImageResource(R.drawable.dot_normal);
+                        } else {
+                            dots.get(i).setImageResource(R.drawable.dot_focus);
+                        }
                     }
                 }
+
             }
 
             @Override
@@ -218,13 +221,12 @@ public class HomeSelectFragment extends BaseFragment {
                         } else {
                             imageView.setImageResource(R.drawable.dot_focus);
                         }
-                        ll_viewpager.removeView(imageView);
+
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(15, 15);
                         params.setMargins(15, 0, 15, 0);
                         imageView.setLayoutParams(params);
                         dots.add(imageView);
                         ll_viewpager.addView(dots.get(i));
-
                     }
 
                 }
@@ -262,7 +264,12 @@ public class HomeSelectFragment extends BaseFragment {
         VolleySingleton.getInstance().addRequest(request);
     }
 
-
+    @Override
+    public void onDestroyView() {
+        dots.clear();
+        isRunning = false;
+        super.onDestroyView();
+    }
 }
 
 

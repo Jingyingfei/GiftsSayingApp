@@ -24,7 +24,7 @@ public class HomeSearchFragment extends BaseFragment {
 
     private ListView lv_home_search;
     private String strUrl;
-    private String url;
+
 
     @Override
     protected int setLayout() {

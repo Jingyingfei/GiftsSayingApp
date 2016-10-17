@@ -1,4 +1,4 @@
-package com.example.dllo.giftssayingapp.homepackage;
+package com.example.dllo.giftssayingapp.homepackage.main;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

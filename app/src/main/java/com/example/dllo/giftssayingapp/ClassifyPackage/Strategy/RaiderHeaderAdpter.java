@@ -18,9 +18,9 @@ import java.util.ArrayList;
  * Created by dllo on 16/9/27.
  */
 public class RaiderHeaderAdpter extends RecyclerView.Adapter {
-    Context context;
-    ArrayList<RaiderHeaderBean> raidersBeen;
-    int all = 0;
+    private Context context;
+    private ArrayList<RaiderHeaderBean> raidersBeen;
+    private int all = 0;
 
     public void setRaiderHeaderBean(ArrayList<RaiderHeaderBean> raidersBeen) {
         this.raidersBeen = raidersBeen;
@@ -48,11 +48,10 @@ public class RaiderHeaderAdpter extends RecyclerView.Adapter {
             All a = new All(viewAll);
             return a;
         }
-
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         int type = getItemViewType(position);
 
         if (position < raidersBeen.get(0).getData().getColumns().size() - 1) {
@@ -69,16 +68,14 @@ public class RaiderHeaderAdpter extends RecyclerView.Adapter {
 
         } else {
             All all1 = (All) holder;
-
         }
-
 
     }
 
 
     @Override
     public int getItemCount() {
-        return raidersBeen.get(0).getData().getColumns().size();
+        return 11;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -103,4 +100,5 @@ public class RaiderHeaderAdpter extends RecyclerView.Adapter {
             super(itemView);
         }
     }
+
 }

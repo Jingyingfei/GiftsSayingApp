@@ -72,12 +72,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     isVisible = false;
                     login_linear_Verification_code.setVisibility(View.VISIBLE);
                     login_linear_The_login.setVisibility(View.GONE);
-//                    et_hint .setText("使用密码登录");
+
                 } else {
                     isVisible = true;
                     login_linear_The_login.setVisibility(View.VISIBLE);
                     login_linear_Verification_code.setVisibility(View.GONE);
-//                    btn_code.setText("使用验证码登录");
+
                 }
 
             }

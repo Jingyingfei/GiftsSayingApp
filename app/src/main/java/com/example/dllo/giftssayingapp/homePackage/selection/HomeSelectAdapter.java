@@ -70,6 +70,7 @@ public class HomeSelectAdapter extends BaseAdapter {
 
         return view;
     }
+    
 
     class ViewHolder {
 

@@ -48,12 +48,14 @@ public class NewStarAdapter extends RecyclerView.Adapter<NewStarAdapter.ViewHold
 
         this.context = context;
     }
+
     @Override
     public int getItemViewType(int position) {
         if (headerView == null) return TYPE_NORMAL;
         if (0 == position) return TYPE_HEADER;
         return TYPE_NORMAL;
     }
+
     @Override
     public NewStarAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (headerView != null && viewType == TYPE_HEADER) return new ViewHolder(headerView);
@@ -68,9 +70,10 @@ public class NewStarAdapter extends RecyclerView.Adapter<NewStarAdapter.ViewHold
 
         final int pos = getRealPosition(holder);
         final NewStarBean data = arrayList.get(pos);
-        holder.name.setText(arrayList.get(position).getData().getItems().get(position).getName());
-        holder.price.setText(arrayList.get(position).getData().getItems().get(position).getPrice());
-        Picasso.with(context).load(arrayList.get(position).getData().getItems().get(position).getCover_image_url()).into(holder.image);
+        holder.name.setText(data.getData().getItems().get(position - 1).getName());
+        holder.price.setText(data.getData().getItems().get(position - 1).getPrice());
+        Picasso.with(context).load(data.getData().getItems().get(position - 1).getCover_image_url()).into(holder.image);
+
         if (starOnItemClickListener == null) return;
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +83,7 @@ public class NewStarAdapter extends RecyclerView.Adapter<NewStarAdapter.ViewHold
         });
 
     }
+
     public int getRealPosition(RecyclerView.ViewHolder holder) {
         int position = holder.getLayoutPosition();
         return headerView == null ? position : position - 1;
@@ -102,7 +106,6 @@ public class NewStarAdapter extends RecyclerView.Adapter<NewStarAdapter.ViewHold
     }
 
 
-
     @Override
     public int getItemCount() {
         return headerView == null ? arrayList.size() : arrayList.size() + 1;
@@ -122,6 +125,7 @@ public class NewStarAdapter extends RecyclerView.Adapter<NewStarAdapter.ViewHold
             price = (TextView) itemView.findViewById(R.id.tv_newstar_price);
         }
     }
+
     interface OnItemClickListener {
         void onItemClick(int position, NewStarBean data);
     }
