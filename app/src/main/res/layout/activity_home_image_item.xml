@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".homepackage.selection.HomeImageFiveActivity">
+    tools:context=".home.selection.HomeImageFiveActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

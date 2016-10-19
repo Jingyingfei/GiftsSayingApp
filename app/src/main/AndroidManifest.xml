@@ -17,26 +17,26 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
-        android:name=".basepackage.VolleyApp"
+        android:name=".netrequest.VolleyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_about"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mainpackage.StartMainActivity" />
-        <activity android:name=".mainpackage.WelcomActivity">
+        <activity android:name=".main.StartMainActivity" />
+        <activity android:name=".main.WelcomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mainpackage.LoginActivity" />
-        <activity android:name=".homepackage.selection.HomeItemActivity" />
-        <activity android:name=".homepackage.main.HomeQueryActivity" />
-        <activity android:name=".hotspotpackage.main.ItemActivity" />
-        <activity android:name=".mepackage.SettingActivity" />
-        <activity android:name=".mepackage.FeedBackActivity" />
+        <activity android:name=".main.LoginActivity" />
+        <activity android:name=".home.selection.HomeItemActivity" />
+        <activity android:name=".home.main.HomeQueryActivity" />
+        <activity android:name=".hotspot.main.ItemActivity" />
+        <activity android:name=".me.SettingActivity" />
+        <activity android:name=".me.FeedBackActivity" />
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -61,7 +61,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".mepackage.PushActivity" />
+        <activity android:name=".me.PushActivity" />
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.dllo.giftssayingapp.classifypackage.Strategy.StrategyItemActivity">
+    tools:context="com.example.dllo.giftssayingapp.classify.Strategy.StrategyItemActivity">
 
     <RelativeLayout
         android:id="@+id/rl_selection_title"

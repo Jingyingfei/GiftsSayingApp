@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainpackage.WelcomActivity">
+    tools:context=".main.WelcomActivity">
 <ImageView
     android:id="@+id/iv_welcom"
     android:layout_width="match_parent"

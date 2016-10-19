@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.dllo.giftssayingapp.homepackage.selection.HomeImageOneActivity">
+    tools:context="com.example.dllo.giftssayingapp.home.selection.HomeImageOneActivity">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
